@@ -75,7 +75,7 @@ public class GoodsController {
             @RequestParam(required = false, value = "number", defaultValue = "0") int page,
             @RequestParam(required = false, value = "amount", defaultValue = "5") int amount) throws IOException {
         logger.info("Good: pagination using hibernate");
-        return service.page(page, amount);
+        return null;
     }
 
     @RequestMapping(value = "/goods/search",

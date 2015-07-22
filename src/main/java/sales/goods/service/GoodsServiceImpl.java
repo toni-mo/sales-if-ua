@@ -50,7 +50,7 @@ public class GoodsServiceImpl implements GoodsService {
             }
             pageRequest = new PageRequest(page, amount, new Sort(orders));
         }
-        return repository.findAll(pageRequest).getContent();
+        return null;
     }
 
     public List<Good> searchByName(String name) {
