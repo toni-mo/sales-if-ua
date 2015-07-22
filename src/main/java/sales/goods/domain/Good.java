@@ -18,11 +18,11 @@ public class Good implements Serializable {
     @JsonProperty("id")
     private int id;
 
-    @Column(name = "name")
+    @Column(name = "name", columnDefinition = "VARCHAR(255) COLLATE utf8_general_ci")
     @JsonProperty("name")
     private String name;
 
-    @Column(name = "description")
+    @Column(name = "description", columnDefinition = "VARCHAR(512) COLLATE utf8_general_ci")
     @JsonProperty("description")
     private String description;
 

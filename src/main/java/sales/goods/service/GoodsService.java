@@ -13,10 +13,12 @@ public interface GoodsService {
 
     public Good save(Good goods);
 
-    public void delete(Good goods);
+    public void delete(int id);
 
     public List<Good> page(int page, int amount, Map<String, String> sort);
 
     public List<Good> searchByName(String name);
+
+    public List<Good> filterPriceScope(int from, int to);
 
 }

@@ -8,11 +8,12 @@ import sales.goods.service.GoodsService;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 
 
 @RestController
-@RequestMapping("/hibernate")
+@RequestMapping("/goods")
 public class GoodsController {
 
     protected static Logger logger = Logger.getLogger(GoodsController.class.getName());
@@ -20,18 +21,18 @@ public class GoodsController {
     @Autowired
     private GoodsService service;
 
-    @RequestMapping(value = "/goods/{id}",
+    @RequestMapping(value = "",
             method = RequestMethod.GET,
             produces = "application/json; charset=UTF-8")
     @ResponseStatus(HttpStatus.OK)
     public
     @ResponseBody
-    Good getGoods(@PathVariable int id) {
+    Good getGoods(@RequestParam(value = "id") int id) {
         logger.info("Good: get by id using hibernate");
         return service.get(id);
     }
 
-    @RequestMapping(value = "/goods",
+    @RequestMapping(value = "/",
             method = RequestMethod.GET,
             produces = "application/json; charset=UTF-8")
     @ResponseStatus(HttpStatus.OK)
@@ -42,7 +43,7 @@ public class GoodsController {
         return service.getAll();
     }
 
-    @RequestMapping(value = "/goods",
+    @RequestMapping(value = "/",
             method = RequestMethod.POST,
             produces = "application/json; charset=UTF-8",
             consumes = "application/json")
@@ -54,31 +55,33 @@ public class GoodsController {
         return service.save(goods);
     }
 
-    @RequestMapping(value = "/goods",
+    @RequestMapping(value = "",
             method = RequestMethod.DELETE,
-            produces = "application/json; charset=UTF-8",
-            consumes = "application/json")
+            produces = "application/json; charset=UTF-8")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public
     @ResponseBody
-    void removeGoods(@RequestBody Good goods) throws IOException {
+    void removeGoods(@RequestParam(value = "id") int id) throws IOException {
         logger.info("Good: save or update using hibernate");
+        service.delete(id);
     }
 
-    @RequestMapping(value = "/goods/page",
-            method = RequestMethod.GET,
-            produces = "application/json; charset=UTF-8")
+    @RequestMapping(value = "/page",
+            method = RequestMethod.POST,
+            produces = "application/json; charset=UTF-8",
+            consumes = "application/json")
     @ResponseStatus(HttpStatus.OK)
     public
     @ResponseBody
     List<Good> goodsPagination(
             @RequestParam(required = false, value = "number", defaultValue = "0") int page,
-            @RequestParam(required = false, value = "amount", defaultValue = "5") int amount) throws IOException {
+            @RequestParam(required = false, value = "amount", defaultValue = "5") int amount,
+            @RequestBody Map<String, String> sort) throws IOException {
         logger.info("Good: pagination using hibernate");
-        return null;
+        return service.page(page, amount, sort);
     }
 
-    @RequestMapping(value = "/goods/search",
+    @RequestMapping(value = "/search",
             method = RequestMethod.GET,
             produces = "application/json; charset=UTF-8")
     @ResponseStatus(HttpStatus.OK)
@@ -89,62 +92,16 @@ public class GoodsController {
         return service.searchByName(name);
     }
 
-/*
-    @RequestMapping(value = "/goods/asc",
-            method = RequestMethod.GET,
-            produces = "application/json; charset=UTF-8")
-    public
-    @ResponseBody
-    List<Good> goodsASC(
-            @RequestParam(value = "field") String field) throws IOException {
-        logger.info("Good: sort by asc using hibernate");
-        return dao.sortASC(field);
-    }
 
-    @RequestMapping(value = "/goods/desc",
-            method = RequestMethod.GET,
-            produces = "application/json; charset=UTF-8")
-    public
-    @ResponseBody
-    List<Good> goodsDESC(
-            @RequestParam(value = "field") String field) throws IOException {
-        logger.info("Good: sort by desc using hibernate");
-        return dao.sortDESC(field);
-    }
-
-    @RequestMapping(value = "/goods/search/{name}",
-            method = RequestMethod.GET,
-            produces = "application/json; charset=UTF-8")
-    public
-    @ResponseBody
-    List<Good> goodsSearchByName(
-            @PathVariable String name) throws IOException {
-        logger.info("Good: search by name using hibernate");
-        return dao.search(name);
-    }
-
-    @RequestMapping(value = "/goods/search",
-            method = RequestMethod.GET,
-            produces = "application/json; charset=UTF-8")
-    public
-    @ResponseBody
-    List<Good> goodsSearchPriceBetween(
-            @RequestParam(value = "from") int from,
-            @RequestParam(value = "to") int to) throws IOException {
-        logger.info("Good: search by price using between, using hibernate");
-        return dao.searchBetween(from, to);
-    }
-
-    @RequestMapping(value = "/goods/search/{name}/scope",
+    @RequestMapping(value = "/filter",
             method = RequestMethod.GET,
             produces = "application/json; charset=UTF-8")
     public
     @ResponseBody
     List<Good> goodsSearchByNameBetweenPrice(
-            @PathVariable String name,
             @RequestParam(value = "from") int from,
             @RequestParam(value = "to") int to) throws IOException {
         logger.info("Good: search by price using between, using hibernate");
-        return dao.searchByNameWithBetween(name, from, to);
-    }*/
+        return service.filterPriceScope(from, to);
+    }
 }

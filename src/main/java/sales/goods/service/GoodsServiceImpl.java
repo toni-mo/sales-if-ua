@@ -1,5 +1,6 @@
 package sales.goods.service;
 
+import com.google.common.collect.Lists;
 import org.hibernate.Criteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -24,7 +25,7 @@ public class GoodsServiceImpl implements GoodsService {
     private GoodsRepository repository;
 
     public Good get(int id) {
-        return repository.getOne(id);
+        return repository.findById(id);
     }
 
     public List<Good> getAll() {
@@ -36,24 +37,34 @@ public class GoodsServiceImpl implements GoodsService {
         return good;
     }
 
-    public void delete(Good goods) {
-        repository.delete(goods);
+    public void delete(int id) {
+        repository.removeById(id);
     }
 
     public List<Good> page(int page, int amount, Map<String, String> sort) {
         PageRequest pageRequest;
         if (sort == null || sort.isEmpty()) {
+            pageRequest = new PageRequest(page, amount);
+        } else {
             List<Sort.Order> orders = new ArrayList();
             Set<String> sortParams = sort.keySet();
             for (String sortParam : sortParams) {
                 orders.add(new Sort.Order(Sort.Direction.fromString(sort.get(sortParam)), sortParam));
             }
-            pageRequest = new PageRequest(page, amount, new Sort(orders));
+            pageRequest = new PageRequest(
+                    page,
+                    amount,
+                    new Sort(orders));
         }
-        return null;
+        return Lists.newArrayList(repository.findAll(pageRequest).getContent());
     }
 
     public List<Good> searchByName(String name) {
         return repository.findByNameContainingIgnoreCase(name);
+    }
+
+    public List<Good> filterPriceScope(int from, int to)
+    {
+        return repository.findByPriceBetween(from, to);
     }
 }

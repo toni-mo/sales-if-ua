@@ -12,4 +12,10 @@ public interface GoodsRepository extends JpaRepository<Good, Integer>  {
 
     public List<Good> findByNameContainingIgnoreCase(String name);
 
+    public Good findById(int id);
+
+    public void removeById(int id);
+
+    public List<Good> findByPriceBetween(int from, int to);
+
 }

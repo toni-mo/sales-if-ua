@@ -2,93 +2,50 @@
 
 
 
-### JAVA steps:
+### must to be installed next things:
 ***************************************************
 
-1. Install java SE 1.8.
+1. java SE 1.8.
 
-2. Set System Variable JAVA_HOME="path to your java directory"
+2. apache-maven-3.2.5.
 
-### Maven steps:
-***************************************************
-
-1. Install apache-maven-3.2.5.
-
-2. Set System Variable MAVEN_HOME="path to your maven directory"
+3. MySql Server 5.5 (Linux command: sudo apt-get install mysql-server-5.5)
 
 ### Database steps:
 ***************************************************
 
-1. Install MySql Server 5.5
+1. Create database with name = "salesifua"
 
-2. Create database with name = "trade"
+2. mysql -u root -p
 
-3. Create table with name = "Goods" and set charset for table utf8 - utf8_bin
+3.  CREATE DATABASE database salesifua;
 
-4. Set columns into table with such names and types
 
-id INT
+### Run server 
+***************************************************
 
-name Varchar(45)
-
-description TEXT
-
-amount INT
-
-price INT
-
-5. Apply changes.
+1. From console go to project directory
+ 
+2. Enter command mvn jetty:run
 
 Links for using:
 ### Links to rest controller that's using hibernate
 ***************************************************
 
-1. http://localhost:8080/Practice/service/hibernate/good method = GET -- get good list 
+1. http://localhost:8080/Practice/goods/ method = GET -- get good list 
 
-2. http://localhost:8080/Practice/service/hibernate/good/{id} method = GET -- get good by id
+2. http://localhost:8080/Practice/goods?id= method = GET -- get good by id
 
-3. http://localhost:8080/Practice/service/hibernate/good method = POST -- save or update good
+3. http://localhost:8080/Practice/goods method = POST -- save or update good
 
-4. http://localhost:8080/Practice/service/hibernate/good method = DELETE -- delete good
+4. http://localhost:8080/Practice/goods method = DELETE -- delete good
 
-5. http://localhost:8080/Practice/service/hibernate/good/page?page=&amount= method = GET -- pagination
+5. http://localhost:8080/Practice/goods/page?page=&amount= and Map into request body like "{"name":"asc"}"
+method = POST -- pagination with sorting
 
-6. http://localhost:8080/Practice/service/hibernate/good/asc?field= method = GET -- sorting good list by
- field in table (id, name, amount, price) by asc
- 
-7. http://localhost:8080/Practice/service/hibernate/good/desc?field= method = GET -- sorting good list by
-  field in table (id, name, amount, price) by desc
-  
-8. http://localhost:8080/Practice/service/hibernate/good/search/{name} method = GET -- search good by 
+8. http://localhost:8080/Practice/goods/search?name= method = GET -- search good by 
   name with ignore case
 
-9. http://localhost:8080/Practice/service/hibernate/good/search?from=&to= method = GET -- search any good which
+9. http://localhost:8080/Practice/goods/filter?from=&to= method = GET -- search any good which
   are in scope from and to
-  
-10. http://localhost:8080/Practice/service/hibernate/good/search/{name}/scope?from=&to= method = GET
- -- search good by name which are in scope from and to
- 
-### Links to rest controller that's using jdbcTemplate
-***************************************************
 
-1. http://localhost:8080/Practice/service/jdbctemplate/good method = GET -- get good list 
-
-2. http://localhost:8080/Practice/service/jdbctemplate/good/{id} method = GET -- get good by id
-
-3. http://localhost:8080/Practice/service/jdbctemplate/good method = POST -- save or update good
-
-4. http://localhost:8080/Practice/service/jdbctemplate/good method = PUT -- update good
-
-5. http://localhost:8080/Practice/service/jdbctemplate/good/{id} method = DELETE -- delete good by id
-
-6. http://localhost:8080/Practice/service/jdbctemplate/good/asc?count=&number=&field= method = GET --
- pagination
- 
-### Links to rest controller that's using plug
-***************************************************
-
-1. http://localhost:8080/Practice/service/good method = GET -- get good list 
-
-2. http://localhost:8080/Practice/service/good/{id} method = GET -- get good by id
-
-3. http://localhost:8080/Practice/service/good/search?name= method = GET -- search good by name
