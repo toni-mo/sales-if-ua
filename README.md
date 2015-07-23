@@ -62,3 +62,16 @@ method = POST -- pagination with sorting
 6. http://localhost:8080/Practice/shops/sort/{field}?page=&amount=  method = Get -- sort shops by 'field'
 7. http://localhost:8080/Practice/shops/filter/{field}={value}  method = Get -- filter shops by 'field' equals 'value'
 8. http://localhost:8080/Practice/shops/search/{name}  method = Get -- find shop by name
+
+### Links for using: [CLIENTS]
+***************************************************
+
+1. http://localhost:8080/Practice/client/{id} method = GET - get Client by id
+2. http://localhost:8080/Practice/client/all method = GET - get list of all Clients
+3. http://localhost:8080/Practice/client/add method = POST - save Client (comsumes client json)
+4. http://localhost:8080/Practice/client/update method = PUT - update Client (consumes client json to be updated)
+5. http://localhost:8080/Practice/client/remove/{id} method = DELETE - delete client by id
+6. http://localhost:8080/Practice/client/search?name=%name%&surname=%surname%
+   method = GET - get Client with name=%name% and surname=%surname%
+7. http://localhost:8080/Practice/client/page?page=%page%&amount=%amount%
+   method = GET - get client list on page=%page% and with %amount% clients on page
