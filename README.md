@@ -63,8 +63,7 @@ method = POST -- pagination with sorting
 7. http://localhost:8080/Practice/shops/filter/{field}={value}  method = Get -- filter shops by 'field' equals 'value'
 8. http://localhost:8080/Practice/shops/search/{name}  method = Get -- find shop by name
 
-### Links for using: [CLIENTS]
-***************************************************
+#Links for using: [CLIENTS]
 
 1. http://localhost:8080/Practice/client/{id} method = GET - get Client by id
 2. http://localhost:8080/Practice/client/all method = GET - get list of all Clients
