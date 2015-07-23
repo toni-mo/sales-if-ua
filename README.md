@@ -33,6 +33,7 @@
 Links for using:
 ### Links to rest controller that's using hibernate
 ***************************************************
+#Links for goods:
 
 1. http://localhost:8080/Practice/goods/ method = GET -- get good list 
 
@@ -51,3 +52,13 @@ method = POST -- pagination with sorting
 9. http://localhost:8080/Practice/goods/filter?from=&to= method = GET -- search any good which
   are in scope from and to
 
+#Links for shops:
+
+1. http://localhost:8080/Practice/shops/all?page=&amount=  method = Get -- get shop list
+2. http://localhost:8080/Practice/shops/{id}  method = Get -- get shop by id
+3. http://localhost:8080/Practice/shops/add  method = Post -- save shop
+4. http://localhost:8080/Practice/shops/update/{id}  method = Patch -- update shop
+5. http://localhost:8080/Practice/shops/delete/{id}  method = Delete -- delete shop
+6. http://localhost:8080/Practice/shops/sort/{field}?page=&amount=  method = Get -- sort shops by 'field'
+7. http://localhost:8080/Practice/shops/filter/{field}={value}  method = Get -- filter shops by 'field' equals 'value'
+8. http://localhost:8080/Practice/shops/search/{name}  method = Get -- find shop by name
