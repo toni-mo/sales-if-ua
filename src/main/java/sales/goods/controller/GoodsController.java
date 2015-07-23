@@ -25,9 +25,7 @@ public class GoodsController {
             method = RequestMethod.GET,
             produces = "application/json; charset=UTF-8")
     @ResponseStatus(HttpStatus.OK)
-    public
-    @ResponseBody
-    Good getGoods(@RequestParam(value = "id") int id) {
+    public Good getGoods(@RequestParam(value = "id") int id) {
         logger.info("Good: get by id using hibernate");
         return service.get(id);
     }
@@ -36,9 +34,7 @@ public class GoodsController {
             method = RequestMethod.GET,
             produces = "application/json; charset=UTF-8")
     @ResponseStatus(HttpStatus.OK)
-    public
-    @ResponseBody
-    List<Good> getAllGoods() {
+    public List<Good> getAllGoods() {
         logger.info("Good: get all by id using hibernate");
         return service.getAll();
     }
@@ -48,9 +44,7 @@ public class GoodsController {
             produces = "application/json; charset=UTF-8",
             consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public
-    @ResponseBody
-    Good putGoods(@RequestBody Good goods) throws IOException {
+    public Good putGoods(@RequestBody Good goods) throws IOException {
         logger.info("Good: save or update using hibernate");
         return service.save(goods);
     }
@@ -59,9 +53,7 @@ public class GoodsController {
             method = RequestMethod.DELETE,
             produces = "application/json; charset=UTF-8")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public
-    @ResponseBody
-    void removeGoods(@RequestParam(value = "id") int id) throws IOException {
+    public void removeGoods(@RequestParam(value = "id") int id) throws IOException {
         logger.info("Good: save or update using hibernate");
         service.delete(id);
     }
@@ -71,9 +63,7 @@ public class GoodsController {
             produces = "application/json; charset=UTF-8",
             consumes = "application/json")
     @ResponseStatus(HttpStatus.OK)
-    public
-    @ResponseBody
-    List<Good> goodsPagination(
+    public List<Good> goodsPagination(
             @RequestParam(required = false, value = "number", defaultValue = "0") int page,
             @RequestParam(required = false, value = "amount", defaultValue = "5") int amount,
             @RequestBody Map<String, String> sort) throws IOException {
@@ -85,9 +75,7 @@ public class GoodsController {
             method = RequestMethod.GET,
             produces = "application/json; charset=UTF-8")
     @ResponseStatus(HttpStatus.OK)
-    public
-    @ResponseBody
-    List<Good> goodsSearch(@RequestParam(value = "name") String name) throws IOException {
+    public List<Good> goodsSearch(@RequestParam(value = "name") String name) throws IOException {
         logger.info("Good: search by name using hibernate");
         return service.searchByName(name);
     }
@@ -96,9 +84,7 @@ public class GoodsController {
     @RequestMapping(value = "/filter",
             method = RequestMethod.GET,
             produces = "application/json; charset=UTF-8")
-    public
-    @ResponseBody
-    List<Good> goodsSearchByNameBetweenPrice(
+    public List<Good> goodsSearchByNameBetweenPrice(
             @RequestParam(value = "from") int from,
             @RequestParam(value = "to") int to) throws IOException {
         logger.info("Good: search by price using between, using hibernate");
