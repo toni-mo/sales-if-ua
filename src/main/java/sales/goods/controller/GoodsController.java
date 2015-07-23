@@ -54,7 +54,7 @@ public class GoodsController {
             produces = "application/json; charset=UTF-8")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void removeGoods(@RequestParam(value = "id") int id) throws IOException {
-        logger.info("Good: save or update using hibernate");
+        logger.info("Good: delete using hibernate");
         service.delete(id);
     }
 
