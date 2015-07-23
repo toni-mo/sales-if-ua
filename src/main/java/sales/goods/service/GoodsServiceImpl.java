@@ -9,9 +9,12 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import sales.goods.domain.Good;
+import sales.goods.generator.GoodsGenerator;
 import sales.goods.repository.GoodsRepository;
 
+import javax.annotation.PostConstruct;
 import javax.persistence.criteria.Order;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -63,8 +66,8 @@ public class GoodsServiceImpl implements GoodsService {
         return repository.findByNameContainingIgnoreCase(name);
     }
 
-    public List<Good> filterPriceScope(int from, int to)
-    {
+    public List<Good> filterPriceScope(int from, int to) {
         return repository.findByPriceBetween(from, to);
     }
+
 }

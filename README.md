@@ -14,11 +14,13 @@
 ### Database steps:
 ***************************************************
 
-1. Create database with name = "salesifua"
-
-2. mysql -u root -p
-
-3.  CREATE DATABASE database salesifua;
+1. Create user "salesifua" with password "salesifua"
+   ubuntu command - create user "salesifua"@"localhost" identified by "salesifua";
+   grant all on . to "salesifua"@"localhost";
+   
+   mysql -u salesifua -p
+   
+   CREATE DATABASE salesifua;
 
 
 ### Run server 
