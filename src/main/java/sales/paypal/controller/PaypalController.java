@@ -42,7 +42,7 @@ public class PaypalController {
 //        return service.makePayment();
 //    }
 
-    @RequestMapping(value = "/",
+    @RequestMapping(value = "",
             method = RequestMethod.POST,
             produces = "application/json; charset=UTF-8",
             consumes = "application/json")
@@ -50,7 +50,7 @@ public class PaypalController {
     public String saveApi(@RequestParam(value = "clientId") String clientId,
                           @RequestParam(value = "secret") String secret)throws PayPalRESTException {
         logger.info("Paypal: save paypal api");
-        String token = new Authentication().getAuthenticationTocken(clientId, secret);
+        String token = new Authentication().getAuthenticationToken(clientId, secret);
         return token;
     }
 
