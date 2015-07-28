@@ -10,7 +10,6 @@ import java.io.IOException;
 /**
  * Created by volodya on 23.07.15.
  */
-
 @Component
 public class Fixtures {
 
@@ -21,7 +20,7 @@ public class Fixtures {
     public void init() throws IOException {
         GoodsGenerator generator = new GoodsGenerator();
         generator.init("goodsresource");
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 50; i++) {
             repository.save(generator.generateList());
         }
     }
