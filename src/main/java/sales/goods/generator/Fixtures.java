@@ -22,7 +22,7 @@ public class Fixtures {
     public void init() throws IOException {
         GoodsGenerator generator = new GoodsGenerator();
         generator.init("goodsresource");
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 2; i++) {
             repository.save(generator.generateList());
         }
     }
