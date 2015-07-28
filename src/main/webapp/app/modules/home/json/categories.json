@@ -1,0 +1,138 @@
+[
+	{	
+		"id": "category-sport",
+		"name": "Sport",
+		"image": "modules/home/img/sport.jpg",
+		"subcategories": [
+			{
+				"id": "sport",
+				"name": "football"
+			},
+			{
+				"name": "basketball"
+			},
+			{
+				"name": "water polo"
+			}
+		]
+	},
+	{
+		"name": "Clothing",
+		"image": "modules/home/img/clothing.jpg",
+		"subcategories": [
+			{
+				"id": "sport",
+				"name": "woman clothing"
+			},
+			{
+				"name": "man clothing"
+			},
+			{
+				"name": "child clothing"
+			}
+		]
+	},
+	{
+		"name": "Health & Beauty",
+		"image": "modules/home/img/sport.jpg",
+		"subcategories": [
+			{
+				"id": "sport",
+				"name": "football"
+			},
+			{
+				"name": "basketball"
+			},
+			{
+				"name": "water polo"
+			}
+		]
+	},
+	{	
+		"id": "category-sport",
+		"name": "Sport",
+		"image": "modules/home/img/sport.jpg",
+		"subcategories": [
+			{
+				"id": "sport",
+				"name": "football"
+			},
+			{
+				"name": "basketball"
+			},
+			{
+				"name": "water polo"
+			}
+		]
+	},
+	{	
+		"id": "category-child",
+		"name": "Child goods",
+		"image": "modules/home/img/sport.jpg",
+		"subcategories": [
+			{
+				"id": "child",
+				"name": "child clothing"
+			},
+			{
+				"name": "toys"
+			},
+			{
+				"name": "child nutrition"
+			}
+		]
+	},
+	{	
+		"id": "category-child",
+		"name": "Electronics",
+		"image": "modules/home/img/sport.jpg",
+		"subcategories": [
+			{
+				"id": "child",
+				"name": "child clothing"
+			},
+			{
+				"name": "toys"
+			},
+			{
+				"name": "child nutrition"
+			}
+		]
+	},
+	{	
+		"id": "category-child",
+		"name": "Home improvement",
+		"image": "modules/home/img/sport.jpg",
+		"subcategories": [
+			{
+				"id": "child",
+				"name": "child clothing"
+			},
+			{
+				"name": "toys"
+			},
+			{
+				"name": "child nutrition"
+			}
+		]
+	},
+	{	
+		"id": "category-child",
+		"name": "Bags & Shoes",
+		"image": "modules/home/img/sport.jpg",
+		"subcategories": [
+			{
+				"id": "child",
+				"name": "child clothing"
+			},
+			{
+				"name": "toys"
+			},
+			{
+				"name": "child nutrition"
+			}
+		]
+	}
+
+]
+
