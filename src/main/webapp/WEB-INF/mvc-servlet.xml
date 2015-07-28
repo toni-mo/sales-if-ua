@@ -17,6 +17,9 @@
                         http://www.springframework.org/schema/tx
                         http://www.springframework.org/schema/tx/spring-tx.xsd">
 
+
+    <mvc:resources mapping="/app/**" location="/app/"/>
+
     <mvc:resources mapping="/resources/**" location="/resources/"/>
 
     <context:annotation-config/>
@@ -28,15 +31,18 @@
     <!-- Activate Spring Data JPA repository support -->
     <jpa:repositories base-package="sales"
                       entity-manager-factory-ref="entityManagerFactory"
+
                       transaction-manager-ref="entityTransactionManager"/>
+
 
     <!-- Activate transaction management -->
     <tx:annotation-driven mode="proxy" transaction-manager="entityTransactionManager"/>
 
     <!-- Declare a view resolver -->
     <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"
-          p:prefix="/"
-          p:suffix=".jsp"
+          p:prefix="/app/"
+          p:suffix=".html"
+
           p:order="1"/>
 
 </beans>

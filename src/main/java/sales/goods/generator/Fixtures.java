@@ -10,7 +10,9 @@ import java.io.IOException;
 /**
  * Created by volodya on 23.07.15.
  */
-@Component
+
+//@Component
+
 public class Fixtures {
 
     @Autowired
