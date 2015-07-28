@@ -38,8 +38,8 @@ public class GoodsGenerator {
         Random r = new Random();
         List<Good> list = new ArrayList<Good>();
         for (int i = 0; i < listName.size(); i++) {
-            list.add(createGood(listName.get(r.nextInt(30)),
-                    listDescription.get(r.nextInt(30))));
+            list.add(createGood(listName.get(r.nextInt(listName.size())),
+                    listDescription.get(r.nextInt(listName.size()))));
         }
         return list;
     }
@@ -49,7 +49,7 @@ public class GoodsGenerator {
                 .name(name)
                 .description(description)
                 .amount(this.random(10, 50))
-                .price(this.random(3000, 10000))
+                .price(this.random(1, 100))
                 .build();
         return good;
     }
