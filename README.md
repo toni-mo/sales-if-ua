@@ -74,3 +74,11 @@ method = POST -- pagination with sorting
    method = GET - get Client with name=%name% and surname=%surname%
 7. http://localhost:8080/Practice/client/page?page=%page%&amount=%amount%
    method = GET - get client list on page=%page% and with %amount% clients on page
+
+
+#Links for site pages:
+1. http://localhost:8080/Practice/#/home  - Main Page
+2. http://localhost:8080/Practice/#/stuff - List of Products
+3. http://localhost:8080/Practice/#/character - Characteristic of chosen product
+4. http://localhost:8080/Practice/#/user/backet - User's cart (User links on the sidebar)
+5. http://localhost:8080/Practice/#/admin/users - Admin's Page (Admin links on the sidebar)
