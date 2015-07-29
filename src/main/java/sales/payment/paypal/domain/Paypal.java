@@ -1,4 +1,4 @@
-package sales.paypal.domain;
+package sales.payment.paypal.domain;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonProperty;

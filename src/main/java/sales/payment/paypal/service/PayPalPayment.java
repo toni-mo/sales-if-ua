@@ -1,8 +1,10 @@
-package sales.paypal.service;
+package sales.payment.paypal.service;
 
 import com.paypal.api.payments.*;
+import com.paypal.api.payments.CreditCard;
 import com.paypal.core.rest.PayPalRESTException;
 import sales.goods.domain.Good;
+import sales.payment.creaditCard.domain.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,8 +26,12 @@ public class PayPalPayment {
         transactions = new ArrayList<Transaction>();
     }
 
-    public void setCard(CreditCard card) {
-        this.card = card;
+    public void setCard(sales.payment.creaditCard.domain.CreditCard creditCard) {
+        this.card.setNumber(creditCard.getNumber());
+        this.card.setType(creditCard.getType());
+        this.card.setExpireMonth(creditCard.getExpireYear());
+        this.card.setExpireYear(creditCard.getExpireYear());
+        this.card.setCvv2(creditCard.getCvv2());
     }
 
     public void addGoods(List<Good> goods) {
@@ -66,16 +72,4 @@ public class PayPalPayment {
 
         return createdPayment.toString();
     }
-
-    public List<Link> executePayment(String paymentId, String payerId) throws PayPalRESTException {
-        Payment payment = Payment.get(accessToken, paymentId);
-        PaymentExecution paymentExecution = new PaymentExecution();
-        paymentExecution.setPayerId(payerId);
-
-        Payment newPayment = payment.execute(accessToken, paymentExecution);
-
-        return newPayment.getLinks();
-    }
-
-
 }

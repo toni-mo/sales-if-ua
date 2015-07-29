@@ -1,13 +1,13 @@
-package sales.paypal.controller;
+package sales.payment.paypal.controller;
 
-import com.paypal.api.payments.CreditCard;
 import com.paypal.core.rest.PayPalRESTException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import sales.goods.domain.Good;
-import sales.paypal.domain.Paypal;
-import sales.paypal.service.Authentication;
-import sales.paypal.service.PayPalPayment;
+import sales.payment.creaditCard.domain.CreditCard;
+import sales.payment.paypal.domain.Paypal;
+import sales.payment.paypal.service.Authentication;
+import sales.payment.paypal.service.PayPalPayment;
 
 import java.io.IOException;
 import java.util.List;
@@ -28,15 +28,13 @@ public class PaypalController {
             consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
     public String makePayment(@RequestBody List<Good> goods) throws IOException, PayPalRESTException {
-        logger.info("Payment: make payment");
+        logger.info("payment: make payment");
         CreditCard creditCard = new CreditCard();
         creditCard.setNumber("4032034269731629");
         creditCard.setType("visa");
         creditCard.setExpireMonth("08");
         creditCard.setExpireYear("2020");
         creditCard.setCvv2("874");
-        creditCard.setFirstName("Ok");
-        creditCard.setLastName("Okovuch");
         Paypal paypal = new Paypal();
         PayPalPayment service = new PayPalPayment(new Authentication().getAuthenticationToken(paypal.getClientId(),
                 paypal.getSecret()));
@@ -56,5 +54,4 @@ public class PaypalController {
         String token = new Authentication().verification(clientId, secret);
         return token;
     }
-
 }

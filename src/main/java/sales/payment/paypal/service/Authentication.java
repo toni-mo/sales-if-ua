@@ -1,4 +1,4 @@
-package sales.paypal.service;
+package sales.payment.paypal.service;
 
 
 import com.paypal.core.rest.OAuthTokenCredential;

@@ -1,6 +1,6 @@
-package sales.paypal.service;
+package sales.payment.paypal.service;
 
-import sales.paypal.domain.Paypal;
+import sales.payment.paypal.domain.Paypal;
 
 import java.util.List;
 

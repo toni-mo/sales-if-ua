@@ -1,10 +1,10 @@
-package sales.paypal.service;
+package sales.payment.paypal.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import sales.paypal.domain.Paypal;
-import sales.paypal.repository.PaypalRepository;
+import sales.payment.paypal.domain.Paypal;
+import sales.payment.paypal.repository.PaypalRepository;
 
 import java.util.List;
 
