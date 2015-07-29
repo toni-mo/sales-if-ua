@@ -86,7 +86,7 @@ method = POST -- pagination with sorting
 #Install Node.js
 Node is a requirement for bower package manager.
 You can download a Node.js installer for your operating system from http://nodejs.org/download/.
-Check the version of Node.js that you have installed by running the following command:
+Check the version of Node.js that you have installed by running the following command in console:
 ```sh
  node --version
 ```
@@ -97,8 +97,8 @@ Bower is used for bootstrapping application with needed libraries like Angular.j
  npm install -g bower
 ```
 
-#Browse libraries
-Browse all required libraries:
+#Browse required libraries
+In your console go to the <system path>/sales-if-ua/src/main/webapp/app and type following comand:
 ```sh
  bower install
 ```
