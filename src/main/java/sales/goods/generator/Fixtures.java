@@ -10,7 +10,9 @@ import java.io.IOException;
 /**
  * Created by volodya on 23.07.15.
  */
-@Component
+
+//@Component
+
 public class Fixtures {
 
     @Autowired
@@ -20,7 +22,7 @@ public class Fixtures {
     public void init() throws IOException {
         GoodsGenerator generator = new GoodsGenerator();
         generator.init("goodsresource");
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 2; i++) {
             repository.save(generator.generateList());
         }
     }

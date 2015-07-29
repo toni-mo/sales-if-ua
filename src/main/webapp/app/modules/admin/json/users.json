@@ -1,0 +1,37 @@
+[
+         {
+            "name": "Danuliyk Taras",
+            "sex": "male",
+            "age": 21,
+            "email": "Danuliyk_Taras@mail.ru",
+            "status": "active"
+         },
+       {
+          "name": "Shevchuk Anton",
+          "sex": "male",
+          "age": 20,
+          "email": "ShevchukAnton@gmail.com",
+          "status": "active"
+       } ,
+       {
+            "name": "Ersteniyk Oksana",
+            "sex": "female",
+            "age": 20,
+            "email": "ErsteniykOksana@mail.ru",
+            "status": "active"
+         },
+         {
+            "name": "Holovcak Igor",
+            "sex": "male",
+            "age": 18,
+            "email": "Holovcak Igor@gmail.com",
+            "status": "active"
+         },
+         {
+            "name": "Danuliyk Ivan",
+            "sex": "male",
+            "age": 42,
+            "email": "DanuliykIvan@mail.ru",
+            "status": "blocked"
+         }
+   ]

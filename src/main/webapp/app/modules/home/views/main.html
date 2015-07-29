@@ -1,0 +1,200 @@
+<div ng-controller="MainCtrl">
+<!-- Navigation -->
+<!-- .navbar -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<!-- .container -->
+	<div class="container">
+		<!-- .navbar-header -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapsed-group">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a href="#" class="navbar-brand">Sales-IF</a>
+		</div><!-- /.navbar-header -->
+		<!-- #collapsed-group -->
+		<div class="collapse navbar-collapse" id="collapsed-group">
+			<ul class="nav navbar-nav">
+				<li><a href="#">About</a></li>
+				<li><a href="#">Services</a></li>
+				<li><a href="#">Contact</a></li>
+				<li><a href="#/user/backet">Cart</a></li>
+				<li><a href="#/admin/users">Admin</a></li>
+			</ul>
+		</div><!-- /#collapsed-group -->
+	</div><!-- /.container -->
+</nav><!-- .nav -->
+<!-- Header -->
+<header class="sales-header">
+	<!-- .container -->
+	<div class="container">
+		<!-- .row -->
+		<div class="row">
+			<!-- .col-md-4 -->
+			<h1>{{testVar}}</h1>
+			<div class="col-md-3 text-center ">
+				<!-- <img src="../images/sales-if-logo.PNG" width="100px" class="sales-logo center-block"> -->
+				<!-- <h3 class="text-center">Opa chin chopa</h3> -->
+				<h1 class="header-title">Sales-IF</h1>
+			</div><!-- /.col-md-4 -->
+			<!-- .col-md-4 -->
+			<div class="col-md-6 search-block ">
+				<form>
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Search product">
+						<div class="input-group-btn">
+							<ul class="dropdown-menu dropdown-menu-right">
+								<li><a href="#">through Shop</a></li>
+								<li><a href="#">through Site</a></li>
+							</ul>
+							<button type="button" class="btn btn-default" data-toggle="dropdown">
+								search
+								<span class="caret"></span>
+							</button>
+							<button type="button" class="btn btn-default">
+								<i class="fa fa-search"></i> 
+							</button>
+							
+						</div>
+						
+					</div>
+				</form>
+				
+				<!-- <h3 class="text-center">Offered by</h3> -->
+			</div><!-- /.col-md-4 -->
+			<!-- .col-md-4 -->
+			<div class="col-md-3 shop-logo-column ">
+				<!-- <div class="btn-group">
+					<button type="button" class="btn btn-default">
+						<span class="fa fa-shopping-cart"></span>
+						<span class="badge">3</span>
+					</button>
+					<button type="button" class="btn btn-default">
+						<span class="glyphicon glyphicon-heart"></span>
+					</button>
+					<button type="button" class="btn btn-default">Right</button>
+				</div> -->
+				<!-- <img src="../images/typical.jpg" class="shop-logo center-block"> -->
+				<!-- Whish list and Cart -->
+				<!-- .col-md-6 -->
+				<div class="col-md-4 ">
+					<span class="fa fa-shopping-cart fa-2x"></span>
+					<span class="badge cart-badge">3</span>
+					<h5 class="icon-title">Cart</h5>
+				</div><!-- .col-md-4 -->
+				<!-- .col-md-6 -->
+				<div class="col-md-4  text-center">
+					<span class="fa fa-heart fa-2x"></span>
+					<h5 class="icon-title">Whishlist</h5>
+				</div> <!-- /.col-md-4 -->
+				<!-- .col-md-4 -->
+				<div class="col-md-4  text-center">
+					<span class="fa fa-user fa-2x"></span>
+					<h5 class="icon-title"><a href="#/logIn">Join in</a></h5>
+				</div><!-- /.col-md-4 -->
+			</div><!-- /.col-md-4 -->
+		</div><!-- /.row -->
+	</div><!-- /.container -->
+</header>
+<hr>
+<!-- Page Content -->
+<!-- .container -->
+<div class="container">
+	<!-- .row -->
+	<div class="row">
+		<!-- Sidebar -->
+		<!-- .col-md-3 -->
+		<div class="col-md-3 ">
+			<div class="panel panel-inverse">
+				<div class="panel-heading panel-heading-inverse">Categories</div>
+				<div class="panel-body">
+					<ul class="list-unstyled my-sidebar">
+						<li ng-repeat="category in categories">
+							<a href="#/admin">{{category.name}}</a>
+							<span class="glyphicon glyphicon-menu-right text-primary"></span>
+							<ul class="sub-menu panel panel-inverse list-unstyled ">
+								<div class="panel-heading panel-heading-inverse">{{category.name}}</div>
+								<div class="panel-body">
+									<li ng-repeat="subcategory in category.subcategories">
+										<a href="#/stuff" ng-click="MainCtrl.categoryAlert(subcategory.name)">{{subcategory.name}}</a>
+									</li>
+								</div>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div><!-- /.col-md-3 -->
+		<!-- .col-md-6 -->
+		<div class="col-md-6 ">
+			<!-- .carousel -->
+			<div class="carousel slide" id="myCarousel" data-ride="carousel">
+				<ol class="carousel-indicators">
+					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+					<li data-target="#myCarousel" data-slide-to="1"></li>
+					<li data-target="#myCarousel" data-slide-to="2"></li>
+				</ol>
+
+				<div class="carousel-inner">
+					<div class="item active">
+						<img src="http://placehold.it/700x420" alt="...">
+						<div class="carousel-caption">
+							Some caption
+						</div>
+					</div>	
+					<div class="item">
+						<img src="http://placehold.it/700x420" alt="...">
+						<div class="carousel-caption">
+							Second Caption
+						</div>
+					</div>
+					<div class="item">
+						<img src="http://placehold.it/700x420" alt="...">
+						<div class="carousel-caption">
+							Third Caption
+						</div>
+					</div>
+				</div>
+
+				<a href="#myCarousel" class="left carousel-control" data-slide="prev">
+					<span class="glyphicon glyphicon-chevron-left"></span>
+				</a>
+				<a href="#myCarousel" class="right carousel-control" data-slide="next">
+					<span class="glyphicon glyphicon-chevron-right"></span>
+				</a>
+			</div><!-- /.carousel -->
+		</div><!-- /.col-md-6 -->
+		<!-- .col-md-3 -->
+		<div class="col-md-3 ">
+			<!-- .col-md-12 -->
+			<div class="col-md-12 ">
+				<img src="http://placehold.it/230x164">
+			</div><!-- /.col-md-12 -->
+			<!-- .col-md-12 -->
+			<div class="col-md-12 ">
+				<img src="http://placehold.it/230x164">
+			</div><!-- /.col-md-12 -->
+		</div><!-- /.col-md-3 -->
+	</div><!-- /.row -->
+	<!-- Pictured Categories -->
+	<!-- .row -->
+	<div class="row">
+		<!-- .col-md-12 -->
+		<div class="col-md-12 ">
+			<!-- .col-md-3 -->
+			<div class="col-md-3 " ng-repeat="category in categories">
+				<div class="category-image"  ng-style="setImage(category.image)">
+					<h3 class="pull-right bg-info" style="margin:0">{{category.name}}</h3>
+				</div>
+			</div><!-- /.col-md-3 -->
+
+		</div><!-- /.col-md-12 -->
+	</div><!-- /.row -->
+	<!--<h1>Goods</h1>-->
+	<pre>{{goods | json}}</pre>
+	<div ng-repeat="good in goods">
+		<h1>{{good.name}} this is good name</h1>
+	</div>
+</div><!-- /.container -->
+
+</div>

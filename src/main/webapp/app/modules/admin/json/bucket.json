@@ -1,0 +1,20 @@
+[
+       {
+       	"name": "SmartPhone",
+       	"model":"LG GS3",
+       	"amount": 1,
+       	"price": 14300
+       },
+       {
+       	"name": "TV",
+       	"model":"LG 79UB980V",
+       	"amount": 1,
+       	"price": 139999
+       },
+       {
+       	"name": "SmartPhone",
+       	"model":"Lenovo S650",
+       	"amount": 1,
+       	"price": 11999
+       } 
+       ]
