@@ -98,7 +98,7 @@ Bower is used for bootstrapping application with needed libraries like Angular.j
 ```
 
 #Browse required libraries
-In your console go to the 'system path'/sales-if-ua/src/main/webapp/app and type following comand:
+In your console go to the {system path}/sales-if-ua/src/main/webapp/app and type following comand:
 ```sh
  bower install
 ```
