@@ -14,6 +14,8 @@ public interface IUserService {
 
     User getById(Long id);
 
+    User getByUsername(String username);
+
     User getShop(Long id);
 
     User getClient(Long id);

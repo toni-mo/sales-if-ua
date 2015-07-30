@@ -24,6 +24,11 @@ public class UserService implements IUserService{
     private RoleService roleService;
 
     @Override
+    public User getByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
+
+    @Override
     public User getById(Long id) {
         return userRepository.getOne(id);
     }
