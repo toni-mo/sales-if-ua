@@ -43,7 +43,7 @@ phonecatApp.config(['$routeProvider',
          when('/shop/profile/edit',{
           templateUrl: 'app/modules/admin/views/zarin-shop-admin-edit-profile.html'
         }).
-        when('/home/service',{
+        when('/home/listener',{
             templateUrl: 'app/modules/admin/views/zarin-services-page.html'
         }).
 
