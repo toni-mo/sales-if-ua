@@ -130,18 +130,9 @@ ul {
 .adm-imgUserMargineBottom {
     margin-top: -15px;
 }
-
-/*.adm-btnSizeUp{
-	font-size: 20px;
-	height: 28px;
-}*/
 .adm-PR1 {
-    background-color: #FFCCCC;
+    background-color: rgba(229, 58, 85, 0.22);
 
-}
-
-.adm-buttonStileBlue {
-    color: 0033 CC;
 }
 
 .adm-buttonSizeBlockUnblock {
@@ -156,5 +147,15 @@ ul {
 }
 .textColor{
     color: rgba(249, 255, 249, 0.53);
+}
+.BtnTextColor:hover{
+    color: rgba(249, 255, 249, 0.68);
+    background-color: rgba(249, 255, 249, 0.38);
+}
+.backgroundIMG{
+    background-image: url(http://www.pageresource.com/wallpapers/wallpaper/abstract-pattern_482170.jpg);
+}
+.ButtonColor{
+    background-color: rgba(249, 255, 249, 0.24);
 }
 

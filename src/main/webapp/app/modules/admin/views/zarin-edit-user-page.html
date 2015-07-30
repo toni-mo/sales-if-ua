@@ -33,12 +33,12 @@
 			<div class="col-md-4 profile-UserImgTopMargine">
 				<img src="app/modules/admin/img/1.jpg" height="180px"  class="img-thumbnail img-responsive profile-imgUserMargineBottom" data-toggle="modal" data-target=".avatar"/>
 				<!-- <button class="btn btn-default buttonStileBlue" type="button" style="margin-left :250px; margin-top :5px"><!-- <span class="fa fa-check" aria-hidden="true"></span>  Change</button>  -->
-				<h6><a href="" class="profile-MoveChanceImgLink">Click here to change your avatar</a></h6>
+				<h6 align="center"><a href="">Click here to change your avatar</a></h6>
 
 			</div>
 			<div class="col-md-6 MoveUserInformationRight" ng-controller="UserEditCtrl">
-				<h2>Edir Profile</h2>
-				<p>Here You can change you information, wich will be avaleble on site:</p>
+				<h2 class="textColor">Edir Profile</h2>
+				<p class="textColor">Here You can change you information, wich will be avaleble on site:</p>
 				<table class="table table-condensed">
 					<thead>
 					<tr>
@@ -46,48 +46,43 @@
 						<th> </th>
 					</tr>
 					</thead>
-					<tbody >
+					<tbody class="textColor">
 					<tr>
 						<td>First name:</td>
-						<td><input type="text" class="form-control" style="width :250px" placeholder={{user.name}}></td>
+						<td><input type="text" class="form-control ButtonColor BtnTextColor textColor" style="width :250px" placeholder={{user.name}}></td>
 					</tr>
 					<tr>
 						<td>Last name:</td>
-						<td><input type="text" class="form-control" style="width :250px" placeholder={{user.surname}}></td>
+						<td><input type="text" class="form-control ButtonColor BtnTextColor textColor" style="width :250px" placeholder={{user.surname}}></td>
 					</tr>
 					<tr>
 						<td>Sex:</td>
-						<td><input type="text" class="form-control" style="width :250px" placeholder={{user.sex}}></td>
+						<td><input type="text" class="form-control ButtonColor BtnTextColor textColor" style="width :250px" placeholder={{user.sex}}></td>
 					</tr>
 					<tr>
 						<td>Date of birth:</td>
-						<td><input type="text" class="form-control" style="width :250px" placeholder={{user.born}}></td>
+						<td><input type="text" class="form-control ButtonColor BtnTextColor textColor" style="width :250px" placeholder={{user.born}}></td>
 					</tr>
 					<tr>
 						<td>E-mail:</td>
-						<td><input type="text" class="form-control" style="width :250px" placeholder={{user.email}}></td>
+						<td><input type="text" class="form-control ButtonColor BtnTextColor textColor" style="width :250px" placeholder={{user.email}}></td>
 					</tr>
+					<tr>
 					<td>Contact number:</td>
-					<td><input type="text" class="form-control" style="width :250px" placeholder={{user.phone}}></td>
+					<td><input type="text" class="form-control ButtonColor BtnTextColor textColor" style="width :250px" placeholder={{user.phone}}></td>
 					</tr>
 					</tbody>
 				</table>
-				<button class="btn btn-default buttonStileBlue" type="button" style="margin :"><span aria-hidden="true"></span>  Apply Changes</button>
+				<button class="btn ButtonColor BtnTextColor textColor" type="button"><span aria-hidden="true"></span>  Apply Changes</button>
 			</div>
 		</div>
 		<!Class fo show profile img>
-		<div class="modal fade avatar" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+		<div class="modal fade avatar" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+			 style="background-color: rgba(5, 5, 5, 0.25)">
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="gridSystemModalLabel">Name of product</h4>
-					</div>
 					<div class="modal-body" align="center">
-						<img src="app/modules/admin/img/1.jpg" height="680px"  class="img-thumbnail img-responsive imgUserMargineBottom"/>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+						<img src="app/modules/admin/img/1.jpg" height="70%"  class="img-responsive "/>
 					</div>
 				</div>
 			</div>
