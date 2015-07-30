@@ -33,12 +33,12 @@
         </div>
         <div class="col-md-offset-2 col-sm-offset-3 col-xs-offset-3 col-lg-9 col-sm-8 col-xs-7 col-md-9 table-min"  ng-controller="ShopsCtrl">
 
-                <h2>Shops</h2>
+                <h2 class="textColor">Shops</h2>
 
-                <p>The table consist of all registered shops:</p>
+                <p class="textColor">The table consist of all registered shops:</p>
                 <table class="table table-condensed">
                     <thead>
-                    <tr>
+                    <tr class="textColor">
                         <th>№</th>
                         <th>Shop</th>
                         <th>Product</th>
@@ -49,7 +49,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="shop in shops" ng-class="getRowStatus(shop.status)">
+                    <tr class="textColor" ng-repeat="shop in shops" ng-class="getRowStatus(shop.status)">
                         <td>{{$index+1}}</td>
                         <td>{{shop.name}}</td>
                         <td>{{shop.productType}}</td>
@@ -57,15 +57,15 @@
                         <td>{{shop.email}}</td>
                         <td>{{shop.status}}</td>
                         <td>
-                            <button class="btn btn-default fa fa-plus-square" type="button" style="width:90px">
+                            <button class="btn ButtonColor BtnTextColor fa fa-plus-square" type="button" style="width:90px">
                                 More
                             </button>
                             <button ng-click="changeButtonName($index)"
-                                    class="btn btn-default fa adm-buttonSizeBlockUnblock"
+                                    class="btn ButtonColor BtnTextColor fa adm-buttonSizeBlockUnblock"
                                     ng-class="getClass(shop.status)" type="button" style="width:90px">
                                 {{showMessage(shop.status)}}
                             </button>
-                            <button ng-click="deleteShop($index)" class="btn btn-default fa fa-trash" type="button"
+                            <button ng-click="deleteShop($index)" class="btn ButtonColor BtnTextColor fa fa-trash" type="button"
                                     style="width:90px"> Delete
                             </button>
                         </td>
