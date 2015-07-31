@@ -1,63 +1,61 @@
 <div class="container-fluid " ng-controller="BucketCtrl">
-	<div class="row">
-		<div class="col-xs-6 col-sm-8 col-md-12 col-lg-12 ">
-			<nav class="navbar navbar-inverse navbar-fixed-top adm-navStyle  " role="navigation">
-				<ul class="nav navbar-nav navbar-right">
-					<li class="dropdown">
-						<a class="dropdown-toggle profile-DDRight" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-cog"></i> Zarin_Andrii <span class="caret"></span></a>
-						<ul class="dropdown-menu" role="menu">
-							<li><a href=""><i class="fa fa-user-times"></i> Log Out</a></li>
-							<li class="divider"></li>
-						</ul>
-				</ul>
-			</nav>
-		</div>
-	</div>
-	<!-- End row -->
-	<div class="row">
-		<div class="col-xs-5 col-sm-5 col-md-1 col-lg-1">
-			<ul class="nav navbar-nav adm-side-nav ">
-				<li class="adm-ProfileUserImgMargin adm-page-size"><img src="app/modules/admin/img/1.jpg"  class="img-responsive"/></li>
-				<li><a href="#/user/backet"></i><i class="fa fa-users"></i>  Backet</a> </li>
-				<li><a href="#/user/purchases"><i class="fa fa-shopping-cart"></i>  My purchases</a></li>
-				<li><a href="#/user/profile/edit"><i class="fa fa-pencil-square-o"></i>  Edit profile</a></li>
-				<!-- end sidebar -->
-			</ul>
-		</div>
-		<div class="col-md-offset-2 col-sm-offset-3 col-xs-offset-3 col-lg-9 col-sm-8 col-xs-7 col-md-9 table-min">
-			<h2 class="textColor"> Backet</h2>
-			<p class="textColor">The table consist of all the products you added to bucket:</p>
-			<table class="table table-condensed">
-				<thead>
-				<tr class="textColor">
-					<th>№</th>
-					<th>Product</th>
-					<th>Model</th>
-					<th>Amount</th>
-					<th>Price</th>
-					<th> </th>
-				</tr>
-				</thead>
-				<tbody>
-				<tr class="textColor" ng-repeat="product in products">
-					<td>{{$index+1}}</td>
-					<td>{{product.name}}</td>
-					<td>{{product.model}}</td>
-					<td><input class="BtnTextColor ButtonColor" ng-model="product.amount" type="text" style="width :35px" placeholder={{product.amount}}></td>
-					<td>{{product.price*product.amount}}</td>
-					<td> <a href="#/character"><button class="btn BtnTextColor ButtonColor textColor fa fa-plus-square" type="button" style="width:80px">         More         </button></a>
-					<button ng-click="deleteProduct($index)" class="btn  fa fa-trash BtnTextColor ButtonColor textColor" type="button" style="width:80px">  Delete</button> </td>
-				</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-		</div>
-		<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-			<button class="btn BtnTextColor ButtonColor textColor" type="button"><span class="fa fa-cart-plus" aria-hidden="true"></span>  Order</button>
-		</div>
-	</div>
+    <div class="row">
+        <div class="col-xs-5 col-sm-5 col-md-1 col-lg-1">
+            <ul class="nav navbar-nav adm-side-nav ">
+                <li class="adm-ProfileUserImgMargin adm-page-size"><img src="app/modules/admin/img/1.jpg"
+                                                                        class="img-responsive"/></li>
+                <li><a href="#/user/backet"></i><i class="fa fa-users"></i> Backet</a></li>
+                <li><a href="#/user/purchases"><i class="fa fa-shopping-cart"></i> My purchases</a></li>
+                <li><a href="#/user/profile/edit"><i class="fa fa-pencil-square-o"></i> Edit profile</a></li>
+                <!-- end sidebar -->
+            </ul>
+        </div>
+        <div class="col-md-offset-2 col-sm-offset-3 col-xs-offset-3 col-lg-9 col-sm-8 col-xs-7 col-md-9 table-min">
+            <h2 class="textColor"> Backet</h2>
+
+            <p class="textColor">The table consist of all the products you added to bucket:</p>
+            <table class="table table-condensed">
+                <thead>
+                <tr class="textColor">
+                    <th>№</th>
+                    <th>Product</th>
+                    <th>Model</th>
+                    <th>Amount</th>
+                    <th>Price</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="textColor" ng-repeat="product in products">
+                    <td>{{$index+1}}</td>
+                    <td>{{product.name}}</td>
+                    <td>{{product.model}}</td>
+                    <td><input class="BtnTextColor ButtonColor" ng-model="product.amount" type="text"
+                               style="width :35px" placeholder={{product.amount}}></td>
+                    <td>{{product.price*product.amount}}</td>
+                    <td><a href="#/character">
+                        <button class="btn BtnTextColor ButtonColor textColor fa fa-plus-square" type="button"
+                                style="width:80px"> More
+                        </button>
+                    </a>
+                        <button ng-click="deleteProduct($index)"
+                                class="btn  fa fa-trash BtnTextColor ButtonColor textColor" type="button"
+                                style="width:80px"> Delete
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+            <button class="btn BtnTextColor ButtonColor textColor" type="button"><span class="fa fa-cart-plus"
+                                                                                       aria-hidden="true"></span> Order
+            </button>
+        </div>
+    </div>
 </div>
 </div>

@@ -10,10 +10,13 @@
 
   <!--End of block-->
   <script src="app/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="http://code.highcharts.com/highcharts.js"></script>
+  <script src="http://code.highcharts.com/modules/exporting.js"></script>
+
   <script src="app/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="app/bower_components/angular/angular.min.js"></script>
 
-  <script src="app/bower_components/angular-resource/angular-resource.min.js"></script>
+  <!--<script src="app/bower_components/angular-resource/angular-resource.min.js"></script>-->
   <script src="app/bower_components/angular-route/angular-route.min.js"></script>
 
   <!-- Main app.js-->
@@ -42,7 +45,6 @@
   <script type="text/javascript" src="app/modules/admin/controllers/ShopsCtrl.js"></script>
   <script type="text/javascript" src="app/modules/admin/controllers/ShopAdmCtrl.js"></script>
   <script type="text/javascript" src="app/modules/admin/controllers/UsersCtrl.js"></script>
-  <script type="text/javascript" src="app/modules/admin/controllers/LineChartCtrl.js"></script>
   <script type="text/javascript" src="app/modules/admin/controllers/UserEditCtrl.js"></script>
   <script type="text/javascript" src="app/modules/admin/controllers/OrdersCtrl.js"></script>
 
@@ -61,9 +63,6 @@
 
     <!-- app/Modules and controllers -->
     <!-- Admin module -->
-    <!-- Including libs for templates -->
-    <script src="http://code.highcharts.com/highcharts.js"></script>
-    <script src="http://code.highcharts.com/modules/exporting.js"></script>
 
 
     <!-- Goods module -->
@@ -87,32 +86,36 @@
 
   <!-- Modals -->
   <!-- Sign in modal -->
-  <div class="modal fade login_form" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal fade login_form" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" style="background-color: rgba(0, 0, 0, 0.78)	">
     <div class="modal-dialog modal-sm">
-        <div class="modal-content">
+        <div class="modal-content ButtonColor BtnTextColor textColor">
           <div class="modal-body" align="center" ng-controller="LoginController">
             <form class="login-form" action="j_spring_security_check" method="post" >
               <fieldset>
-                  <legend>Login Here</legend>
+                  <!--<legend class="textColor">Login Here</legend>-->
 
-                  <p>
-                      <label for="j_username">Username</label>:
-                      <input id="j_username" name="j_username" size="20" maxlength="50" type="text"/>
+                  <p class="textColor">
+                      <label>Username</label>:
+                      <input class="form-control ButtonColor BtnTextColor textColor" id="j_username" name="j_username" size="20" maxlength="50" type="text"/>
+                </p>
+
+                  <p class="textColor">
+                      <label>Password</label>:
+                      <input class="form-control ButtonColor BtnTextColor textColor" id="j_password" name="j_password" size="20" maxlength="50" type="password"/>
                   </p>
 
-                  <p>
-                      <label for="j_password">Password</label>:
-                      <input id="j_password" name="j_password" size="20" maxlength="50" type="password"/>
-                  </p>
-
-                  <p><input type="submit" value="Login"/></p>
+                  <!--<p><input type="submit" value="Login"/></p>-->
+               <p>
+                 <button type="button" class="btn ButtonColor BtnTextColor textColor" data-dismiss="modal">Close</button>
+                 <button type="submit" class="btn ButtonColor BtnTextColor textColor" data-dismiss="modal">Login</button>
+               </p>
               </fieldset>
             </form>
               <p align="center">If you haven't account, you can register now as <a data-toggle="modal" data-target=".registration_form_customer" data-dismiss="modal"> customer </a> or <a data-toggle="modal" data-target=".registration_form_shop" data-dismiss="modal"> shop </a></p>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-            </div>
+            <!--<div class="modal-footer">-->
+              <!--<button type="button" class="btn ButtonColor BtnTextColor textColor" data-dismiss="modal">Close</button>-->
+            <!--</div>-->
         </div>
       </div>
   </div>
@@ -252,11 +255,11 @@
 
   <!-- Navigation -->
   <!-- .navbar -->
-  <nav class="navbar navbar-inverse navbar-fixed-top">
+  <nav class="navbar navbar-inverse navbar-fixed-top nav-back-img">
     <!-- .container -->
     <div class="container">
       <!-- .navbar-header -->
-      <div class="navbar-header">
+      <div class="navbar-header ">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapsed-group">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
@@ -265,8 +268,8 @@
       </div><!-- /.navbar-header -->
       <!-- #collapsed-group -->
       <div class="collapse navbar-collapse" id="collapsed-group">
-        <ul class="nav navbar-nav">
-          <li><a href="#/home/service">Services</a></li>
+        <ul class="nav navbar-nav adm-navStyle">
+          <li ><a href="#/home/service">Services</a></li>
           <li><a href="#/stuff">Products</a></li>
           <li><a href="#/character">One Product</a></li>
           <li><a href="#/admin/users">Admin</a></li>

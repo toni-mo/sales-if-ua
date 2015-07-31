@@ -1,26 +1,5 @@
 <div class="container-fluid ">
     <div class="row">
-        <div class="col-xs-6 col-sm-8 col-md-12 col-lg-12 ">
-            <nav class="navbar navbar-inverse navbar-fixed-top adm-navStyle  " role="navigation">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown">
-                        <a class="dropdown-toggle profile-DDRight" data-toggle="dropdown" role="button"
-                           aria-expanded="false">
-                            <i class="fa fa-cog"></i>
-                            Zarin_Andrii
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href=""><i class="fa fa-user-times"></i> Log Out</a></li>
-                            <li class="divider"></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </div>
-    <!-- End row -->
-    <div class="row">
         <div class="col-xs-5 col-sm-5 col-md-1 col-lg-1">
             <ul class="nav navbar-nav adm-side-nav ">
                 <li class="adm-ProfileUserImgMargin adm-page-size"><img src="app/modules/admin/img/1.jpg"
@@ -58,12 +37,16 @@
                     <td>{{user.email}}</td>
                     <td>{{user.status}}</td>
                     <td>
-                        <button class="btn fa fa-plus-square ButtonColor BtnTextColor" type="button" style="width:90px"> More</button>
-                                <button ng-click=" changeButtonName($index)
-                        " class="btn fa adm-buttonSizeBlockUnblock ButtonColor BtnTextColor" ng-class="getClass(user.status)"
-                        type="button" style="width:90px"> {{showMessage(user.status)}}
+                        <button class="btn fa fa-plus-square ButtonColor BtnTextColor" type="button" style="width:90px">
+                            More
                         </button>
-                        <button ng-click="deleteUser($index)" class="btn fa fa-trash ButtonColor BtnTextColor" type="button" style="width:90px">
+                        <button ng-click=" changeButtonName($index)
+                        " class="btn fa adm-buttonSizeBlockUnblock ButtonColor BtnTextColor"
+                                ng-class="getClass(user.status)"
+                                type="button" style="width:90px"> {{showMessage(user.status)}}
+                        </button>
+                        <button ng-click="deleteUser($index)" class="btn fa fa-trash ButtonColor BtnTextColor"
+                                type="button" style="width:90px">
                             Delete
                         </button>
                     </td>

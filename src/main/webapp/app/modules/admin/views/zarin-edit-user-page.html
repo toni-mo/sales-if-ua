@@ -1,91 +1,83 @@
 <div class="container-fluid ">
-	<div class="row">
-		<div class="col-xs-6 col-sm-8 col-md-12 col-lg-12 ">
-			<nav class="navbar navbar-inverse navbar-fixed-top adm-navStyle  " role="navigation">
-				<ul class="nav navbar-nav navbar-right">
-					<li class="dropdown">
-						<a  class="dropdown-toggle profile-DDRight" data-toggle="dropdown" role="button" aria-expanded="false">
-							<i class="fa fa-cog"></i>
-							Zarin_Andrii
-							<span class="caret"></span>
-						</a>
-						<ul class="dropdown-menu" >
-							<li><a href=""><i class="fa fa-user-times"></i> Log Out</a></li>
-							<li class="divider"></li>
-						</ul>
-					</li>
-				</ul>
-			</nav>
-		</div>
-	</div>
-	<!-- End row -->
-	<div class="row">
-		<div class="col-xs-5 col-sm-5 col-md-1 col-lg-1">
-			<ul class="nav navbar-nav adm-side-nav ">
-				<li class="adm-ProfileUserImgMargin adm-page-size"><img src="app/modules/admin/img/1.jpg"  class="img-responsive"/></li>
-				<li><a href="#/user/backet"></i><i class="fa fa-users"></i>  Backet</a> </li>
-				<li><a href="#/user/purchases"><i class="fa fa-shopping-cart"></i>  My purchases</a></li>
-				<li><a href="#/user/profile/edit"><i class="fa fa-pencil-square-o"></i>  Edit profile</a></li>
-				<!-- end sidebar -->
-			</ul>
-		</div>
-		<div class="col-md-offset-2 col-sm-offset-3 col-xs-offset-4 col-lg-9 col-sm-8 col-xs-7 col-md-9 table-min">
-			<div class="col-md-4 profile-UserImgTopMargine">
-				<img src="app/modules/admin/img/1.jpg" height="180px"  class="img-thumbnail img-responsive profile-imgUserMargineBottom" data-toggle="modal" data-target=".avatar"/>
-				<!-- <button class="btn btn-default buttonStileBlue" type="button" style="margin-left :250px; margin-top :5px"><!-- <span class="fa fa-check" aria-hidden="true"></span>  Change</button>  -->
-				<h6 align="center"><a href="">Click here to change your avatar</a></h6>
+    <div class="row">
+        <div class="col-xs-5 col-sm-5 col-md-1 col-lg-1">
+            <ul class="nav navbar-nav adm-side-nav ">
+                <li class="adm-ProfileUserImgMargin adm-page-size"><img src="app/modules/admin/img/1.jpg"
+                                                                        class="img-responsive"/></li>
+                <li><a href="#/user/backet"></i><i class="fa fa-users"></i> Backet</a></li>
+                <li><a href="#/user/purchases"><i class="fa fa-shopping-cart"></i> My purchases</a></li>
+                <li><a href="#/user/profile/edit"><i class="fa fa-pencil-square-o"></i> Edit profile</a></li>
+                <!-- end sidebar -->
+            </ul>
+        </div>
+        <div class="col-md-offset-2 col-sm-offset-3 col-xs-offset-4 col-lg-9 col-sm-8 col-xs-7 col-md-9 table-min">
+            <div class="col-md-4 profile-UserImgTopMargine">
+                <img src="app/modules/admin/img/1.jpg" height="180px"
+                     class="img-thumbnail img-responsive profile-imgUserMargineBottom" data-toggle="modal"
+                     data-target=".avatar"/>
+                <!-- <button class="btn btn-default buttonStileBlue" type="button" style="margin-left :250px; margin-top :5px"><!-- <span class="fa fa-check" aria-hidden="true"></span>  Change</button>  -->
+                <h6 align="center"><a href="">Click here to change your avatar</a></h6>
 
-			</div>
-			<div class="col-md-6 MoveUserInformationRight" ng-controller="UserEditCtrl">
-				<h2 class="textColor">Edir Profile</h2>
-				<p class="textColor">Here You can change you information, wich will be avaleble on site:</p>
-				<table class="table table-condensed">
-					<thead>
-					<tr>
-						<th> </th>
-						<th> </th>
-					</tr>
-					</thead>
-					<tbody class="textColor">
-					<tr>
-						<td>First name:</td>
-						<td><input type="text" class="form-control ButtonColor BtnTextColor textColor" style="width :250px" placeholder={{user.name}}></td>
-					</tr>
-					<tr>
-						<td>Last name:</td>
-						<td><input type="text" class="form-control ButtonColor BtnTextColor textColor" style="width :250px" placeholder={{user.surname}}></td>
-					</tr>
-					<tr>
-						<td>Sex:</td>
-						<td><input type="text" class="form-control ButtonColor BtnTextColor textColor" style="width :250px" placeholder={{user.sex}}></td>
-					</tr>
-					<tr>
-						<td>Date of birth:</td>
-						<td><input type="text" class="form-control ButtonColor BtnTextColor textColor" style="width :250px" placeholder={{user.born}}></td>
-					</tr>
-					<tr>
-						<td>E-mail:</td>
-						<td><input type="text" class="form-control ButtonColor BtnTextColor textColor" style="width :250px" placeholder={{user.email}}></td>
-					</tr>
-					<tr>
-					<td>Contact number:</td>
-					<td><input type="text" class="form-control ButtonColor BtnTextColor textColor" style="width :250px" placeholder={{user.phone}}></td>
-					</tr>
-					</tbody>
-				</table>
-				<button class="btn ButtonColor BtnTextColor textColor" type="button"><span aria-hidden="true"></span>  Apply Changes</button>
-			</div>
-		</div>
-		<!Class fo show profile img>
-		<div class="modal fade avatar" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-			 style="background-color: rgba(203, 203, 203, 0.46)	">
-			<div class="modal-dialog modal-lg">
-				<div class="modal-content" style="background-color: rgba(0, 0, 0, 0.66)">
-					<div class="modal-body" align="center">
-						<img src="app/modules/admin/img/1.jpg" height="70%"  class="img-responsive "/>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+            </div>
+            <div class="col-md-6 MoveUserInformationRight" ng-controller="UserEditCtrl">
+                <h2 class="textColor">Edir Profile</h2>
+
+                <p class="textColor">Here You can change you information, wich will be avaleble on site:</p>
+                <table class="table table-condensed">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody class="textColor">
+                    <tr>
+                        <td>First name:</td>
+                        <td><input type="text" class="form-control ButtonColor BtnTextColor textColor"
+                                   style="width :250px" placeholder={{user.name}}></td>
+                    </tr>
+                    <tr>
+                        <td>Last name:</td>
+                        <td><input type="text" class="form-control ButtonColor BtnTextColor textColor"
+                                   style="width :250px" placeholder={{user.surname}}></td>
+                    </tr>
+                    <tr>
+                        <td>Sex:</td>
+                        <td><input type="text" class="form-control ButtonColor BtnTextColor textColor"
+                                   style="width :250px" placeholder={{user.sex}}></td>
+                    </tr>
+                    <tr>
+                        <td>Date of birth:</td>
+                        <td><input type="text" class="form-control ButtonColor BtnTextColor textColor"
+                                   style="width :250px" placeholder={{user.born}}></td>
+                    </tr>
+                    <tr>
+                        <td>E-mail:</td>
+                        <td><input type="text" class="form-control ButtonColor BtnTextColor textColor"
+                                   style="width :250px" placeholder={{user.email}}></td>
+                    </tr>
+                    <tr>
+                        <td>Contact number:</td>
+                        <td><input type="text" class="form-control ButtonColor BtnTextColor textColor"
+                                   style="width :250px" placeholder={{user.phone}}></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <button class="btn ButtonColor BtnTextColor textColor" type="button"><span aria-hidden="true"></span>
+                    Apply Changes
+                </button>
+            </div>
+        </div>
+        <!Class fo show profile img>
+        <div class="modal fade avatar" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+             style="background-color: rgba(203, 203, 203, 0.46)	">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content" style="background-color: rgba(0, 0, 0, 0.66)">
+                    <div class="modal-body" align="center">
+                        <img src="app/modules/admin/img/1.jpg" height="70%" class="img-responsive "/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

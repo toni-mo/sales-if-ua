@@ -8,6 +8,7 @@
 /*.nav-btn-color{
 	color: #9d9d9d;
 }*/
+
 .adm-page-size {
     width: 100%;
     max-width: 225px;
@@ -17,11 +18,13 @@
 .disable-scroll {
     overflow-y: hidden;
     overflow-x: hidden;
+    color: rgb(255, 31, 0);
 }
 
 .table-min {
     min-width: 450px;
     width: 75%;
+    background-color: rgba(222, 235, 20, 0);
 }
 
 .adm-side-nav {
@@ -41,7 +44,6 @@
 .adm-navStyle {
     background-image: linear-gradient(to bottom, #3c3c3c 0, #222 100%);
 }
-
 .adm-borderNew {
     border: 10px;
 }
@@ -80,6 +82,9 @@
     /*background-image: linear-gradient(to bottom, #3c3c3c 0, #222 100%);*/
     /*background-color: rgba(48, 51, 48, 0.18);*/
     background-image: linear-gradient(to bottom, rgba(35, 35, 35, 0.31) 0, rgba(0, 0, 0, 0.31) 100%);
+}
+.nav-back-img{
+    background-image: linear-gradient(to bottom, rgba(25, 20, 35, 0.37) 0, rgba(0, 0, 0, 0.48) 100%)
 }
 .navbar-nav > li > a:hover{
     background-color: rgba(229, 58, 85, 0.22);
@@ -188,4 +193,6 @@ ul {
 /*.color_8:hover{*/
     /*color: rgba(135, 12, 255, 0.48);*/
 /*}*/
+
+
 
