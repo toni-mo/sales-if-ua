@@ -1,120 +1,113 @@
 <div class="container-fluid ">
     <div class="row">
-        <div class="col-xs-6 col-sm-8 col-md-12 col-lg-12 ">
-            <nav class="navbar navbar-inverse navbar-fixed-top adm-navStyle  " role="navigation">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown">
-                        <a class="dropdown-toggle profile-DDRight" data-toggle="dropdown" role="button"
-                           aria-expanded="false">
-                            <i class="fa fa-cog"></i>
-                            Zarin_Andrii
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href=""><i class="fa fa-user-times"></i> Log Out</a></li>
-                            <li class="divider"></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </div>
-    <!-- End row -->
-    <div class="row">
         <div class="col-xs-5 col-sm-5 col-md-1 col-lg-1">
             <ul class="nav navbar-nav adm-side-nav ">
-                <li class="adm-ProfileUserImgMargin adm-page-size"><img src="http://i.ytimg.com/vi/5l8dU40aRUs/maxresdefault.jpg"
-                                                                        class="img-responsive"/></li>
-                <li><a href="#/shop/products"></i><i class="fa fa-home"></i>  My products</a> </li>
-                <li><a href="#/shop/orders"><i class="fa fa-envelope-o"></i>  My orders </a></li>
-                <li><a href="#/shop/profile/edit"><i class="fa fa-pencil-square-o"></i>  Edit profile</a></li>
+                <li class="adm-ProfileUserImgMargin adm-page-size"><img
+                        src="http://i.ytimg.com/vi/5l8dU40aRUs/maxresdefault.jpg"
+                        class="img-responsive"/></li>
+                <li><a href="#/shop/products"></i><i class="fa fa-home"></i> My products</a></li>
+                <li><a href="#/shop/orders"><i class="fa fa-envelope-o"></i> My orders </a></li>
+                <li><a href="#/shop/profile/edit"><i class="fa fa-pencil-square-o"></i> Edit profile</a></li>
                 <!-- end sidebar -->
             </ul>
         </div>
         <div class="col-md-offset-2 col-sm-offset-3 col-xs-offset-3 col-lg-9 col-sm-9 col-xs-9 col-md-9"
              ng-controller="ShopAdmCtrl">
             <h2 class="textColor">Products</h2>
+
             <p class="textColor">The table consist of all registered products:</p>
             <table class="table table-condensed">
-              <thead>
-          <tr class="textColor">
-          <th>№</th>
-          <th>Name</th>
-          <th>Description</th>
-          <th>Price</th>
-          <th>Currency</th>
-          </tr>
-          </thead>
-          <tbody class="textColor">
-          <tr ng-repeat="product in products" class="hover" data-toggle="modal" data-target=".seeProduct">
-          <td>{{$index+1}}</td>
-          <td>{{product.name}}</td>
-          <td style="width: 700px">{{product.description}}}</td>
-          <td>{{product.price}}</td>
-          <td>{{product.currency}}</td>
-          </tr>
-          </tbody>
-          </table>
+                <thead>
+                <tr class="textColor">
+                    <th>№</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Currency</th>
+                </tr>
+                </thead>
+                <tbody class="textColor">
+                <tr ng-repeat="product in products" class="hover" data-toggle="modal" data-target=".seeProduct">
+                    <td>{{$index+1}}</td>
+                    <td>{{product.name}}</td>
+                    <td style="width: 700px">{{product.description}}}</td>
+                    <td>{{product.price}}</td>
+                    <td>{{product.currency}}</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
     <!Class fo show/change product properties>
- <div class="modal fade seeProduct" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" style="background-color: rgba(203, 203, 203, 0.46)">
-   <div class="modal-dialog modal-lg" style="width :1200px">
-      <div class="modal-content" style="background-color: rgba(0, 0, 0, 0.66)">
-         <div class="container-fluid">
-        <div class="col-xs-5 col-sm-7 col-md-11 col-lg-11" style="margin-top: 10px">
-          <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 UserImgTopMargine">
-            <img src="http://vagma.ru/uploads/posts/2011-11/1321632425_audi-a1-sportback-unveiled-photo-gallery_15.jpg" height="280px"  class="img-thumbnail img-responsive imgUserMargineBottom">
-          </div>
-          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 MoveUserInformationRight" ng-controller="ShopAdmCtrl">
-            <h2 class="textColor">{{pr.name}}</h2>
-            <p class="textColor">Here You can change you products properties:</p>
-            <table class="table table-condensed">
-              <thead>
-          <tr>
-          <th> </th>
-          <th> </th>
-          </tr>
-          </thead>
-          <tbody class="textColor">
-          <tr>
-          <td>Product:</td>
-          <td><textarea class="form-control ButtonColor BtnTextColor textColor" rows="1" style="width :700px">{{pr.name}}</textarea></td>
-          </tr>
-          <tr>
-          <td>Discription:</td>
-          <td><textarea class="form-control ButtonColor BtnTextColor textColor" rows="7"  style="width :700px">{{pr.fullDescription}}</textarea></td>
-          </tr>
-          <tr>
-          <td>Price:</td>
-          <td><textarea class="form-control ButtonColor BtnTextColor textColor" rows="1"  style="width :700px">{{pr.price}}</textarea></td>
-          </tr>
-          <tr>
-          <td>Currency:</td>
-          <td>
-                <div class="dropdown">
-                <button class="btn ButtonColor BtnTextColor textColor dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="margin-top: -5px">
-    {{product.currency}}
-    <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu ButtonColor BtnTextColor textColor" aria-labelledby="dropdownMenu1">
-    <li><a href="" class="textColor">USD</a></li>
-    <li><a href="" class="textColor">EURO</a></li>
-    <li><a href="" class="textColor">UH</a></li>
-  </ul>
+    <div class="modal fade seeProduct" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+         style="background-color: rgba(203, 203, 203, 0.46)">
+        <div class="modal-dialog modal-lg" style="width :1200px">
+            <div class="modal-content" style="background-color: rgba(0, 0, 0, 0.66)">
+                <div class="container-fluid">
+                    <div class="col-xs-5 col-sm-7 col-md-11 col-lg-11" style="margin-top: 10px">
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 UserImgTopMargine">
+                            <img src="http://vagma.ru/uploads/posts/2011-11/1321632425_audi-a1-sportback-unveiled-photo-gallery_15.jpg"
+                                 height="280px" class="img-thumbnail img-responsive imgUserMargineBottom">
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 MoveUserInformationRight"
+                             ng-controller="ShopAdmCtrl">
+                            <h2 class="textColor">{{pr.name}}</h2>
+
+                            <p class="textColor">Here You can change you products properties:</p>
+                            <table class="table table-condensed">
+                                <thead>
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody class="textColor">
+                                <tr>
+                                    <td>Product:</td>
+                                    <td><textarea class="form-control ButtonColor BtnTextColor textColor" rows="1"
+                                                  style="width :700px">{{pr.name}}</textarea></td>
+                                </tr>
+                                <tr>
+                                    <td>Discription:</td>
+                                    <td><textarea class="form-control ButtonColor BtnTextColor textColor" rows="7"
+                                                  style="width :700px">{{pr.fullDescription}}</textarea></td>
+                                </tr>
+                                <tr>
+                                    <td>Price:</td>
+                                    <td><textarea class="form-control ButtonColor BtnTextColor textColor" rows="1"
+                                                  style="width :700px">{{pr.price}}</textarea></td>
+                                </tr>
+                                <tr>
+                                    <td>Currency:</td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <button class="btn ButtonColor BtnTextColor textColor dropdown-toggle"
+                                                    type="button" id="dropdownMenu1" data-toggle="dropdown"
+                                                    aria-haspopup="true" aria-expanded="true" style="margin-top: -5px">
+                                                {{product.currency}}
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu ButtonColor BtnTextColor textColor"
+                                                aria-labelledby="dropdownMenu1">
+                                                <li><a href="" class="textColor">USD</a></li>
+                                                <li><a href="" class="textColor">EURO</a></li>
+                                                <li><a href="" class="textColor">UH</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div STYLE="margin-bottom: 10px">
+                        <!--<button class="btn ButtonColor BtnTextColor textColor" type="button"><span aria-hidden="true"></span>  Close</button>-->
+                        <button class="btn ButtonColor BtnTextColor textColor" type="button" style="margin-left: 90%">
+                            <span aria-hidden="true"></span> Apply Changes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-          </td>
-          </tr>
-          </tbody>
-          </table>
-        </div>
-        </div>
-         <div STYLE="margin-bottom: 10px">
-             <!--<button class="btn ButtonColor BtnTextColor textColor" type="button"><span aria-hidden="true"></span>  Close</button>-->
-            <button class="btn ButtonColor BtnTextColor textColor" type="button" style="margin-left: 90%"><span aria-hidden="true"></span>  Apply Changes</button>
-         </div>
-      </div>
-    </div>
- </div>
-     </div>
-    </div>

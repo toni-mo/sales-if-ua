@@ -1,33 +1,145 @@
-<div class="container-fluid" ng-controller="LineChartCtrl">
-<!-- Setting navigation bar -->
-<nav class="navbar navbar-inverse navbar-fixed-top adm-navStyle adm-borderNew" role="navigation">
-    <!--Setting sidebar -->
-    <ul class="nav navbar-nav adm-side-nav">
-        <li class="adm-ProfileUserImgMargin"><img src="app/modules/admin/img/1.jpg"  class="img-responsive"/></li>
-        <li><a href="#/admin/users"></i><i class="fa fa-users"></i>  Users</a> </li>
-        <li><a href="#/admin/shops"><i class="fa fa-shopping-cart"></i>  Shops</a></li>
-        <li><a href="#/admin/statistics"><i class="fa fa-bar-chart"></i>  Statistics</a></li>
-        <!-- end sidebar -->
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-            <a class="dropdown-toggle profile-DDRight" data-toggle="dropdown" role="button"
-               aria-expanded="false">
-                <i class="fa fa-cog"></i>
-                Zarin_Andrii
-                <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-                <li><a href=""><i class="fa fa-user-times"></i> Log Out</a></li>
-                <li class="divider"></li>
+<div class="container-fluid ">
+    <div class="row">
+        <div class="col-xs-5 col-sm-5 col-md-1 col-lg-1">
+            <ul class="nav navbar-nav adm-side-nav ">
+                <li class="adm-ProfileUserImgMargin adm-page-size"><img src="app/modules/admin/img/1.jpg"
+                                                                        class="img-responsive"/></li>
+                <li><a href="#/admin/users"></i><i class="fa fa-users"></i> Users</a></li>
+                <li><a href="#/admin/shops"><i class="fa fa-shopping-cart"></i> Shops</a></li>
+                <li><a href="#/admin/statistics"><i class="fa fa-pencil-square-o"></i> Statistics</a></li>
+                <!-- end sidebar -->
             </ul>
-        </li>
-        </ul>>
-</nav>
-<div class="col-md-2">
-</div>
-<div class="col-md-10" ng-class="getChart()">
+        </div>
+        <div class=" col-md-offset-1 col-md-10" style="margin-top: 1%">
+    <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+            <div id="money-transactions" style="min-width: 310px; height: 400px; margin-top:0.5%"></div>
+
 </div>
     </div>
+    </div>
+<script src="app/modules/admin/otherjs/templates.js">
+</script>
+<script>
+    $(function () {
+        $('#container').highcharts({
+            chart: {
+                type: 'areaspline'
+            },
+            title: {
+                text: 'Users statistics'
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                verticalAlign: 'top',
+                x: 150,
+                y: 100,
+                floating: true,
+                borderWidth: 1,
+                backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
+            },
+            xAxis: {
+                categories: [
+                    'Monday',
+                    'Tuesday',
+                    'Wednesday',
+                    'Thursday',
+                    'Friday',
+                    'Saturday',
+                    'Sunday'
+                ],
+            },
+            yAxis: {
+                title: {
+                    text: 'new members'
+                }
+            },
+            tooltip: {
+                shared: true,
+                valueSuffix: ''
+            },
+            credits: {
+                enabled: false
+            },
+            plotOptions: {
+                areaspline: {
+                    fillOpacity: 0.5
+                }
+            },
+            series: [{
+                name: 'New Users',
+                data: [102, 181, 135, 150, 105, 102, 111]
+            }, {
+                name: 'New Shops',
+                data: [13, 31, 23, 32, 35, 51, 42]
+            }]
+        });
+    });
+</script>
+<!--Table 2-->
+<script>
+    $(function () {
+            $('#money-transactions').highcharts({
+                chart: {
+                    zoomType: 'x'
+                },
+                title: {
+                    text: 'Money transactions rate over time'
+                },
+                subtitle: {
+                    text: document.ontouchstart === undefined ?
+                            'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
+                },
+                xAxis: {
+                    categories: [
+                        '27.07.2015',
+                        '28.07.2015',
+                        '29.07.2015',
+                        '30.07.2015',
+                        '31.07.2015',
+                    ],
+                },
+                yAxis: {
+                    title: {
+                        text: 'Transactions rate'
+                    }
+                },
+                legend: {
+                    enabled: false
+                },
+                plotOptions: {
+                    area: {
+                        fillColor: {
+                            linearGradient: {
+                                x1: 0,
+                                y1: 0,
+                                x2: 0,
+                                y2: 1
+                            },
+                            stops: [
+                                [0, Highcharts.getOptions().colors[0]],
+                                [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                            ]
+                        },
+                        marker: {
+                            radius: 2
+                        },
+                        lineWidth: 1,
+                        states: {
+                            hover: {
+                                lineWidth: 1
+                            }
+                        },
+                        threshold: null
+                    }
+                },
 
-    
+                series: [{
+                    type: 'area',
+                    name: 'Summary amount',
+                    data: [130346, 312345, 232345, 321239, 234355]
+//                    data: data
+                }]
+            });
+    });
+</script>
