@@ -31,7 +31,8 @@
     max-width: 225px;
     min-width: 180px;
     width: 25%;
-    background-image: linear-gradient(to bottom, #3c3c3c 0, #222 100%);
+    /*background-image: linear-gradient(to bottom, #3c3c3c 0, #222 100%);*/
+    background-color: rgba(0, 0, 0, 0.43);
     bottom: 0;
     overflow-y: hidden;
     overflow-x: hidden;
@@ -76,7 +77,12 @@
     padding-top: 10px;
     padding-bottom: 10px;
     line-height: 20px;
-    background-image: linear-gradient(to bottom, #3c3c3c 0, #222 100%);
+    /*background-image: linear-gradient(to bottom, #3c3c3c 0, #222 100%);*/
+    /*background-color: rgba(48, 51, 48, 0.18);*/
+    background-image: linear-gradient(to bottom, rgba(35, 35, 35, 0.31) 0, rgba(0, 0, 0, 0.31) 100%);
+}
+.navbar-nav > li > a:hover{
+    background-color: rgba(229, 58, 85, 0.22);
 }
 
 ul {
@@ -158,4 +164,28 @@ ul {
 .ButtonColor{
     background-color: rgba(249, 255, 249, 0.24);
 }
+/*.color_1:hover{*/
+    /*color: rgba(255, 201, 35, 0.48);*/
+/*}*/
+/*.color_2:hover{*/
+    /*color: rgba(62, 255, 1, 0.48);*/
+/*}*/
+/*.color_3:hover{*/
+    /*color: rgba(65, 255, 242, 0.48);*/
+/*}*/
+/*.color_4:hover{*/
+    /*color: rgba(161, 63, 255, 0.48);*/
+/*}*/
+/*.color_5:hover{*/
+    /*color: rgba(255, 111, 35, 0.48);*/
+/*}*/
+/*.color_6:hover{*/
+    /*color: rgba(255, 111, 221, 0.45);*/
+/*}*/
+/*.color_7:hover{*/
+    /*color: rgba(11, 255, 101, 0.48);*/
+/*}*/
+/*.color_8:hover{*/
+    /*color: rgba(135, 12, 255, 0.48);*/
+/*}*/
 
