@@ -126,7 +126,8 @@
 	background-color: #ADFF85;
 }
  .hover:hover {
- 	background-color: #989898;
+ 	background-color: rgba(229, 58, 85, 0.22);
+	 color: rgba(249, 255, 249, 0.75);
  } 
  .shop-discriptionProperties{
  	width: 250px;
