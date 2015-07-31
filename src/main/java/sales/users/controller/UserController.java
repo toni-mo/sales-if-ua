@@ -1,9 +1,12 @@
 package sales.users.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import sales.notification.service.RegistrationServiceImpl;
 import sales.users.domain.User;
 import sales.users.service.IUserService;
 
@@ -112,5 +115,14 @@ public class UserController {
                               @RequestParam(required = false, value = "amount", defaultValue = "5") int amount,
                               @RequestParam(required = false, value = "sort", defaultValue = "id") String sortField) {
         return userService.findBy("client" ,searchField, value, page, amount, sortField);
+    }
+
+    @RequestMapping(value = "/email")
+    public void sendEmail(){
+        ApplicationContext context =
+                new ClassPathXmlApplicationContext("META-INF/bootstrap/email-notification.xml");
+
+        RegistrationServiceImpl mm = (RegistrationServiceImpl) context.getBean("registrationService");
+        mm.register(userService.getByUsername("taras"));
     }
 }

@@ -8,7 +8,6 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>
             classpath*:/META-INF/applicationContext.xml,
-            classpath*:/META-INF/spring-security.xml,
             WEB-INF/mvc-servlet.xml
         </param-value>
     </context-param>
