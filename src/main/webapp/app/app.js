@@ -60,6 +60,9 @@ phonecatApp.config(['$routeProvider',
       when('/stuff', {
         templateUrl: 'app/modules/home/views/stuff.html'
       }).
+      when('/ordering',{
+        templateUrl: 'app/modules/goods/views/ordering.html'
+      }).
       when('/admin', {
         templateUrl: 'app/modules/admin/views/main.html'
       }).
