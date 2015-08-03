@@ -46,7 +46,7 @@ public class CustomUserDetailsService implements UserDetailsService {
                     accountNonExpired,
                     credentialsNonExpired,
                     accountNonLocked,
-                    getAuthorities(1));
+                    getAuthorities(2));
 
         } catch (Exception e) {
             throw new RuntimeException(e);
