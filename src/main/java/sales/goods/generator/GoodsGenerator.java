@@ -12,6 +12,7 @@ import java.util.logging.Logger;
  * Created by volodya on 23.07.15.
  */
 
+
 //public class GoodsGenerator {
 //
 //    protected static Logger logger = Logger.getLogger(GoodsGenerator.class.getName());
@@ -60,3 +61,4 @@ import java.util.logging.Logger;
 //        return r.nextInt(to - from) + from;
 //    }
 //}
+

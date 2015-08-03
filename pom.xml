@@ -72,17 +72,21 @@
             <artifactId>opencsv</artifactId>
             <version>2.3</version>
         </dependency>
+<<<<<<< HEAD
         <dependency>
             <groupId>org.mortbay.jetty</groupId>
             <artifactId>servlet-api</artifactId>
             <version>2.5-20081211</version>
         </dependency>
+=======
+>>>>>>> KraytsManFork/master
         <!--paypalSdk-->
         <dependency>
             <groupId>com.paypal.sdk</groupId>
             <artifactId>rest-api-sdk</artifactId>
             <version>0.5.2</version>
         </dependency>
+<<<<<<< HEAD
         <!--spring security-->
         <dependency>
             <groupId>org.springframework.security</groupId>
@@ -116,6 +120,8 @@
             <groupId>org.apache.velocity</groupId>
             <artifactId>velocity</artifactId>
         </dependency>
+=======
+>>>>>>> KraytsManFork/master
     </dependencies>
 
     <build>
