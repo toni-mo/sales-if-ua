@@ -17,34 +17,34 @@ phonecatApp.config(['$routeProvider',
     $routeProvider.
     // admin code
     when('/admin/users',{
-          templateUrl: 'app/modules/admin/views/zarin-adm-user-page.html'
+          templateUrl: 'app/modules/admin/views/adm-user-page.html'
         }).
         when('/admin/shops',{
-          templateUrl: 'app/modules/admin/views/zarin-adm-shops-page.html'
+          templateUrl: 'app/modules/admin/views/adm-shops-page.html'
         }).
         when('/admin/statistics',{
-          templateUrl: 'app/modules/admin/views/zarin-adm-stat-page.html'
+          templateUrl: 'app/modules/admin/views/adm-stat-page.html'
         }).
         when('/user/backet',{
-          templateUrl: 'app/modules/admin/views/zarin-user-backet-page.html'
+          templateUrl: 'app/modules/admin/views/user-backet-page.html'
         }).
         when('/user/purchases',{
-          templateUrl: 'app/modules/admin/views/zarin-user-all-purchases-page.html'
+          templateUrl: 'app/modules/admin/views/user-all-purchases-page.html'
         }).
         when('/user/profile/edit',{
-          templateUrl: 'app/modules/admin/views/zarin-edit-user-page.html'
+          templateUrl: 'app/modules/admin/views/edit-user-page.html'
         }).
         when('/shop/orders',{
-          templateUrl: 'app/modules/admin/views/zarin-shop-orders-page.html'
+          templateUrl: 'app/modules/admin/views/shop-orders-page.html'
         }).
         when('/shop/products',{
-          templateUrl: 'app/modules/admin/views/zarin-shop-products-page.html'
+          templateUrl: 'app/modules/admin/views/shop-products-page.html'
         }).
          when('/shop/profile/edit',{
-          templateUrl: 'app/modules/admin/views/zarin-shop-admin-edit-profile.html'
+          templateUrl: 'app/modules/admin/views/shop-admin-edit-profile.html'
         }).
         when('/home/service',{
-            templateUrl: 'app/modules/admin/views/zarin-services-page.html'
+            templateUrl: 'app/modules/admin/views/services-page.html'
         }).
 
       // Our roots
