@@ -11,7 +11,7 @@ import sales.payment.creaditCard.domain.CreditCard;
 public class AnonymSinglePaymentDTO {
 
     @JsonProperty("goodId")
-    private int goodId;
+    private long goodId;
 
     @JsonProperty("firstName")
     private String firstName;
@@ -25,11 +25,11 @@ public class AnonymSinglePaymentDTO {
     @JsonProperty("card")
     private CreditCard card;
 
-    public int getGoodId() {
+    public long getGoodId() {
         return goodId;
     }
 
-    public void setGoodId(int goodId) {
+    public void setGoodId(long goodId) {
         this.goodId = goodId;
     }
 

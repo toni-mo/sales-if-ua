@@ -1,8 +1,12 @@
 package sales.payment.controller;
 
+import com.paypal.core.rest.PayPalRESTException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import sales.payment.dto.data.AnonymMultyPaymentDTO;
 import sales.payment.dto.data.AnonymSinglePaymentDTO;
+import sales.payment.paymentHandler.AnonymPaymentHandler;
 
 import java.util.logging.Logger;
 
@@ -13,6 +17,9 @@ import java.util.logging.Logger;
 @RequestMapping("/payment")
 public class PaymentController  {
 
+    @Autowired
+    private AnonymPaymentHandler handler;
+
     protected static Logger logger = Logger.getLogger(PaymentController.class.getName());
 
     @RequestMapping(
@@ -20,10 +27,9 @@ public class PaymentController  {
             produces = "application/json; charset=UTF-8",
             consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public String anonymSinglePayment(@RequestBody AnonymSinglePaymentDTO anonym) {
+    public void anonymSinglePayment(@RequestBody AnonymMultyPaymentDTO anonym) throws PayPalRESTException {
         logger.info("Payment: anonym single payment");
-        logger.info(anonym.toString());
-        return "ok";
+        handler.anonymPayment(anonym);
     }
 
 }

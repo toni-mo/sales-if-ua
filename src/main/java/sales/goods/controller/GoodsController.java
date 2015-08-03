@@ -1,11 +1,13 @@
 package sales.goods.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import sales.goods.domain.Good;
 import sales.goods.service.GoodsService;
 
+import javax.annotation.Resource;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +21,7 @@ public class GoodsController {
     protected static Logger logger = Logger.getLogger(GoodsController.class.getName());
 
     @Autowired
+    @Qualifier("goodsService")
     private GoodsService service;
 
     @RequestMapping(value = "",

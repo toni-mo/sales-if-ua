@@ -8,13 +8,13 @@ import java.util.List;
 /**
  * Created by volodya on 21.07.15.
  */
-public interface GoodsRepository extends JpaRepository<Good, Integer>  {
+public interface GoodsRepository extends JpaRepository<Good, Long>  {
 
     public List<Good> findByNameContainingIgnoreCase(String name);
 
-    public Good findById(int id);
+    public Good findById(long id);
 
-    public void removeById(int id);
+    public void removeById(long id);
 
     public List<Good> findByPriceBetween(int from, int to);
 

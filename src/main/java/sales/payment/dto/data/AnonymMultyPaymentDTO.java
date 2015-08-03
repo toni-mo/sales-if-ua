@@ -1,5 +1,7 @@
 package sales.payment.dto.data;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import sales.payment.creaditCard.domain.CreditCard;
 
 import java.util.List;
@@ -7,24 +9,30 @@ import java.util.List;
 /**
  * Created by volodya on 29.07.15.
  */
-public class AnonymMultyPaymentVO {
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+public class AnonymMultyPaymentDTO {
 
-    private List goodId;
+    @JsonProperty
+    private List<Long> goodsId;
 
+    @JsonProperty
     private String firstName;
 
+    @JsonProperty
     private String lastName;
 
+    @JsonProperty
     private String email;
 
+    @JsonProperty
     private CreditCard card;
 
-    public List getGoodId() {
-        return goodId;
+    public List<Long> getGoodsId() {
+        return goodsId;
     }
 
-    public void setGoodId(List goodId) {
-        this.goodId = goodId;
+    public void setGoodsId(List<Long> goodId) {
+        this.goodsId = goodId;
     }
 
     public String getFirstName() {

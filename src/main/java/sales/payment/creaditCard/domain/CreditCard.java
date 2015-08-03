@@ -11,8 +11,8 @@ import javax.persistence.*;
 public class CreditCard {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
 
     @Column(name = "number")
     private String number;
@@ -29,11 +29,11 @@ public class CreditCard {
     @Column(name = "cvv2")
     private String cvv2;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

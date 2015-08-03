@@ -49,4 +49,12 @@
 
     <tx:annotation-driven transaction-manager="entityTransactionManager"/>
 
+    <bean class="sales.goods.service.GoodsServiceImpl">
+        <qualifier value="goodsServiceSecond"/>
+    </bean>
+    <bean class="sales.goods.service.GoodsServiceImpl">
+        <qualifier value="goodsService"/>
+    </bean>
+
+
 </beans>

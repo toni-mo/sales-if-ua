@@ -6,10 +6,12 @@ import sales.payment.paypal.domain.Paypal;
 /**
  * Created by volodya on 28.07.15.
  */
-public interface PaypalRepository extends JpaRepository<Paypal, Integer> {
+public interface PaypalRepository extends JpaRepository<Paypal, Long> {
 
-    public Paypal findById(int id);
+    public Paypal findById(long id);
 
-    public void removeById(int id);
+    public void removeById(long id);
+
+    public Paypal findByUserId(long id);
 
 }

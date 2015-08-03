@@ -1,33 +1,27 @@
 package sales.goods.service;
 
 import com.google.common.collect.Lists;
-import org.hibernate.Criteria;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import sales.goods.domain.Good;
-import sales.goods.generator.GoodsGenerator;
 import sales.goods.repository.GoodsRepository;
 
-import javax.annotation.PostConstruct;
-import javax.persistence.criteria.Order;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-@Service("goodsService")
+@Service
 @Transactional
 public class GoodsServiceImpl implements GoodsService {
 
     @Autowired
     private GoodsRepository repository;
 
-    public Good get(int id) {
+    public Good get(long id) {
         return repository.findById(id);
     }
 
@@ -40,7 +34,7 @@ public class GoodsServiceImpl implements GoodsService {
         return good;
     }
 
-    public void delete(int id) {
+    public void delete(long id) {
         repository.removeById(id);
     }
 

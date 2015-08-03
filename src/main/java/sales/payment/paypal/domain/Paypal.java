@@ -1,9 +1,12 @@
 package sales.payment.paypal.domain;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import sales.users.domain.User;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by volodya on 28.07.15.
@@ -14,23 +17,27 @@ import javax.persistence.*;
 public class Paypal {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @JsonProperty("id")
-    int id;
+    private long id;
 
-    @Column(name = "clientId")
-    @JsonProperty("clientId")
-    String clientId;
+    @Column
+    @JsonProperty
+    private String clientId;
 
     @Column(name = "secret")
-    @JsonProperty("secret")
-    String secret;
+    @JsonProperty
+    private String secret;
 
-    public int getId() {
+    @Column(name = "userId")
+    @JsonIgnore
+    private long userId;
+
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -48,5 +55,23 @@ public class Paypal {
 
     public void setSecret(String secret) {
         this.secret = secret;
+    }
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
+    @Override
+    public String toString() {
+        return "Paypal{" +
+                "id=" + id +
+                ", clientId='" + clientId + '\'' +
+                ", secret='" + secret + '\'' +
+                ", userId=" + userId +
+                '}';
     }
 }

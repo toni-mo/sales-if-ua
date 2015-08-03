@@ -9,12 +9,15 @@ import java.util.List;
  */
 public interface PaypalService {
 
-    public Paypal get(int id);
+    public Paypal get(long id);
+
+    public Paypal getByUserId(long id);
 
     public List<Paypal> getAll();
 
     public Paypal save(Paypal paypal);
 
-    public void delete(int id);
+    public void delete(long id);
+
 
 }

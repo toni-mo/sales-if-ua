@@ -1,10 +1,9 @@
-package sales.payment.paypal.service;
+package sales.paypal.service;
 
 
 import com.paypal.core.rest.OAuthTokenCredential;
 import com.paypal.core.rest.PayPalRESTException;
 import com.paypal.core.rest.PayPalResource;
-import sales.util.Constants;
 
 import java.io.File;
 
@@ -13,17 +12,10 @@ import java.io.File;
  */
 public class Authentication {
 
-    public static String getAuthenticationToken(String clientId, String secret) throws PayPalRESTException {
-            PayPalResource.initConfig(new File(".",
-                    Constants.PAYPAL_CONFIG_PATH));
-            return new OAuthTokenCredential(clientId, secret)
-                    .getAccessToken();
-    }
-
-    public static String verification(String clientId, String secret) {
+    public String getAuthenticationToken(String clientId, String secret) {
         try {
             PayPalResource.initConfig(new File(".",
-                    Constants.PAYPAL_CONFIG_PATH));
+                    "src/main/resources/sdk_config.properties"));
             return new OAuthTokenCredential(clientId, secret)
                     .getAccessToken();
         } catch (PayPalRESTException e) {
@@ -31,6 +23,5 @@ public class Authentication {
             return "Wrong clientId or secret";
         }
     }
-
 
 }

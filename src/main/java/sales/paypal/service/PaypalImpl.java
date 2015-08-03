@@ -1,10 +1,10 @@
-package sales.payment.paypal.service;
+package sales.paypal.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import sales.payment.paypal.domain.Paypal;
-import sales.payment.paypal.repository.PaypalRepository;
+import sales.paypal.domain.Paypal;
+import sales.paypal.repository.PaypalRepository;
 
 import java.util.List;
 
@@ -21,18 +21,13 @@ public class PaypalImpl implements PaypalService{
 
 
     @Override
-    public Paypal get(long id) {
-        return repository.findById(id);
-    }
-
-    @Override
-    public Paypal getByUserId(long id) {
-        return repository.findByUserId(id);
+    public Paypal get(int id) {
+        return null;
     }
 
     @Override
     public List<Paypal> getAll() {
-        return repository.findAll();
+        return null;
     }
 
     @Override
@@ -41,7 +36,7 @@ public class PaypalImpl implements PaypalService{
     }
 
     @Override
-    public void delete(long id) {
-        repository.removeById(id);
+    public void delete(int id) {
+
     }
 }

@@ -3,9 +3,13 @@ package sales.goods.domain;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import sales.descriptions.domain.Description;
+import sales.users.domain.User;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
+import java.util.Set;
 
 
 @Entity
@@ -14,76 +18,82 @@ import java.io.Serializable;
 public class Good implements Serializable {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @JsonProperty("id")
-    private int id;
+    private long id;
 
     @Column(name = "name", columnDefinition = "VARCHAR(255) COLLATE utf8_general_ci")
     @JsonProperty("name")
     private String name;
 
-    @Column(name = "description", columnDefinition = "VARCHAR(512) COLLATE utf8_general_ci")
-    @JsonProperty("description")
-    private String description;
-
-    @Column(name = "amount")
-    @JsonProperty("amount")
-    private int amount;
+    @Column(name = "quantity")
+    @JsonProperty("quantity")
+    private int quantity;
 
     @Column(name = "price")
     @JsonProperty("price")
     private int price;
 
+    @ManyToOne(targetEntity = User.class)
+    @JoinColumn(name = "user", referencedColumnName = "id")
+    @JsonProperty
+    private User user;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "good_id", referencedColumnName = "id")
+    @JsonProperty
+    private List<Description> description;
+
+    @JsonCreator
     public Good() {
     }
 
-    @JsonCreator
-    public Good(GoodsBuilder builder) {
-        this.id = builder.getId();
-        this.name = builder.getName();
-        this.description = builder.getDescription();
-        this.amount = builder.getAmount();
-        this.price = builder.getPrice();
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public int getId() {
+    public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getDescription() {
-        return description;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public int getAmount() {
-        return amount;
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public int getPrice() {
         return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<Description> getDescription() {
+        return description;
+    }
+
+    public void setDescription(List<Description> description) {
+        this.description = description;
     }
 
     @Override
@@ -91,78 +101,10 @@ public class Good implements Serializable {
         return "Good{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", amount=" + amount +
+                ", quantity=" + quantity +
                 ", price=" + price +
+                ", user=" + user.toString() +
+                ", description=" + description.toString() +
                 '}';
     }
-
-
-    public static class GoodsBuilder {
-
-        private int id;
-
-        private String name;
-
-        private String description;
-
-        private int amount;
-
-        private int price;
-
-        public int getId() {
-            return id;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public String getDescription() {
-            return description;
-        }
-
-        public int getAmount() {
-            return amount;
-        }
-
-        public int getPrice() {
-            return price;
-        }
-
-        public GoodsBuilder id(int id) {
-            this.id = id;
-            return this;
-
-        }
-
-        public GoodsBuilder name(String name) {
-            this.name = name;
-            return this;
-
-        }
-
-        public GoodsBuilder description(String description) {
-            this.description = description;
-            return this;
-
-        }
-
-        public GoodsBuilder amount(int amount) {
-            this.amount = amount;
-            return this;
-
-        }
-
-        public GoodsBuilder price(int price) {
-            this.price = price;
-            return this;
-
-        }
-
-        public Good build() {
-            return new Good(this);
-        }
-    }
-
 }
