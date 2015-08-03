@@ -39,7 +39,7 @@
     <!-- Declare a view resolver -->
     <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           p:prefix="/app/"
-          p:suffix=".html"
+          p:suffix=".jsp"
 
           p:order="1"/>
 

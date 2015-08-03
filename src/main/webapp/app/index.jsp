@@ -312,7 +312,9 @@
               <a class="dropdown-toggle" data-toggle="dropdown" role="button"
                  aria-expanded="false">
                   <i class="fa fa-cog"></i>
-                  Zarin_Andrii
+                  <% String some="asdada";%>
+                  <%= some %>
+                 
                   <span class="caret"></span>
               </a>
               <ul class="dropdown-menu"> 
