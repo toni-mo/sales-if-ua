@@ -7,9 +7,8 @@ import sales.analytics.domain.Analytics;
 import sales.analytics.repository.AnalyticsRepository;
 
 import javax.transaction.Transactional;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.List;
+import java.util.*;
+import java.util.logging.Logger;
 
 /**
  * Created by Myroslav on 28.07.2015.
@@ -20,6 +19,7 @@ import java.util.List;
 
 public class AnalyticsServiceImpl implements AnalyticsService{
 
+    protected static Logger logger = Logger.getLogger(AnalyticsServiceImpl.class.getName());;
     @Autowired
     private AnalyticsRepository analyticsRepository;
 
@@ -30,6 +30,9 @@ public class AnalyticsServiceImpl implements AnalyticsService{
 
     @Override
     public List<Analytics> getAll() {
+        if(tableIsEmpty()) {
+            createOnStart();
+        }
         return analyticsRepository.findAll();
     }
 
@@ -37,6 +40,27 @@ public class AnalyticsServiceImpl implements AnalyticsService{
     public Analytics save(Analytics analytics) {
         analyticsRepository.save(analytics);
         return analytics;
+    }
+
+    public void createOnStart()
+    {
+        for(int i=30; i>0; i--) {
+            Calendar calendar = Calendar.getInstance();
+            calendar.add(Calendar.DATE, -i);
+            Random rand = new Random();
+            analyticsRepository.save(new Analytics(100+rand.nextInt(500), 20000+rand.nextInt(980000), 100 + rand.nextInt(700), 15+rand.nextInt(85), calendar.getTime()));
+            logger.info("Fake date added");
+        }
+    }
+
+    public boolean tableIsEmpty()
+    {
+        if(analyticsRepository.findAll().size()==0)
+        {
+            logger.info("Table is empty");
+            return true;
+        }
+        return false;
     }
 
 }
