@@ -1,5 +1,7 @@
 package sales.security;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -22,6 +24,8 @@ import java.util.List;
 @Service
 @Transactional(readOnly = true)
 public class CustomUserDetailsService implements UserDetailsService {
+    final static Logger logger = LoggerFactory.getLogger(CustomUserDetailsService.class);
+
 
     @Autowired
     private UserRepository userRepository;
@@ -32,6 +36,7 @@ public class CustomUserDetailsService implements UserDetailsService {
      * a {@link UserDetails} object.
      */
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        logger.debug("Process of authorization");
         try {
             sales.users.domain.User domainShop = userRepository.findByUsername(username);
             boolean enabled = true;
@@ -49,6 +54,7 @@ public class CustomUserDetailsService implements UserDetailsService {
                     getAuthorities(2));
 
         } catch (Exception e) {
+            logger.error("Can`t authorize user " + e);
             throw new RuntimeException(e);
         }
     }
