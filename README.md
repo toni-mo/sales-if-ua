@@ -83,6 +83,11 @@ method = POST -- pagination with sorting
 3. http://localhost:8080/Practice/comment/remove?commentId=%commentId% method = DELETE -
    remove Comment with commentId = %commentId%
 
+#Links for analytics:
+1.http://localhost:8080/Practice/analytics/all method = GET - get all analytics
+2.http://localhost:8080/Practice/analytics/byPeriod?from={date}&to={date} method = GET - get analytics for some period, example date=1435135692000 (date in ms)
+3.http://localhost:8080/Practice/analytics/after/{date} method = GET - get analytics after some date in ms
+4.http://localhost:8080/Practice/analytics/before/{date} method =  GET - get analytics before some date in ms
 
 #Links for site pages:
 1. http://localhost:8080/Practice/#/home  - Main Page

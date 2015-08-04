@@ -16,6 +16,12 @@ public interface AnalyticsService {
 
     public Analytics save(Analytics analytics);
 
+    public List<Analytics> getByPeriod(Date from, Date to);
+
+    public List<Analytics> getAfter(Date date);
+
+    public List<Analytics> getBefore(Date date);
+
   /*  public void AnalyticsAutoUpdate();*/
 
 }

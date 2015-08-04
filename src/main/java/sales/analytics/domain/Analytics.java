@@ -2,6 +2,7 @@ package sales.analytics.domain;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.wordnik.swagger.annotations.ApiModel;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -12,6 +13,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "daily_stats")
+@ApiModel(value = "AnalyticsDomain", description = "Simple Analytics domain")
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.NONE)
 
 public class Analytics {
