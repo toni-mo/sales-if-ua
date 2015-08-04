@@ -2,6 +2,7 @@ package sales.comments.domain;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.wordnik.swagger.annotations.ApiModel;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -9,6 +10,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "comments")
+@ApiModel(value = "CoommentDomain", description = "Simple Comment domain")
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.NONE)
 public class Comment implements Serializable {
 
@@ -103,12 +105,5 @@ public class Comment implements Serializable {
 
     public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
-    }
-
-    @Override
-    public String toString() {
-        return String.format
-                ("Comment [id=%d, goodId='%d']:\n'%s';\n",
-                        id, goodId, commentText);
     }
 }
