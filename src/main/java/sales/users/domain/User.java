@@ -8,8 +8,12 @@ import sales.roles.domain.Role;
 
 import javax.persistence.*;
 import java.io.Serializable;
+<<<<<<< HEAD
 import java.util.Objects;
 import java.util.Set;
+=======
+import java.util.Date;
+>>>>>>> changed ifelse to switch in user filter
 
 /**
  * Created by taras on 29.07.15.
@@ -51,6 +55,16 @@ public class User implements Serializable{
     @Column(name = "phoneNumber", columnDefinition = "VARCHAR(13)")
     @JsonProperty
     private String phoneNumber;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "creationDate", nullable = false)
+    @JsonProperty
+    private Date creationDate;
+
+    @PrePersist
+    private void onCreateUserInstance() {
+        creationDate = new Date();
+    }
 
     @ManyToOne(targetEntity = Role.class)
     @JoinColumn(name = "role", referencedColumnName = "id")
@@ -119,6 +133,14 @@ public class User implements Serializable{
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public Date getDate() {
+        return creationDate;
+    }
+
+    public void setDate(Date creationDate) {
+        this.creationDate = creationDate;
     }
 
     public Role getRole() {

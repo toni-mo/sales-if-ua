@@ -1,5 +1,7 @@
 package sales.security;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,6 +18,8 @@ import javax.annotation.Resource;
  */
 @Controller
 public class LoginController {
+    final static Logger logger = LoggerFactory.getLogger(LoginController.class);
+
 
     @Resource(name = "sessionRegistry")
     private SessionRegistryImpl sessionRegistry;
@@ -23,6 +27,7 @@ public class LoginController {
     @RequestMapping(
             value = "/#/home")
     public String logged(Model model) {
+        logger.debug("Action after successful authorization");
         model.addAttribute("name", SecurityContextHolder.getContext().getAuthentication().getName());
         return "index";
     }
@@ -30,6 +35,7 @@ public class LoginController {
     @RequestMapping(
             value = "/login/failure")
     public String failure() {
+        logger.debug("Action after failed authorization");
         String message = "Login Failure!";
         return "redirect:/login?message="+message;
     }
@@ -37,6 +43,7 @@ public class LoginController {
     @RequestMapping(
             value = "/logout/success")
     public String logout() {
+        logger.debug("Action after successful logout");
         String message = "Logout Success!";
         return "redirect:/login?message="+message;
     }

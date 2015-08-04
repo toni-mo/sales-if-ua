@@ -1,5 +1,7 @@
 package sales.users.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -8,7 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import sales.notification.service.RegistrationServiceImpl;
 import sales.users.domain.User;
-import sales.users.service.IUserService;
+import sales.users.service.UserService;
 
 import java.util.List;
 
@@ -18,9 +20,10 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/users", produces = MediaType.APPLICATION_JSON_VALUE)
 public class UserController {
+    final static Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
-    private IUserService userService;
+    private UserService userService;
 
     @RequestMapping(
             method = RequestMethod.GET,
@@ -28,7 +31,7 @@ public class UserController {
     public List<User> getAllShops(@RequestParam(required = false, value ="page", defaultValue = "0") int page,
                                   @RequestParam(required = false, value = "amount", defaultValue = "5") int amount,
                                   @RequestParam(required = false, value = "sort", defaultValue = "id") String sortField) {
-        //
+        logger.debug("Get pageable list of shops");
         return userService.findByRole("shop", page, amount, sortField);
     }
 
@@ -38,7 +41,7 @@ public class UserController {
     public List<User> getAllClients(@RequestParam(required = false, value ="page", defaultValue = "0") int page,
                                     @RequestParam(required = false, value = "amount", defaultValue = "5") int amount,
                                     @RequestParam(required = false, value = "sort", defaultValue = "id") String sortField) {
-        //
+        logger.debug("Get pageable list of clients");
         return userService.findByRole("client", page, amount, sortField);
     }
 
@@ -46,7 +49,7 @@ public class UserController {
             method = RequestMethod.GET,
             value = "/shop/{id}")
     public User getShop(@PathVariable("id") Long id) {
-        //
+        logger.debug("Get Shop by id");
         return userService.getShop(id);
     }
 
@@ -54,7 +57,7 @@ public class UserController {
             method = RequestMethod.GET,
             value = "/client/{id}")
     public User getClient(@PathVariable("id") Long id) {
-        //
+        logger.debug("Get client by id");
         return userService.getClient(id);
     }
 
@@ -64,7 +67,7 @@ public class UserController {
             consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public User addPerson(@RequestBody User user) {
-        //
+        logger.debug("Add user");
         return userService.addUser(user);
     }
 
@@ -74,6 +77,7 @@ public class UserController {
             consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public User updatePerson(@PathVariable("id") Long id, @RequestBody User user) {
+        logger.debug("Update User with id = " + id);
         User dbUser = userService.getById(id);
 
         if(user.getFirstName() != null) dbUser.setFirstName(user.getFirstName());
@@ -92,7 +96,7 @@ public class UserController {
             value = "/delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public String deleteEmployee(@PathVariable("id") Long id) {
-        //
+        logger.debug("Delete user with id = " + id);
         userService.deleteUser(id);
         return "done";
     }
@@ -104,6 +108,7 @@ public class UserController {
                               @RequestParam(required = false, value ="page", defaultValue = "0") int page,
                               @RequestParam(required = false, value = "amount", defaultValue = "5") int amount,
                               @RequestParam(required = false, value = "sort", defaultValue = "id") String sortField) {
+        logger.debug("Filter Shops by " + searchField + " = " + value);
         return userService.findBy("shop", searchField, value, page, amount, sortField);
     }
 
@@ -114,6 +119,7 @@ public class UserController {
                               @RequestParam(required = false, value ="page", defaultValue = "0") int page,
                               @RequestParam(required = false, value = "amount", defaultValue = "5") int amount,
                               @RequestParam(required = false, value = "sort", defaultValue = "id") String sortField) {
+        logger.debug("Filter Clients by " + searchField + " = " + value);
         return userService.findBy("client" ,searchField, value, page, amount, sortField);
     }
 
