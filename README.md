@@ -91,6 +91,9 @@ method = POST -- pagination with sorting
 4. http://localhost:8080/Practice/#/user/backet - User's cart (User links on the sidebar)
 5. http://localhost:8080/Practice/#/admin/users - Admin's Page (Admin links on the sidebar)
 
+#Links for using SWAGGER documentation:
+http://localhost:8080/Practice/api-docs
+
 #Install Node.js
 Node is a requirement for bower package manager.
 You can download a Node.js installer for your operating system from http://nodejs.org/download/.
