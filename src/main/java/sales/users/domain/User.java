@@ -2,18 +2,12 @@ package sales.users.domain;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import sales.goods.domain.Good;
-import sales.payment.paypal.domain.Paypal;
 import sales.roles.domain.Role;
 
 import javax.persistence.*;
 import java.io.Serializable;
-<<<<<<< HEAD
-import java.util.Objects;
-import java.util.Set;
-=======
 import java.util.Date;
->>>>>>> changed ifelse to switch in user filter
+import java.util.Objects;
 
 /**
  * Created by taras on 29.07.15.
