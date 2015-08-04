@@ -29,12 +29,6 @@ public class UserServiceImpl implements UserService {
     private RoleServiceImpl roleService;
 
     @Override
-    public User getByUsername(String username) {
-        logger.debug("Get User by username");
-        return userRepository.findByUsername(username);
-    }
-
-    @Override
     public User getById(Long id) {
         logger.debug("Get User by id");
         return userRepository.getOne(id);
@@ -78,9 +72,6 @@ public class UserServiceImpl implements UserService {
         Role role = roleService.getRoleByValue(roleValue);
 
         switch(searchField){
-            case "username": {
-                return userRepository.findByRoleAndUsername(role, value, pageRequest).getContent();
-            }
             case "firstName": {
                 return userRepository.findByRoleAndFirstName(role, value, pageRequest).getContent();
             }

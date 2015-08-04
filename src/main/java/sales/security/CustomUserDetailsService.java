@@ -35,17 +35,17 @@ public class CustomUserDetailsService implements UserDetailsService {
      * The username is first retrieved from the database and then mapped to
      * a {@link UserDetails} object.
      */
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String userEmail) throws UsernameNotFoundException {
         logger.debug("Process of authorization");
         try {
-            sales.users.domain.User domainShop = userRepository.findByUsername(username);
+            sales.users.domain.User domainShop = userRepository.findByEmail(userEmail);
             boolean enabled = true;
             boolean accountNonExpired = true;
             boolean credentialsNonExpired = true;
             boolean accountNonLocked = true;
 
             return new User(
-                    domainShop.getUsername(),
+                    domainShop.getEmail(),
                     StringToMd5.getMd5(domainShop.getPassword().toLowerCase()),
                     enabled,
                     accountNonExpired,

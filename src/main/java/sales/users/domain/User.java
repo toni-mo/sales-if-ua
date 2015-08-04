@@ -22,10 +22,6 @@ public class User implements Serializable{
     @JsonProperty
     private Long id;
 
-    @Column(name = "username", columnDefinition = "VARCHAR(50) UNIQUE")
-    @JsonProperty
-    private String username;
-
     @Column(name = "password", columnDefinition = "VARCHAR(100)")
     @JsonProperty
     private String password;
@@ -38,11 +34,12 @@ public class User implements Serializable{
     @JsonProperty
     private String lastName;
 
-    @Column(name = "address", columnDefinition = "VARCHAR(255)")
+    @ManyToOne(targetEntity = City.class)
+    @JoinColumn(name = "city", referencedColumnName = "id")
     @JsonProperty
-    private String address;
+    private City city;
 
-    @Column(name = "email", columnDefinition = "VARCHAR(60)")
+    @Column(name = "email", columnDefinition = "VARCHAR(60) UNIQUE")
     @JsonProperty
     private String email;
 
@@ -73,14 +70,6 @@ public class User implements Serializable{
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -105,12 +94,12 @@ public class User implements Serializable{
         this.lastName = secondName;
     }
 
-    public String getAddress() {
-        return address;
+    public City getAddress() {
+        return city;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setAddress(City city) {
+        this.city = city;
     }
 
     public String getEmail() {
@@ -145,17 +134,16 @@ public class User implements Serializable{
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", address='" + address + '\'' +
+                ", address='" + city + '\'' +
                 ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
+                ", creationDate" + creationDate + '\'' +
                 ", role=" + role +
                 '}';
     }
-
 
     @Override
     public boolean equals(Object o) {
