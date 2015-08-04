@@ -129,6 +129,6 @@ public class UserController {
                 new ClassPathXmlApplicationContext("META-INF/bootstrap/email-notification.xml");
 
         RegistrationServiceImpl mm = (RegistrationServiceImpl) context.getBean("registrationService");
-        mm.register(userService.getByUsername("taras"));
+        //mm.register(userService.getByUsername("taras"));
     }
 }
