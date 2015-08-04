@@ -42,9 +42,24 @@ public class AnalyticsServiceImpl implements AnalyticsService{
         return analytics;
     }
 
+    @Override
+    public List<Analytics> getByPeriod(Date from, Date to) {
+        return analyticsRepository.findByDateBetween(from, to);
+    }
+
+    @Override
+    public List<Analytics> getAfter(Date date) {
+        return analyticsRepository.findByDateAfter(date);
+    }
+
+    @Override
+    public List<Analytics> getBefore(Date date) {
+        return analyticsRepository.findByDateBefore(date);
+    }
+
     public void createOnStart()
     {
-        for(int i=30; i>0; i--) {
+        for(int i=180; i>0; i--) {
             Calendar calendar = Calendar.getInstance();
             calendar.add(Calendar.DATE, -i);
             Random rand = new Random();
