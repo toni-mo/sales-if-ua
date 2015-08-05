@@ -22,4 +22,6 @@ public interface UserService {
     List<User> findBy(String roleValue ,String searchField, String value, int page, int amount, String sortField);
 
     List<User> findByRole(String roleValue, int page, int amount, String sortField);
+
+    List<User> findByCreationDateAfter(String creationDate);
 }
