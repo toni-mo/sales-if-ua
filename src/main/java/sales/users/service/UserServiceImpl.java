@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getClient(Long id) {
         logger.debug("Get Client by id");
-        return userRepository.findByRoleAndId(roleService.getRoleByValue("user"), id);
+        return userRepository.findByRoleAndId(roleService.getRoleByValue("client"), id);
     }
 
     @Override
@@ -99,5 +99,10 @@ public class UserServiceImpl implements UserService {
         Role role = roleService.getRoleByValue(roleValue);
 
         return userRepository.findByRole(role, pageRequest).getContent();
+    }
+
+    @Override
+    public List<User> findByCreationDateAfter(String creationDate) {
+        return userRepository.findByCreationDateAfter(creationDate);
     }
 }

@@ -40,4 +40,12 @@ public class City {
     public void setName(String name) {
         this.name = name;
     }
+
+    public Region getRegion() {
+        return region;
+    }
+
+    public void setRegion(Region region) {
+        this.region = region;
+    }
 }

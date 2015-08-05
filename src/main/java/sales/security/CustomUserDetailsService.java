@@ -51,7 +51,7 @@ public class CustomUserDetailsService implements UserDetailsService {
                     accountNonExpired,
                     credentialsNonExpired,
                     accountNonLocked,
-                    getAuthorities(2));
+                    getAuthorities(domainShop.getRole().getId()));
 
         } catch (Exception e) {
             logger.error("Can`t authorize user " + e);
@@ -59,42 +59,28 @@ public class CustomUserDetailsService implements UserDetailsService {
         }
     }
 
-    /**
-     * Retrieves a collection of {@link GrantedAuthority} based on a numerical role
-     * @param role the numerical role
-     * @return a collection of {@link GrantedAuthority
-     */
-    public Collection<? extends GrantedAuthority> getAuthorities(Integer role) {
+    public Collection<? extends GrantedAuthority> getAuthorities(Long role) {
         List<GrantedAuthority> authList = getGrantedAuthorities(getRoles(role));
         return authList;
     }
 
-    /**
-     * Converts a numerical role to an equivalent list of roles
-     * @param role the numerical role
-     * @return list of roles as as a list of {@link String}
-     */
-    public List<String> getRoles(Integer role) {
+    public List<String> getRoles(Long role) {
         List<String> roles = new ArrayList<String>();
 
         if (role.intValue() == 1) {
-            roles.add("ROLE_USER");
+            roles.add("ROLE_CLIENT");
             roles.add("ROLE_ADMIN");
+            roles.add("ROLE_SHOP");
 
         } else if (role.intValue() == 2) {
-            roles.add("ROLE_USER");
+            roles.add("ROLE_CLIENT");
         } else if (role.intValue() == 3) {
             roles.add("ROLE_SHOP");
         }
 
         return roles;
     }
-
-    /**
-     * Wraps {@link String} roles to {@link SimpleGrantedAuthority} objects
-     * @param roles {@link String} of roles
-     * @return list of granted authorities
-     */
+    
     public static List<GrantedAuthority> getGrantedAuthorities(List<String> roles) {
         List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
         for (String role : roles) {

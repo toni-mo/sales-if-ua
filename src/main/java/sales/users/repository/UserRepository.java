@@ -6,6 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import sales.roles.domain.Role;
 import sales.users.domain.User;
 
+import java.util.List;
+
 /**
  * Created by taras on 29.07.15.
  */
@@ -16,6 +18,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
     User findByRoleAndId(Role role, Long id);
 
     User findByEmail(String email);
+
+    List<User> findByCreationDateAfter(String creationDate);
 
     Page<User> findByRoleAndFirstName(Role role, String firstName, Pageable pageable);
 
