@@ -2,7 +2,9 @@ package sales.users.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import sales.users.domain.City;
-import sales.users.domain.Country;
+import sales.users.domain.Region;
+import java.util.List;
+
 import sales.users.domain.Region;
 
 import java.util.List;

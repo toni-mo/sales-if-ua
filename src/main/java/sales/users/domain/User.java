@@ -14,7 +14,7 @@ import java.util.Objects;
  */
 @Entity
 @Table(name="users")
-@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.NONE)
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.NONE, getterVisibility = JsonAutoDetect.Visibility.NONE, setterVisibility = JsonAutoDetect.Visibility.NONE)
 public class User implements Serializable{
 
     @Id

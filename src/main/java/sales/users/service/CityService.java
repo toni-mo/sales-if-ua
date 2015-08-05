@@ -2,7 +2,6 @@ package sales.users.service;
 
 import sales.users.domain.City;
 import sales.users.domain.Region;
-
 import java.util.List;
 
 /**

@@ -1,7 +1,9 @@
 package sales.users.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import sales.roles.domain.Role;
+
+import javax.persistence.*;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -25,6 +27,9 @@ public class Region {
     @JoinColumn(name = "country", referencedColumnName = "id")
     @JsonProperty
     private Country country;
+
+    @OneToMany(mappedBy = "region")
+    private List<City> cityList;
 
     public Long getId() {
         return id;

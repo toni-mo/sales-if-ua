@@ -28,6 +28,7 @@ public class LoginController {
             value = "/#/home")
     public String logged(Model model) {
         logger.debug("Action after successful authorization");
+        //sessionRegistry.getAllSessions(SecurityContextHolder.getContext().getAuthentication().getPrincipal(), false);
         model.addAttribute("name", SecurityContextHolder.getContext().getAuthentication().getName());
         return "index";
     }

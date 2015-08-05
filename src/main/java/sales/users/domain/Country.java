@@ -3,6 +3,7 @@ package sales.users.domain;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by taras on 04.08.15.
@@ -19,6 +20,9 @@ public class Country {
     @Column(name = "name", columnDefinition = "VARCHAR(50) UNIQUE")
     @JsonProperty
     private String name;
+
+    @OneToMany(mappedBy = "country")
+    private List<Region> regionList;
 
     public Long getId() {
         return id;
