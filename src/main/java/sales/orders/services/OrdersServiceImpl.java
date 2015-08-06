@@ -6,12 +6,13 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import sales.orders.domain.Order;
-import sales.orders.repository.OrdersRepository;
+import sales.orders.repository.OrderRepository;
+import sales.storage.domain.Storage;
 
 import java.util.List;
 
 /**
- * Created by Myroslav on 23.07.2015.
+ * Created by Volodya on 23.07.2015.
  */
 
 @Service("ordersService")
@@ -20,47 +21,31 @@ import java.util.List;
 public class OrdersServiceImpl implements OrdersService {
 
     @Autowired
-    private OrdersRepository repository;
+    private OrderRepository repository;
 
-    public Order get(int id) {
-        return repository.findOne(id);
+
+    @Override
+    public Order get(long id) {
+        return repository.findById(id);
     }
 
-    public List<Order> getAll(int page, int amount, String field) {
-        Sort sort = new Sort(Sort.Direction.ASC, field);
-        PageRequest pageRequest = new PageRequest(page, amount, sort);
-        return repository.findAll(pageRequest).getContent();
+    @Override
+    public List<Order> getAll() {
+        return repository.findAll();
     }
 
-    public int save(Order order) {
-        repository.save(order);
-        return order.getId();
+    @Override
+    public Order save(Order order) {
+        return repository.save(order);
     }
 
-
-    public int delete(int id) {
-        repository.delete(id);
-        return id;
+    @Override
+    public void delete(long id) {
+        repository.removeById(id);
     }
 
-    /*public List<Order> page(int page, int amount, Map<String, String> sort) {
-        Page<Order> ordersPage = repository.findAll(new PageRequest(page, amount));
-        return ordersPage.getContent();
-    }*/
-
-    public List<Order> findByBuyerId(int id) {
-        return repository.findByBuyerId(id);
+    @Override
+    public List<Order> getByStorages(List<Storage> storages) {
+        return repository.StorageIn(storages);
     }
-
-    public List<Order> getAllAsc()
-    {
-        Sort sort = new Sort(Sort.Direction.ASC, "price");
-        return repository.findAll(sort);
-    }
-
-    public List<Order> findByPriceGreaterThan(int price) {
-        return repository.findByPriceGreaterThan(price);
-    }
-
-
 }

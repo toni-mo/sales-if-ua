@@ -3,6 +3,7 @@ package sales.payment.paymentHandler;
 import com.paypal.api.payments.CreditCard;
 import sales.goods.domain.Good;
 import sales.payment.paypal.domain.Paypal;
+import sales.storage.domain.Storage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,10 +17,12 @@ public class Transaction {
 
     private Paypal paypal;
 
-    private List<Good> goodList;
+    private List<Storage> storages;
+
+    private String paymentId;
 
     public Transaction() {
-        goodList = new ArrayList<Good>();
+        storages = new ArrayList<Storage>();
     }
 
     public CreditCard getCard() {
@@ -38,22 +41,30 @@ public class Transaction {
         this.paypal = paypal;
     }
 
-    public List<Good> getGoodList() {
-        return goodList;
+    public List<Storage> getStorages() {
+        return storages;
     }
 
-    public void setGoodList(List<Good> goodList) {
-        this.goodList = goodList;
+    public void setStorages(List<Storage> storages) {
+        this.storages = storages;
     }
 
     public double getTotalAmont()
     {
         double sum = 0;
-        for(Good good : this.goodList)
+        for(Storage storage : this.storages)
         {
-            sum += good.getPrice();
+            sum += storage.getPrice();
         }
         return sum;
+    }
+
+    public String getPaymentId() {
+        return paymentId;
+    }
+
+    public void setPaymentId(String paymentId) {
+        this.paymentId = paymentId;
     }
 
     @Override
@@ -61,7 +72,7 @@ public class Transaction {
         return "Transaction{" +
                 "card=" + card.toString() +
                 ", paypal=" + paypal.toString() +
-                ", goodList=" + goodList +
+                ", goodList=" + storages.toString() +
                 '}';
     }
 }

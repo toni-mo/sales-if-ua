@@ -29,7 +29,7 @@ public class PaymentController  {
     @ResponseStatus(HttpStatus.CREATED)
     public void anonymSinglePayment(@RequestBody AnonymMultyPaymentDTO anonym) throws PayPalRESTException {
         logger.info("Payment: anonym single payment");
+        logger.info(anonym.toString());
         handler.anonymPayment(anonym);
     }
-
 }

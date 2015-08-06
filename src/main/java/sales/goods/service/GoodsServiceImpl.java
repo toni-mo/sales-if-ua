@@ -59,9 +59,4 @@ public class GoodsServiceImpl implements GoodsService {
     public List<Good> searchByName(String name) {
         return repository.findByNameContainingIgnoreCase(name);
     }
-
-    public List<Good> filterPriceScope(int from, int to) {
-        return repository.findByPriceBetween(from, to);
-    }
-
 }

@@ -7,16 +7,19 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import sales.goods.domain.Good;
 import sales.goods.service.GoodsService;
+import sales.orders.domain.Order;
+import sales.orders.services.OrdersService;
 import sales.payment.dto.data.AnonymMultyPaymentDTO;
 import sales.payment.paypal.service.Authentication;
 import sales.payment.paypal.service.PayPalPayment;
 import sales.payment.paypal.service.PaypalService;
+import sales.roles.service.RoleService;
+import sales.storage.domain.Storage;
+import sales.storage.service.StorageService;
 import sales.users.domain.User;
+import sales.users.service.UserService;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.logging.Logger;
 
 /**
@@ -26,25 +29,33 @@ import java.util.logging.Logger;
 public class AnonymPaymentHandler {
 
     @Autowired
-    @Qualifier("goodsServiceSecond")
-    private GoodsService goodsService;
+    private StorageService storageService;
+
+    @Autowired
+    private OrdersService ordersService;
 
     @Autowired
     private PaypalService paypalService;
+
+    @Autowired
+    private RoleService roleService;
+
+    @Autowired
+    UserService userService;
 
     protected static Logger logger = Logger.getLogger(AnonymPaymentHandler.class.getName());
 
     private CreditCard card;
 
-    private  Set<User> users;
+    private Set<User> users;
 
-    private List<Good> goods;
+    private List<Storage> storages;
 
     private List<Transaction> transactions;
 
 
     private void setCard(sales.payment.creaditCard.domain.CreditCard card,
-                        String firstName, String lastName) {
+                         String firstName, String lastName) {
         this.card = new CreditCard();
         this.card.setNumber(card.getNumber());
         this.card.setType(card.getType());
@@ -60,31 +71,28 @@ public class AnonymPaymentHandler {
         return card;
     }
 
-    private void getUsersByGoodsId(List<Long> ids)
-    {
+    private void getUsersByGoodsId(List<Long> ids) {
         users = new HashSet<User>();
-        for(Long id : ids) {
-            users.add(goodsService.get(id).getUser());
+        for (Long id : ids) {
+            users.add(storageService.get(id).getUser());
         }
     }
 
-    private void getGoods(List<Long> ids)
-    {
-        goods = new ArrayList<Good>();
-        for(Long id : ids) {
-            goods.add(goodsService.get(id));
+    private void getGoods(List<Long> ids) {
+        storages = new ArrayList<Storage>();
+        for (Long id : ids) {
+            storages.add(storageService.get(id));
         }
     }
 
-    private void defineTransactions(CreditCard card)
-    {
+    private void defineTransactions(CreditCard card) {
         transactions = new ArrayList<Transaction>();
-        for (User user : this.users)
-        {
+        for (User user : this.users) {
             Transaction transaction = new Transaction();
-            for (Good good : this.goods)
-            {
-                if(user.equals(good.getUser())) {transaction.getGoodList().add(good);}
+            for (Storage storage : this.storages) {
+                if (user.equals(storage.getUser())) {
+                    transaction.getStorages().add(storage);
+                }
             }
             transaction.setPaypal(paypalService.get(user.getId()));
             transaction.setCard(card);
@@ -93,21 +101,53 @@ public class AnonymPaymentHandler {
     }
 
     public void anonymPayment(AnonymMultyPaymentDTO paymentDTO) throws PayPalRESTException {
+        this.preparePayment(paymentDTO);
+        this.callPayPal();
+        this.saveOrders(this.saveUser(this.createUser(paymentDTO)), this.transactions);
+    }
+
+    private void preparePayment(AnonymMultyPaymentDTO paymentDTO) {
         setCard(paymentDTO.getCard(), paymentDTO.getFirstName(), paymentDTO.getLastName());
         this.getUsersByGoodsId(paymentDTO.getGoodsId());
         this.getGoods(paymentDTO.getGoodsId());
         defineTransactions(this.card);
-        payment();
     }
 
-    private void payment() throws PayPalRESTException {
+    private void callPayPal() throws PayPalRESTException {
         for (Transaction transaction : this.transactions) {
             PayPalPayment payment = new PayPalPayment(Authentication.
                     getAuthenticationToken(transaction.getPaypal().getClientId(),
                             transaction.getPaypal().getSecret()));
             payment.prepareCard(transaction.getCard());
             payment.prepareTransaction(transaction.getTotalAmont());
-            payment.makePayment();
+            transaction.setPaymentId(payment.makePayment());
+        }
+    }
+
+    private User createUser(AnonymMultyPaymentDTO paymentDTO) {
+        User user = new User();
+        user.setEmail(paymentDTO.getEmail());
+        user.setFirstName(paymentDTO.getFirstName());
+        user.setLastName(paymentDTO.getLastName());
+        user.setDate(new Date());
+        user.setRole(roleService.getRoleByValue("client"));
+        return user;
+    }
+
+    private User saveUser(User user) {
+        return userService.addUser(user);
+    }
+
+    private void saveOrders(User user, List<Transaction> transactions) {
+        for (Transaction transaction : transactions) {
+            saveTransaction(user, transaction.getStorages(), transaction.getPaymentId());
+        }
+    }
+
+    private void saveTransaction(User user, List<Storage> storages, String paymentId) {
+        for (Storage storage : storages) {
+            Order order = new Order(user, storage, paymentId);
+            ordersService.save(order);
         }
     }
 

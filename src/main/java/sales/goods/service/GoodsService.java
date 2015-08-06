@@ -19,6 +19,4 @@ public interface GoodsService {
 
     public List<Good> searchByName(String name);
 
-    public List<Good> filterPriceScope(int from, int to);
-
 }
