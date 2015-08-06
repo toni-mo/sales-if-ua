@@ -4,6 +4,8 @@
         <properties>
             <property name="hibernate.hbm2ddl.import_files_sql_extractor"
                       value="org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor"/>
+            <property name="hibernate.hbm2ddl.import_files"
+                      value="data/fill_address.sql"/>
         </properties>
     </persistence-unit>
 

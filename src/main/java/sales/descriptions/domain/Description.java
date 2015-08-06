@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import sales.goods.domain.Good;
+import sales.users.domain.User;
 
 import javax.persistence.*;
 
@@ -29,9 +30,10 @@ public class Description {
     @JsonProperty("value")
     private String value;
 
-    @Column(name = "good_id", nullable = false)
+    @ManyToOne(targetEntity = Good.class)
+    @JoinColumn(name = "good", referencedColumnName = "id")
     @JsonIgnore
-    private int goodId;
+    private Good good;
 
     public int getId() {
         return id;
@@ -63,7 +65,7 @@ public class Description {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", value='" + value + '\'' +
-                ", goodId=" + goodId +
+                ", goodId=" + good +
                 '}';
     }
 }

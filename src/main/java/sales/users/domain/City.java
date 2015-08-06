@@ -8,7 +8,7 @@ import javax.persistence.*;
  * Created by taras on 04.08.15.
  */
 @Entity
-@Table(name="city")
+@Table(name="cities")
 public class City {
 
     @Id
@@ -16,7 +16,7 @@ public class City {
     @JsonProperty
     private Long id;
 
-    @Column(name = "name", columnDefinition = "VARCHAR(50) UNIQUE")
+    @Column(name = "name", columnDefinition = "VARCHAR(50) COLLATE utf8_general_ci")
     @JsonProperty
     private String name;
 
