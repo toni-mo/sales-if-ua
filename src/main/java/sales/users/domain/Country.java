@@ -9,7 +9,7 @@ import java.util.List;
  * Created by taras on 04.08.15.
  */
 @Entity
-@Table(name="country")
+@Table(name="countries")
 public class Country {
 
     @Id
@@ -17,7 +17,7 @@ public class Country {
     @JsonProperty
     private Long id;
 
-    @Column(name = "name", columnDefinition = "VARCHAR(50) UNIQUE")
+    @Column(name = "name", columnDefinition = "VARCHAR(50) UNIQUE COLLATE utf8_general_ci")
     @JsonProperty
     private String name;
 

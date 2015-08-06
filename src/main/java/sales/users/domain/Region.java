@@ -11,7 +11,7 @@ import javax.persistence.*;
  * Created by taras on 04.08.15.
  */
 @Entity
-@Table(name="region")
+@Table(name="regions")
 public class Region {
 
     @Id
@@ -19,7 +19,7 @@ public class Region {
     @JsonProperty
     private Long id;
 
-    @Column(name = "name", columnDefinition = "VARCHAR(50) UNIQUE")
+    @Column(name = "name", columnDefinition = "VARCHAR(50) UNIQUE COLLATE utf8_general_ci")
     @JsonProperty
     private String name;
 
@@ -45,5 +45,13 @@ public class Region {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
     }
 }

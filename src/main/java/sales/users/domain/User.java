@@ -23,15 +23,15 @@ public class User implements Serializable{
     @JsonProperty
     private Long id;
 
-    @Column(name = "password", columnDefinition = "VARCHAR(100)")
+    @Column(name = "password", columnDefinition = "VARCHAR(100) COLLATE utf8_general_ci")
     @JsonProperty
     private String password;
 
-    @Column(name = "first_name", columnDefinition = "VARCHAR(255)")
+    @Column(name = "first_name", columnDefinition = "VARCHAR(255) COLLATE utf8_general_ci")
     @JsonProperty
     private String firstName;
 
-    @Column(name = "last_name", columnDefinition = "VARCHAR(255)")
+    @Column(name = "last_name", columnDefinition = "VARCHAR(255) COLLATE utf8_general_ci")
     @JsonProperty
     private String lastName;
 
