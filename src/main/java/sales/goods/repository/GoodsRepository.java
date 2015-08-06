@@ -15,7 +15,4 @@ public interface GoodsRepository extends JpaRepository<Good, Long>  {
     public Good findById(long id);
 
     public void removeById(long id);
-
-    public List<Good> findByPriceBetween(int from, int to);
-
 }

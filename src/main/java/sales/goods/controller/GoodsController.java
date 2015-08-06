@@ -28,7 +28,7 @@ public class GoodsController {
             method = RequestMethod.GET,
             produces = "application/json; charset=UTF-8")
     @ResponseStatus(HttpStatus.OK)
-    public Good getGoods(@RequestParam(value = "id") int id) {
+    public Good getGoods(@RequestParam(value = "id") long id) {
         logger.info("Good: get by id using hibernate");
         return service.get(id);
     }
@@ -83,14 +83,4 @@ public class GoodsController {
         return service.searchByName(name);
     }
 
-
-    @RequestMapping(value = "/filter",
-            method = RequestMethod.GET,
-            produces = "application/json; charset=UTF-8")
-    public List<Good> goodsSearchByNameBetweenPrice(
-            @RequestParam(value = "from") int from,
-            @RequestParam(value = "to") int to) throws IOException {
-        logger.info("Good: search by price using between, using hibernate");
-        return service.filterPriceScope(from, to);
-    }
 }

@@ -97,7 +97,7 @@ method = POST -- pagination with sorting
 5. http://localhost:8080/Practice/#/admin/users - Admin's Page (Admin links on the sidebar)
 
 #Links for using SWAGGER documentation:
-http://localhost:8080/Practice/api-docs
+    http://localhost:8080/Practice/api-docs
 
 #Install Node.js
 Node is a requirement for bower package manager.

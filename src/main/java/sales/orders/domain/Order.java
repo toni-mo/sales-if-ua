@@ -2,110 +2,85 @@ package sales.orders.domain;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import sales.storage.domain.Storage;
+import sales.users.domain.User;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
 /**
- * Created by Myroslav on 23.07.2015.
+ * Created by Volodya on 23.07.2015.
  */
 
 @Entity
 @Table(name = "orders")
-@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.NONE)
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 
 
-public class Order implements Serializable{
+public class Order implements Serializable {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @JsonProperty("id")
-    private int id;
+    private long id;
 
-    @Column(name = "shop_id")
-    @JsonProperty("shopId")
-    private int shopId;
+    @ManyToOne(targetEntity = User.class)
+    @JoinColumn(name = "user", referencedColumnName = "id")
+    @JsonProperty
+    private User user;
 
-    @Column(name = "buyer_id")
-    @JsonProperty("buyerId")
-    private int buyerId;
+    @ManyToOne(targetEntity = Storage.class)
+    @JoinColumn(name = "storage", referencedColumnName = "id")
+    @JsonProperty
+    private Storage storage;
 
-    @Column(name = "goods_id")
-    @JsonProperty("goodsId")
-    private int goodsId;
+    @Column
+    private String paymentId;
 
-    @Column(name = "amount")
-    @JsonProperty("amount")
-    private int amount;
-
-    @Column(name = "price")
-    @JsonProperty("price")
-    private int price;
-
-
-    @Column(name = "date")
-    @JsonProperty("date")
+    @Column
     private Date date;
 
     public Order() {
     }
 
-    public Order(int shopId, int buyerId, int goodsId, int amount, int price, Date date) {
-        this.shopId = shopId;
-        this.buyerId = buyerId;
-        this.goodsId = goodsId;
-        this.amount = amount;
-        this.price = price;
-        this.date = date;
+    public Order(User user, Storage storage, String paymentId) {
+        this.user = user;
+        this.storage = storage;
+        this.date = new Date();
+        this.paymentId = paymentId;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public int getShopId() {
-        return shopId;
+    public User getUser() {
+        return user;
     }
 
-    public void setShopId(int shopId) {
-        this.shopId = shopId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public int getBuyerId() {
-        return buyerId;
+    public Storage getStorage() {
+        return storage;
     }
 
-    public void setBuyerId(int buyerId) {
-        this.buyerId = buyerId;
+    public void setStorage(Storage storage) {
+        this.storage = storage;
     }
 
-    public int getGoodsId() {
-        return goodsId;
+    public String getPaymentId() {
+        return paymentId;
     }
 
-    public void setGoodsId(int goodsId) {
-        this.goodsId = goodsId;
-    }
-
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
+    public void setPaymentId(String paymentId) {
+        this.paymentId = paymentId;
     }
 
     public Date getDate() {
@@ -114,5 +89,14 @@ public class Order implements Serializable{
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", user=" + user.toString() +
+                ", storage=" + storage.toString() +
+                '}';
     }
 }

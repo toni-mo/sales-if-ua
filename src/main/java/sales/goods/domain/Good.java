@@ -2,8 +2,10 @@ package sales.goods.domain;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import sales.descriptions.domain.Description;
+import sales.storage.domain.Storage;
 import sales.users.domain.User;
 
 import javax.persistence.*;
@@ -26,23 +28,19 @@ public class Good implements Serializable {
     @JsonProperty("name")
     private String name;
 
-    @Column(name = "quantity")
-    @JsonProperty("quantity")
-    private int quantity;
-
-    @Column(name = "price")
-    @JsonProperty("price")
-    private int price;
-
-    @ManyToOne(targetEntity = User.class)
-    @JoinColumn(name = "user", referencedColumnName = "id")
+    @Column(name = "maker", columnDefinition = "VARCHAR(255) COLLATE utf8_general_ci")
     @JsonProperty
-    private User user;
+    private String maker;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "good_id", referencedColumnName = "id")
     @JsonProperty
     private List<Description> description;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "good", referencedColumnName = "id")
+    @JsonIgnore
+    private List<Storage> storages;
 
     @JsonCreator
     public Good() {
@@ -64,28 +62,12 @@ public class Good implements Serializable {
         this.name = name;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public String getMaker() {
+        return maker;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
+    public void setMaker(String maker) {
+        this.maker = maker;
     }
 
     public List<Description> getDescription() {
@@ -96,15 +78,21 @@ public class Good implements Serializable {
         this.description = description;
     }
 
+    public List<Storage> getStorages() {
+        return storages;
+    }
+
+    public void setStorages(List<Storage> storages) {
+        this.storages = storages;
+    }
+
     @Override
     public String toString() {
         return "Good{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", quantity=" + quantity +
-                ", price=" + price +
-                ", user=" + user.toString() +
-                ", description=" + description.toString() +
+                ", maker='" + maker + '\'' +
+                ", description=" + description +
                 '}';
     }
 }

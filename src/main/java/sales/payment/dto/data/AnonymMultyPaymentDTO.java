@@ -66,4 +66,15 @@ public class AnonymMultyPaymentDTO {
     public void setCard(CreditCard card) {
         this.card = card;
     }
+
+    @Override
+    public String toString() {
+        return "AnonymMultyPaymentDTO{" +
+                "goodsId=" + goodsId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", card=" + card.toString() +
+                '}';
+    }
 }

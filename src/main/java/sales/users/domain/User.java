@@ -145,6 +145,10 @@ public class User implements Serializable{
         return role;
     }
 
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -155,7 +159,7 @@ public class User implements Serializable{
                 ", address='" + city + '\'' +
                 ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", creationDate" + creationDate + '\'' +
+                ", creationDate=" + creationDate + '\'' +
                 ", role=" + role +
                 '}';
     }

@@ -1,25 +1,22 @@
 package sales.orders.services;
 
 import sales.orders.domain.Order;
+import sales.storage.domain.Storage;
 
 import java.util.List;
 
 /**
- * Created by Myroslav on 23.07.2015.
+ * Created by Volodya on 23.07.2015.
  */
 public interface OrdersService {
-    public Order get(int id);
+    public Order get(long id);
 
-    public List<Order> getAll(int page, int amount, String field);
+    public List<Order> getAll();
 
-    public int save(Order order);
+    public Order save(Order order);
 
-    public int delete(int id);
+    public void delete(long id);
 
-    public List<Order> findByBuyerId(int id);
-
-    public List<Order> getAllAsc();
-
-    public List<Order> findByPriceGreaterThan(int price);
+    public List<Order> getByStorages(List<Storage> storages);
 
 }
