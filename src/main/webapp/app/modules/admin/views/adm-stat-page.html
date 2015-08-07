@@ -9,9 +9,14 @@
                 <li><a href="#/admin/statistics"><i class="fa fa-bar-chart"></i> Statistics</a></li>
                 <li>
                     <div>
-                        <div class="checkbox textColor" style="margin-left: 10px; width: 100% ">
+                        <div
+                                class="checkbox textColor"
+                                style="margin-left: 10px; width: 100% ">
                             <label>
-                                <input type="checkbox" id="checkbox1" ng-model="checkbox1">
+                                <input
+                                        type="checkbox"
+                                        id="checkbox1"
+                                        ng-model="checkbox1">
                                 New members
                             </label>
                         </div>
@@ -19,9 +24,14 @@
                 </li>
                 <li>
                     <div>
-                        <div class="checkbox textColor" style="margin-left: 10px; width: 100% ">
+                        <div
+                                class="checkbox textColor"
+                                style="margin-left: 10px; width: 100% ">
                             <label>
-                                <input type="checkbox" id="checkbox2" ng-model="checkbox2">
+                                <input
+                                        type="checkbox"
+                                        id="checkbox2"
+                                        ng-model="checkbox2">
                                 Money transactions
                             </label>
                         </div>
@@ -29,9 +39,14 @@
                 </li>
                 <li>
                     <div>
-                        <div class="checkbox textColor" style="margin-left: 10px; width: 100% ">
+                        <div
+                                class="checkbox textColor"
+                                style="margin-left: 10px; width: 100% ">
                             <label>
-                                <input type="checkbox" id="checkbox3" ng-model="checkbox3">
+                                <input
+                                        type="checkbox"
+                                        id="checkbox3"
+                                        ng-model="checkbox3">
                                 Products sold
                             </label>
                         </div>
@@ -39,9 +54,14 @@
                 </li>
                 <li>
                     <div>
-                        <div class="checkbox textColor" style="margin-left: 10px; width: 100% ">
+                        <div
+                                class="checkbox textColor"
+                                style="margin-left: 10px; width: 100% ">
                             <label>
-                                <input type="checkbox" id="checkbox4" ng-model="checkbox4">
+                                <input
+                                        type="checkbox"
+                                        id="checkbox4"
+                                        ng-model="checkbox4">
                                 Select time interval
                             </label>
                         </div>
@@ -49,9 +69,15 @@
                 </li>
                 <li>
                     <div>
-                        <div ng-show="checkbox4 == true" style="margin-left: 10px; width: 100% ">
-                            <label> From
-                                <input class="ButtonColor BtnTextColor textColor form-control" type="date" id="date1" ng-model="date1">
+                        <div
+                                ng-show="checkbox4 == true"
+                                style="margin-left: 10px; width: 100% ">
+                            <label class="textColor"> From
+                                <input
+                                        class="form-control"
+                                        type="date"
+                                        id="date1"
+                                        ng-model="date1">
 
                             </label>
                         </div>
@@ -59,35 +85,63 @@
                 </li>
                 <li>
                     <div>
-                        <div ng-show="checkbox4 == true" style="margin-left: 10px; width: 100% ">
-                            <label> To
-                                <input class="ButtonColor BtnTextColor textColor form-control" type="date" id="date2" ng-model="date2">
-
+                        <div
+                                ng-show="checkbox4 == true"
+                                style="margin-left: 10px; width: 100% ">
+                            <label class="textColor"> To
+                                <input
+                                        class="form-control"
+                                        type="date"
+                                        id="date2"
+                                        ng-model="date2"
+                                        >
                             </label>
                         </div>
                     </div>
                 </li>
-                <li>
+                <li class="center-block" style="margin-left: 10%">
                     <div>
-                        <button ng-click="getAddress()" ng-show="checkbox4 == true" type="submit" class="btn ButtonColor BtnTextColor textColor" data-dismiss="modal">
+                        <button
+                                ng-click="buildChart(getAddress())"
+                                ng-show="checkbox4 == true"
+                                type="submit"
+                                class="btn ButtonColor BtnTextColor textColor"
+                                data-dismiss="modal">
                             Search
                         </button>
-                        </div>
+                        <button
+                                ng-click="buildChart(getAddressAll())"
+                                ng-show="checkbox4 == true"
+                                type="submit"
+                                class="btn ButtonColor BtnTextColor textColor"
+                                data-dismiss="modal">
+                            Reset
+                        </button>
                     </div>
+
                 </li>
 
 
             </ul>
             <!-- end sidebar -->
         </div>
-        <div class="col-md-offset-2 col-sm-offset-3 col-xs-offset-3 col-lg-9 col-sm-8 col-xs-7 col-md-9 table-min"
-             style="margin-top: 1%" id="chart">
-            <div ng-show="checkbox1 == true" id="container"
+        <div
+                ng-init="buildChart(getAddressAll())"
+                class="col-md-offset-2 col-sm-offset-3 col-xs-offset-3 col-lg-9 col-sm-8 col-xs-7 col-md-9 table-min"
+                style="margin-top: 1%"
+                id="chart">
+            <div
+                    ng-show="checkbox1"
+                    id="container"
                     ></div>
-            <div ng-show="checkbox2 == true" id="money-transactions"
-                 style=" margin-top:0.5%"></div>
-            <div ng-show="checkbox3 == true" id="products"
-                 style=" margin-top:0.5%"></div>
+            <div
+                    ng-show="checkbox2"
+                    id="money-transactions"
+                    style=" margin-top:0.5%"></div>
+            <div
+                    ng-show="checkbox3"
+                    id="products"
+                    style=" margin-top:0.5%"></div>
         </div>
     </div>
 </div>

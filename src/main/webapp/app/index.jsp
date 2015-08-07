@@ -133,120 +133,163 @@
 <!-- Sign up modal -->
 <div class="modal fade" id="sign-up-modal" style="background-color: rgba(0, 0, 0, 0.78)	">
     <div class="modal-dialog">
-        <div class="modal-content ButtonColor BtnTextColor textColor">
+        <div class="modal-content ButtonColor BtnTextColor textColor"  ng-controller="RegistrateCtrl">
             <div class="modal-header">
                 <!-- Nav Pills -->
                 <ul class="nav nav-pills">
-                    <li class="active"><a class="textColor" href=".user" data-toggle="tab">User</a></li>
-                    <li><a href=".shop" data-toggle="tab">Shop</a></li>
+                    <li class="active"><a ng-click="func('user')" class="textColor" href=".user" data-toggle="tab">User</a></li>
+                    <li><a ng-click="func('shop')" href=".user" data-toggle="tab">Shop</a></li>
                 </ul>
             </div>
             <div class="modal-body textColor">
                 <!-- Tab Panes -->
                 <div class="tab-content">
                     <!-- User Pane -->
-                    <div class="tab-pane active user" id="user">
-                        <form ng-submit="regUser()" class="form-horizontal" ng-controller="RegistrateCtrl" name="UserReg">
+                    <div
+                            class="tab-pane active user"
+                            id="user">
+                        <form
+                                <%--ng-submit="regUser()"--%>
+                                class="form-horizontal"
+                                name="UserReg">
                             <div class="form-group">
-                                <label class="col-md-2 control-label">Name</label>
-
+                                <label ng-show="session==true" class="col-md-2 control-label">Name</label>
+                                <label ng-show="session==false" class="col-md-2 control-label">Shop name</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control ButtonColor BtnTextColor textColor" ng-model="first_name" name="first_name">
+                                    <input
+                                            type="text"
+                                            class="form-control ButtonColor BtnTextColor textColor"
+                                            ng-model="first_name"
+                                            name="first_name">
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div ng-show="session==true" class="form-group">
                                 <label class="col-md-2 control-label">Surname</label>
 
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control ButtonColor BtnTextColor textColor" ng-model="last_name" name="last_name">
+                                    <input
+                                            type="text"
+                                            class="form-control ButtonColor BtnTextColor textColor"
+                                            ng-model="last_name"
+                                            name="last_name">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-2 control-label">Email</label>
 
                                 <div class="col-md-8">
-                                    <input type="email" class="form-control ButtonColor BtnTextColor textColor" ng-model="email" name="email">
+                                    <input
+                                            type="email"
+                                            class="form-control ButtonColor BtnTextColor textColor"
+                                            ng-model="email"
+                                            name="email">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-2 control-label">Phone n.</label>
 
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control ButtonColor BtnTextColor textColor" ng-model="phoneNumber" name="phoneNumber">
+                                    <input
+                                            type="text"
+                                            class="form-control ButtonColor BtnTextColor textColor"
+                                            ng-model="phoneNumber"
+                                            name="phoneNumber">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-2 control-label">Address</label>
+                                <label class="col-md-2 control-label">Country</label>
+
+                                <div ng-init="getCountry()" class="col-md-8">
+                                    <select
+                                            class="form-control ButtonColor BtnTextColor textColor"
+                                            name="country"
+                                            ng-model="selectedCountryID"
+                                            ng-change="getRegion()"
+                                            ng-options="country.id as country.name for country in countries"
+                                            style="color: #080808"
+                                            >
+                                    </select >
+                                   </div>
+                            </div>
+                            <div ng-show="selectedCountryID" class="form-group">
+                                <label class="col-md-2 control-label">Region</label>
 
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control ButtonColor BtnTextColor textColor" ng-model="address" name="address">
+                                    <select
+                                            class="form-control ButtonColor BtnTextColor textColor"
+                                            ng-model="selectedRegionID"
+                                            name="region"
+                                            ng-change="getCity()"
+                                            ng-options="region.id as region.name for region in regions"
+                                            style="color: #080808"
+                                            >
+                                         </select>
+                                    </div>
+                            </div>
+                            <div ng-show="selectedRegionID" class="form-group">
+                                <label class="col-md-2 control-label">City</label>
+
+                                <div class="col-md-8">
+                                    <select
+                                            class="form-control ButtonColor BtnTextColor textColor"
+                                            ng-model="selectedCityID"
+                                            ng-options="city.id as city.name for city in cities"
+                                            name="city">
+                                        </select>
                                 </div>
                             </div>
+                            <div class="text-center" ng-show="session==false">Pay pal</div>
+                            <div ng-show="session==false" class="form-group">
+                                <label class="col-md-2 control-label">Client Id</label>
+
+                                <div class="col-md-8">
+                                    <input
+                                            type="text"
+                                            class="form-control ButtonColor BtnTextColor textColor"
+                                            ng-model="clientID"
+                                            name="clientID">
+                                </div>
+                            </div>
+                            <div ng-show="session==false" class="form-group">
+                            <label class="col-md-2 control-label">Secret key</label>
+
+                            <div class="col-md-8">
+                                <input
+                                        type="text"
+                                        class="form-control ButtonColor BtnTextColor textColor"
+                                        ng-model="secretKey"
+                                        name="secretKey">
+                            </div>
+                        </div>
                             <div class="form-group">
                                 <label class="col-md-2 control-label">Password</label>
 
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control ButtonColor BtnTextColor textColor" ng-model="password1" name="pass1">
+                                    <input
+                                            type="text"
+                                            class="form-control ButtonColor BtnTextColor textColor"
+                                            ng-model="password1"
+                                            name="pass1">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-2 control-label">Repeat Pas.</label>
 
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control ButtonColor BtnTextColor textColor" ng-model="password" name="pass2">
+                                    <input
+                                            type="text"
+                                            class="form-control ButtonColor BtnTextColor textColor"
+                                            ng-model="password"
+                                            name="pass2">
                                     <span ng-show="password1 != password && UserReg.pass2.$dirty">Bad password</span>
                                 </div>
                             </div>
-                            <button type="submit" class="btn center-block ButtonColor BtnTextColor textColor">Register</button>
-                        </form>
-                    </div>
-                    <!-- Shop Pane -->
-                    <div class="tab-pane shop" id="shop">
-                        <form ng-submit="regShop()" class="form-horizontal" ng-controller="RegistrateCtrl" name="ShopReg">
-                            <div class="form-group">
-                                <label class="col-md-2 control-label">Shop Name</label>
-
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control ButtonColor BtnTextColor textColor" ng-model="first_name" name="first_name">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-2 control-label">Email</label>
-
-                                <div class="col-md-8">
-                                    <input type="email" class="form-control ButtonColor BtnTextColor textColor" ng-model="email" name="email">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-2 control-label">Phone n.</label>
-
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control ButtonColor BtnTextColor textColor" ng-model="phoneNumber" name="phoneNumber">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-2 control-label">Address</label>
-
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control ButtonColor BtnTextColor textColor" ng-model="address" name="address">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-2 control-label">Password</label>
-
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control ButtonColor BtnTextColor textColor" ng-model="password1" name="pass1">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-2 control-label">Repeat Pas.</label>
-
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control ButtonColor BtnTextColor textColor" ng-model="password" name="pass2">
-                                    <span ng-show="password1 != password && ShopReg.pass2.$dirty">Bad password</span>
-                                </div>
-                            </div>
-                            <button type="submit" class="btn center-block ButtonColor BtnTextColor textColor">Register</button>
+                            <button
+                                    type="button"
+                                    ng-click="regUser()"
+                                    class="btn center-block ButtonColor BtnTextColor textColor">
+                                Register
+                            </button>
                         </form>
                     </div>
                 </div>
