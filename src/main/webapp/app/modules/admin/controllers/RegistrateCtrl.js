@@ -20,17 +20,17 @@ admin.controller('RegistrateCtrl', ['$scope', '$http', function ($scope, $http) 
     $scope.session = true;
     $scope.role = {"id": 2, "value": "client"}; //1 - adm, 2 - user, 3 - shop
     $scope.getCountry = function () {
-        $http.get('/Practice/address/countries').then(function (response) {
+        $http.get('/Practice/address/country').then(function (response) {
             $scope.countries = response.data;
         });
     };
     $scope.getRegion = function () {
-        $http.get('/Practice/address/country/' + $scope.selectedCountryID + '/regions').then(function (response) {
+        $http.get('/Practice/address/country/' + $scope.selectedCountryID + '/region').then(function (response) {
             $scope.regions = response.data;
         })
     };
     $scope.getCity = function () {
-        $http.get('/Practice/address/country/' + $scope.selectedCountryID + '/region/' + $scope.selectedRegionID + '/cities').then(function (response) {
+        $http.get('/Practice/address/country/' + $scope.selectedCountryID + '/region/' + $scope.selectedRegionID + '/city').then(function (response) {
             $scope.cities = response.data;
         })
     };
@@ -65,7 +65,7 @@ admin.controller('RegistrateCtrl', ['$scope', '$http', function ($scope, $http) 
             lastName: $scope.last_name,
             email: $scope.email,
             city: {
-                "id": $scope.selectedCityID, "name": $scope.selectedCountryName,
+                "id": $scope.selectedCityID, "name": $scope.selectedCityName,
                 "region": {
                     "id": $scope.selectedRegionID, "name": $scope.selectedRegionName,
                     "country": {"id": $scope.selectedCountryID, "name": $scope.selectedCountryName}
