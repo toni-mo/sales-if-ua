@@ -76,7 +76,7 @@ admin.controller('RegistrateCtrl', ['$scope', '$http', function ($scope, $http) 
             password: $scope.password,
             role: $scope.role
         };
-        $http.post('/Practice/users/add', user);
+        $http.post('/Practice/user', user);
         console.log(user);
     };
 }]);

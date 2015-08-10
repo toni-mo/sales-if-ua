@@ -101,7 +101,7 @@ public class UserController {
 
 
     @RequestMapping(
-            method = RequestMethod.DELETE,
+            method = RequestMethod.GET,
             value = "/delete/{id}",
             produces = "application/json")
     @ResponseStatus(HttpStatus.NO_CONTENT)
