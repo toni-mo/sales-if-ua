@@ -77,6 +77,7 @@
     <script type="text/javascript" src="app/modules/goods/controllers/YouTubeCtrl.js"></script>
     <script type="text/javascript" src="app/modules/goods/controllers/tablesCtrl.js"></script>
     <script type="text/javascript" src="app/modules/goods/controllers/orderCtrl.js"></script>
+    <script type="text/javascript" src="app/modules/goods/controllers/OverviewCtrl.js"></script>
 
 
     <!-- Home module -->
@@ -84,6 +85,7 @@
     <script type="text/javascript" src="app/modules/home/controllers/main.js"></script>
     <script type="text/javascript" src="app/modules/home/controllers/test.js"></script>
     <script type="text/javascript" src="app/modules/home/controllers/categoriesService.js"></script>
+    <script type="text/javascript" src="app/modules/home/controllers/ProductsCtrl.js"></script>
 
 </head>
 <body class="backgroundIMG">
@@ -96,7 +98,7 @@
         <div class="modal-content ButtonColor BtnTextColor textColor">
             <div class="modal-body" align="center" ng-controller="LoginController">
                 <%--Creating JSON--%>
-                <form class="login-form" action="j_spring_security_check" method="post">
+                <form class="login-form" action="../../j_spring_security_check" method="post">
                     <fieldset>
                         <!--<legend class="textColor">Login Here</legend>-->
 
@@ -309,7 +311,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="#/home" class="navbar-brand">Sales-IF</a>
+            <a href="#/home" class="navbar-brand">Sales-IF H  ${name}</a>
         </div>
         <!-- /.navbar-header -->
         <!-- #collapsed-group -->
