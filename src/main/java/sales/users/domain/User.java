@@ -1,7 +1,6 @@
 package sales.users.domain;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import sales.roles.domain.Role;
 
@@ -53,9 +52,14 @@ public class User implements Serializable{
     @JsonProperty
     private Date creationDate;
 
+    @Column(name = "isBlocked")
+    @JsonProperty
+    private boolean isBlocked;
+
     @PrePersist
     private void onCreateUserInstance() {
         creationDate = new Date();
+        isBlocked = false;
     }
 
     @ManyToOne(targetEntity = Role.class)
@@ -147,6 +151,14 @@ public class User implements Serializable{
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public boolean isBlocked() {
+        return isBlocked;
+    }
+
+    public void setIsBlocked(boolean isBlocked) {
+        this.isBlocked = isBlocked;
     }
 
     @Override

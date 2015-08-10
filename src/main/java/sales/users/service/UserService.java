@@ -24,4 +24,6 @@ public interface UserService {
     List<User> findByRole(String roleValue, int page, int amount, String sortField);
 
     List<User> findByCreationDateAfter(String creationDate);
+
+    void changeUserLock(Long id);
 }
