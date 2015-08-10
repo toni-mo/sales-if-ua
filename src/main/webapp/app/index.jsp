@@ -70,12 +70,6 @@
 
     <!-- Goods module -->
     <script type="text/javascript" src="app/modules/goods/index.js"></script>
-    <script type="text/javascript" src="app/modules/goods/controllers/LoginController.js"></script>
-    <script type="text/javascript" src="app/modules/goods/controllers/registrationCtrlCustomer.js"></script>
-    <script type="text/javascript" src="app/modules/goods/controllers/registrationCtrlShop.js"></script>
-    <script type="text/javascript" src="app/modules/goods/controllers/imagesCtrl.js"></script>
-    <script type="text/javascript" src="app/modules/goods/controllers/YouTubeCtrl.js"></script>
-    <script type="text/javascript" src="app/modules/goods/controllers/tablesCtrl.js"></script>
     <script type="text/javascript" src="app/modules/goods/controllers/orderCtrl.js"></script>
     <script type="text/javascript" src="app/modules/goods/controllers/OverviewCtrl.js"></script>
 
@@ -96,38 +90,41 @@
      style="background-color: rgba(0, 0, 0, 0.78)">
     <div class="modal-dialog modal-sm">
         <div class="modal-content ButtonColor BtnTextColor textColor">
-            <div class="modal-body" align="center" ng-controller="LoginController">
+            <div class="modal-body" align="center" >
                 <%--Creating JSON--%>
-                <form class="login-form" action="../../j_spring_security_check" method="post">
-                    <fieldset>
-                        <!--<legend class="textColor">Login Here</legend>-->
+                <form class="login-form" action="j_spring_security_check" method="post">
 
                         <p class="textColor">
-                            <label>Username</label>:
-                            <input class="form-control ButtonColor BtnTextColor textColor" id="j_username"
-                                   name="j_username" size="20" maxlength="50" type="text"/>
+                            <label for="j_username">Username</label>
+                            <input
+                                    class="form-control ButtonColor BtnTextColor textColor"
+                                    id="j_username"
+                                    name="j_username"
+                                    size="20"
+                                    maxlength="50"
+                                    type="text"
+                                    />
                         </p>
 
                         <p class="textColor">
-                            <label>Password</label>:
-                            <input class="form-control ButtonColor BtnTextColor textColor" id="j_password"
-                                   name="j_password" size="20" maxlength="50" type="password"/>
+                            <label for="j_password">Password</label>
+                            <input
+                                    class="form-control ButtonColor BtnTextColor textColor"
+                                    id="j_password"
+                                    name="j_password"
+                                    size="20" maxlength="50"
+                                    type="password"/>
                         </p>
 
-                        <!--<p><input type="submit" value="Login"/></p>-->
                         <p>
                             <button type="button" class="btn ButtonColor BtnTextColor textColor" data-dismiss="modal">
                                 Close
                             </button>
-                            <button type="submit" class="btn ButtonColor BtnTextColor textColor" data-dismiss="modal">
-                                Login
-                            </button>
-                        </p>
-                    </fieldset>
+                            <input class="btn ButtonColor BtnTextColor textColor" type="submit" value="Login"/></p>
                 </form>
-                <p align="center">If you haven't account, you can register now as
-                    <a data-toggle="modal" data-target=".registration_form_customer" data-dismiss="modal"> customer </a>
-                    or <a data-toggle="modal" data-target=".registration_form_shop" data-dismiss="modal"> shop </a></p>
+                <p align="center">If you haven't account, you can
+                    <a data-toggle="modal" data-target="#sign-up-modal" data-dismiss="modal"> register </a> now.
+                   </p>
             </div>
         </div>
     </div>
@@ -236,7 +233,8 @@
                                             class="form-control ButtonColor BtnTextColor textColor"
                                             ng-model="selectedCityID"
                                             ng-options="city.id as city.name for city in cities"
-                                            name="city">
+                                            name="city"
+                                            style="color: #080808">
                                         </select>
                                 </div>
                             </div>
@@ -268,7 +266,7 @@
 
                                 <div class="col-md-8">
                                     <input
-                                            type="text"
+                                            type="password"
                                             class="form-control ButtonColor BtnTextColor textColor"
                                             ng-model="password1"
                                             name="pass1">
@@ -279,7 +277,7 @@
 
                                 <div class="col-md-8">
                                     <input
-                                            type="text"
+                                            type="password"
                                             class="form-control ButtonColor BtnTextColor textColor"
                                             ng-model="password"
                                             name="pass2">
@@ -289,7 +287,8 @@
                             <button
                                     type="button"
                                     ng-click="regUser()"
-                                    class="btn center-block ButtonColor BtnTextColor textColor">
+                                    class="btn center-block ButtonColor BtnTextColor textColor"
+                                    data-dismiss="modal">
                                 Register
                             </button>
                         </form>
@@ -307,7 +306,11 @@
     <div class="container">
         <!-- .navbar-header -->
         <div class="navbar-header ">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapsed-group">
+            <button
+                    type="button"
+                    class="navbar-toggle"
+                    data-toggle="collapse"
+                    data-target="#collapsed-group">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
@@ -329,7 +332,10 @@
                     <!-- Form with search -->
                     <form class="navbar-form">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search product">
+                            <input
+                                    type="text"
+                                    class="form-control"
+                                    placeholder="Search product">
 
                             <div class="input-group-btn">
                                 <ul class="dropdown-menu dropdown-menu-right">
@@ -347,27 +353,25 @@
                         </div>
                     </form>
                 </li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown">
-                        Join in
-                        <span class="caret"></span>
+                <li>
+                    <a
+                            data-toggle="modal"
+                            data-target=".login_form">
+                        Log In
                     </a>
-                    <ul class="dropdown-menu">
-                        <li><a data-toggle="modal" data-target=".login_form">Sign in</a></li>
-                        <li><a data-toggle="modal" data-target="#sign-up-modal">Sign up</a></li>
-                    </ul>
                 </li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" role="button"
-                       aria-expanded="false">
-                        <i class="fa fa-cog"></i>
+                    <a
+                            class="dropdown-toggle"
+                            data-toggle="dropdown"
+                            role="button"
+                            aria-expanded="false">
+                        <i class="fa fa-cog"> ${name}</i>
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#/user/backet"><i class="fa fa-user"></i> Profile</a></li>
-                        <li><a href="#"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                        <li><a href="#"><i class="fa fa-heart"></i> Whishlist</a></li>
-                        <li class="divider"></li>
+                        <li><a href="#user/profile/edit"><i class="fa fa-user"></i> Profile</a></li>
+                        <li><a href="#user/backet"><i class="fa fa-shopping-cart"></i> Bucket</a></li>
                         <li><a href=""><i class="fa fa-user-times"></i> Log Out</a></li>
                     </ul>
                 </li>

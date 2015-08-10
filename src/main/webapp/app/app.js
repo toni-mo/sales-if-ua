@@ -72,9 +72,6 @@ phonecatApp.config(['$routeProvider',
       when('/character', {
         templateUrl: 'app/modules/goods/views/nazar-characteristic-of-product.html'
       }).
-      when('/logIn', {
-        templateUrl: 'app/modules/goods/views/nazar-login-and-registration-page.html'
-      }).
       otherwise({
         redirectTo: '/home'
       });
