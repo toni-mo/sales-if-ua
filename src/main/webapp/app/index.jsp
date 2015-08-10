@@ -98,7 +98,7 @@
         <div class="modal-content ButtonColor BtnTextColor textColor">
             <div class="modal-body" align="center" ng-controller="LoginController">
                 <%--Creating JSON--%>
-                <form class="login-form" action="../../j_spring_security_check" method="post">
+                <form class="login-form" action="j_spring_security_check" method="post">
                     <fieldset>
                         <!--<legend class="textColor">Login Here</legend>-->
 
