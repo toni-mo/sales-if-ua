@@ -35,6 +35,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User getByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
+    @Override
     public User getShop(Long id) {
         logger.debug("Get Shop by id");
         return userRepository.findByRoleAndId(roleService.getRoleByValue("shop"), id);
