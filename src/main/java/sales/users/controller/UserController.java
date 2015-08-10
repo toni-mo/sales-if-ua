@@ -1,5 +1,6 @@
 package sales.users.controller;
 
+import com.wordnik.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -141,4 +142,14 @@ public class UserController {
         RegistrationServiceImpl mm = (RegistrationServiceImpl) context.getBean("registrationService");
         //mm.register(userService.getByUsername("taras"));
     }
+
+    @ApiOperation(httpMethod = "PUT",
+            value = "Change user lock status",
+            notes = "New user status: isBlockedNew = !isBlockedOld")
+    @RequestMapping(value = "/lock/{userId}",
+                    method = RequestMethod.PUT)
+    public void changeUserLock(@PathVariable(value = "userId") Long userId) {
+        userService.changeUserLock(userId);
+    }
+
 }

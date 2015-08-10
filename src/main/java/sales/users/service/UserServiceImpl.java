@@ -105,4 +105,11 @@ public class UserServiceImpl implements UserService {
     public List<User> findByCreationDateAfter(String creationDate) {
         return userRepository.findByCreationDateAfter(creationDate);
     }
+
+    @Override
+    public void changeUserLock(Long id) {
+        User user = userRepository.findOne(id);
+        user.setIsBlocked(!user.isBlocked());
+        userRepository.save(user);
+    }
 }
