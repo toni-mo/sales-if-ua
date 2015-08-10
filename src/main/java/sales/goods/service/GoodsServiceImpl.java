@@ -59,4 +59,10 @@ public class GoodsServiceImpl implements GoodsService {
     public List<Good> searchByName(String name) {
         return repository.findByNameContainingIgnoreCase(name);
     }
+
+    @Override
+    public List<Good> getNewest(int size) {
+        PageRequest pageRequest = new PageRequest(0, 10, new Sort(Sort.Direction.DESC, "date"));
+        return Lists.newArrayList(repository.findAll(pageRequest).getContent());
+    }
 }
