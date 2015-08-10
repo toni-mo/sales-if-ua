@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import sales.notification.service.RegistrationServiceImpl;
 import sales.users.domain.User;
 import sales.users.service.UserService;
+import sales.util.Constants;
 
 import java.util.List;
 
@@ -19,7 +20,7 @@ import java.util.List;
  * Created by taras on 29.07.15.
  */
 @RestController
-@RequestMapping(value = "/users")
+@RequestMapping(value = "/user")
 public class UserController {
     final static Logger logger = LoggerFactory.getLogger(UserController.class);
 
@@ -34,7 +35,7 @@ public class UserController {
                                   @RequestParam(required = false, value = "amount", defaultValue = "5") int amount,
                                   @RequestParam(required = false, value = "sort", defaultValue = "id") String sortField) {
         logger.info("Get pageable list of shops");
-        return userService.findByRole("shop", page, amount, sortField);
+        return userService.findByRole(Constants.SHOP, page, amount, sortField);
     }
 
     @RequestMapping(
@@ -68,7 +69,7 @@ public class UserController {
 
     @RequestMapping(
             method = RequestMethod.POST,
-            value = "/add",
+            value = "",
             consumes= "application/json",
             produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
@@ -80,7 +81,7 @@ public class UserController {
 
     @RequestMapping(
             method = RequestMethod.PATCH,
-            value = "/update/{id}",
+            value = "/{id}",
             consumes= "application/json",
             produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
@@ -134,15 +135,6 @@ public class UserController {
         return userService.findBy("client" ,searchField, value, page, amount, sortField);
     }
 
-    @RequestMapping(value = "/email")
-    public void sendEmail(){
-        ApplicationContext context =
-                new ClassPathXmlApplicationContext("META-INF/bootstrap/email-notification.xml");
-
-        RegistrationServiceImpl mm = (RegistrationServiceImpl) context.getBean("registrationService");
-        //mm.register(userService.getByUsername("taras"));
-    }
-
     @ApiOperation(httpMethod = "PUT",
             value = "Change user lock status",
             notes = "New user status: isBlockedNew = !isBlockedOld")
@@ -151,5 +143,4 @@ public class UserController {
     public void changeUserLock(@PathVariable(value = "userId") Long userId) {
         userService.changeUserLock(userId);
     }
-
 }

@@ -36,7 +36,7 @@ public class CustomUserDetailsService implements UserDetailsService {
      * a {@link UserDetails} object.
      */
     public UserDetails loadUserByUsername(String userEmail) throws UsernameNotFoundException {
-        logger.debug("Process of authorization");
+        logger.info("Process of authorization");
         try {
             sales.users.domain.User domainShop = userRepository.findByEmail(userEmail);
             boolean enabled = true;
@@ -46,7 +46,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
             return new User(
                     domainShop.getEmail(),
-                    StringToMd5.getMd5(domainShop.getPassword().toLowerCase()),
+                    domainShop.getPassword().toLowerCase(),
                     enabled,
                     accountNonExpired,
                     credentialsNonExpired,
@@ -67,15 +67,21 @@ public class CustomUserDetailsService implements UserDetailsService {
     public List<String> getRoles(Long role) {
         List<String> roles = new ArrayList<String>();
 
-        if (role.intValue() == 1) {
-            roles.add("ROLE_CLIENT");
-            roles.add("ROLE_ADMIN");
-            roles.add("ROLE_SHOP");
-
-        } else if (role.intValue() == 2) {
-            roles.add("ROLE_CLIENT");
-        } else if (role.intValue() == 3) {
-            roles.add("ROLE_SHOP");
+        switch(role.intValue()) {
+            case 1: {
+                roles.add("ROLE_CLIENT");
+                roles.add("ROLE_ADMIN");
+                roles.add("ROLE_SHOP");
+                break;
+            }
+            case 2: {
+                roles.add("ROLE_CLIENT");
+                break;
+            }
+            case 3: {
+                roles.add("ROLE_SHOP");
+                break;
+            }
         }
 
         return roles;
