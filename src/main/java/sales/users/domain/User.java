@@ -2,11 +2,14 @@ package sales.users.domain;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import sales.descriptions.domain.Description;
+import sales.payment.creaditCard.domain.CreditCard;
 import sales.roles.domain.Role;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -66,6 +69,11 @@ public class User implements Serializable{
     @JoinColumn(name = "role", referencedColumnName = "id")
     @JsonProperty
     private Role role;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "userId", referencedColumnName = "id")
+    @JsonProperty
+    private List<CreditCard> creditCards;
 
     public User() {
     }
@@ -159,6 +167,14 @@ public class User implements Serializable{
 
     public void setIsBlocked(boolean isBlocked) {
         this.isBlocked = isBlocked;
+    }
+
+    public List<CreditCard> getCreditCards() {
+        return creditCards;
+    }
+
+    public void setCreditCards(List<CreditCard> creditCards) {
+        this.creditCards = creditCards;
     }
 
     @Override

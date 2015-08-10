@@ -5,13 +5,12 @@ import com.paypal.core.rest.PayPalRESTException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
-import sales.goods.domain.Good;
-import sales.goods.service.GoodsService;
 import sales.orders.domain.Order;
 import sales.orders.services.OrdersService;
+import sales.payment.creaditCard.service.CreaditCardService;
 import sales.payment.dto.data.AnonymMultyPaymentDTO;
+import sales.payment.dto.data.RegisteredMultiPaymentDTO;
 import sales.payment.paypal.service.Authentication;
 import sales.payment.paypal.service.PayPalPayment;
 import sales.payment.paypal.service.PaypalService;
@@ -25,10 +24,10 @@ import sales.util.Constants;
 import java.util.*;
 
 /**
- * Created by volodya on 30.07.15.
+ * Created by volodya on 10.08.15.
  */
 @Component
-public class AnonymPaymentHandler {
+public class RegistretedPaymentHandler {
 
     @Autowired
     private StorageService storageService;
@@ -43,9 +42,12 @@ public class AnonymPaymentHandler {
     private RoleService roleService;
 
     @Autowired
+    private CreaditCardService creaditCardService;
+
+    @Autowired
     UserService userService;
 
-    protected static Logger logger = LoggerFactory.getLogger(AnonymPaymentHandler.class.getName());
+    protected static Logger logger = LoggerFactory.getLogger(RegistretedPaymentHandler.class.getName());
 
     private CreditCard card;
 
@@ -55,8 +57,7 @@ public class AnonymPaymentHandler {
 
     private List<Transaction> transactions;
 
-    private void setCard(sales.payment.creaditCard.domain.CreditCard card,
-                         String firstName, String lastName) {
+    private void setCard(sales.payment.creaditCard.domain.CreditCard card) {
         this.card = new CreditCard();
         this.card.setNumber(card.getNumber());
         this.card.setType(card.getType());
@@ -64,8 +65,17 @@ public class AnonymPaymentHandler {
         this.card.setExpireYear(card.getExpireYear());
         this.card.setNumber(card.getNumber());
         this.card.setCvv2(card.getCvv2());
-        this.card.setFirstName(firstName);
-        this.card.setLastName(lastName);
+    }
+
+    private void setCard(long creditCardId) {
+        sales.payment.creaditCard.domain.CreditCard card = creaditCardService.get(creditCardId);
+        this.card = new CreditCard();
+        this.card.setNumber(card.getNumber());
+        this.card.setType(card.getType());
+        this.card.setExpireMonth(card.getExpireMonth());
+        this.card.setExpireYear(card.getExpireYear());
+        this.card.setNumber(card.getNumber());
+        this.card.setCvv2(card.getCvv2());
     }
 
     public CreditCard getCard() {
@@ -101,14 +111,15 @@ public class AnonymPaymentHandler {
         }
     }
 
-    public void anonymPayment(AnonymMultyPaymentDTO paymentDTO) throws PayPalRESTException {
+    public void anonymPayment(RegisteredMultiPaymentDTO paymentDTO) throws PayPalRESTException {
         this.preparePayment(paymentDTO);
         this.callPayPal();
-        this.saveOrders(this.saveUser(this.createUser(paymentDTO)), this.transactions);
+        this.saveOrders(paymentDTO.getUserId(), this.transactions);
     }
 
-    private void preparePayment(AnonymMultyPaymentDTO paymentDTO) {
-        setCard(paymentDTO.getCard(), paymentDTO.getFirstName(), paymentDTO.getLastName());
+    private void preparePayment(RegisteredMultiPaymentDTO paymentDTO) {
+        if(paymentDTO.getCard().equals(null)){setCard(paymentDTO.getCard());}
+        else{ setCard(paymentDTO.getCardId());}
         this.getUsersByGoodsId(paymentDTO.getGoodsId());
         this.getGoods(paymentDTO.getGoodsId());
         defineTransactions(this.card);
@@ -135,11 +146,8 @@ public class AnonymPaymentHandler {
         return user;
     }
 
-    private User saveUser(User user) {
-        return userService.addUser(user);
-    }
-
-    private void saveOrders(User user, List<Transaction> transactions) {
+    private void saveOrders(long userId, List<Transaction> transactions) {
+        User user = userService.getById(userId);
         for (Transaction transaction : transactions) {
             saveTransaction(user, transaction.getStorages(), transaction.getPaymentId());
         }
@@ -151,5 +159,4 @@ public class AnonymPaymentHandler {
             ordersService.save(order);
         }
     }
-
 }
