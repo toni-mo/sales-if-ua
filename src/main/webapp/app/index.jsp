@@ -314,7 +314,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="#/home" class="navbar-brand">Sales-IF H  ${name}</a>
+            <a href="#/home" class="navbar-brand">Sales-IF H</a>
         </div>
         <!-- /.navbar-header -->
         <!-- #collapsed-group -->
@@ -366,7 +366,7 @@
                             data-toggle="dropdown"
                             role="button"
                             aria-expanded="false">
-                        <i class="fa fa-cog"> ${name}</i>
+                        <i class="fa fa-cog"> user: ${firstName}</i>
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
