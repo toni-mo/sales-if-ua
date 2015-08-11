@@ -26,9 +26,9 @@ public class UserController {
 
     @RequestMapping(
             method = RequestMethod.GET,
-            value = "/{email}",
+            value = "",
             produces = "application/json")
-    public User getUserByEmail(@PathVariable("email") String email) {
+    public User getUserByEmail(@RequestParam(required = true, value ="email") String email) {
         logger.info("Get user by email");
         return userService.getByEmail(email);
     }
