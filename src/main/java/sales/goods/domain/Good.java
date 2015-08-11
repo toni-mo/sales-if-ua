@@ -47,6 +47,20 @@ public class Good implements Serializable {
     @JsonIgnore
     private List<Storage> storages;
 
+    @Column(name = "rating", nullable = false, columnDefinition = "DOUBLE DEFAULT 0")
+    @JsonProperty("rating")
+    private double rating;
+
+    @Column(name = "ratingCount", nullable = false, columnDefinition = "BIGINT(20) DEFAULT 0")
+    @JsonIgnore
+    private long ratingCount;
+
+    @PrePersist
+    private void onCreateCommentInstance() {
+        this.rating = 0;
+        this.ratingCount = 0;
+    }
+
     @JsonCreator
     public Good() {
     }
@@ -97,6 +111,22 @@ public class Good implements Serializable {
 
     public void setStorages(List<Storage> storages) {
         this.storages = storages;
+    }
+
+    public double getRating() {
+        return rating;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
+
+    public long getRatingCount() {
+        return ratingCount;
+    }
+
+    public void setRatingCount(long ratingCount) {
+        this.ratingCount = ratingCount;
     }
 
     @Override
