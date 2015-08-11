@@ -21,6 +21,14 @@ admin.controller('RegistrateCtrl', ['$scope', '$http', function ($scope, $http) 
     $scope.secretKey = '';
     $scope.session = true;
     $scope.role = {"id": 2, "value": "client"}; //1 - adm, 2 - user, 3 - shop
+
+
+    // Grabing session value from JSP
+    $scope.sessionValue = "";
+    $scope.grabSessionValue = function(value){
+        $scope.sessionValue = value;
+    };
+
     $scope.logOut = function(){
         $http.get('/Practice/logout');
 
