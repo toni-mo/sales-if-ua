@@ -1,27 +1,30 @@
 package sales.analytics.service;
 
-import sales.analytics.domain.Analytics;
+import sales.analytics.domain.ClientsAnalytic;
+import sales.analytics.domain.SalesAnalytic;
+import sales.analytics.domain.ShopsAnalytic;
+import sales.users.domain.User;
 
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 /**
  * Created by Myroslav on 29.07.2015.
  */
 public interface AnalyticsService {
-    public Analytics get(GregorianCalendar date);
+    public List<ClientsAnalytic> getAllClientAnalytic();
 
-    public List<Analytics> getAll();
+    public List<ShopsAnalytic> getAllShopsAnalytic();
 
-    public Analytics save(Analytics analytics);
+    public int getClientsAmountForLastTime(int min);
 
-    public List<Analytics> getByPeriod(Date from, Date to);
+    public int getShopsAmountForLastTime(int min);
 
-    public List<Analytics> getAfter(Date date);
+    public List<SalesAnalytic> getAllSales();
 
-    public List<Analytics> getBefore(Date date);
+    public List<User> getLastUsers(int min);
 
-  /*  public void AnalyticsAutoUpdate();*/
+    public List<User> getAllShops();
 
+    public List<SalesAnalytic> getAnalyticsByShop(Long shop);
 }
