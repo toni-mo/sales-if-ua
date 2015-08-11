@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sales.users.domain.City;
 import sales.users.domain.Region;
-
 import sales.users.repository.CityRepository;
 
 import java.util.List;
