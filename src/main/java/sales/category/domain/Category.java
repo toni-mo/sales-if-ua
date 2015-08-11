@@ -1,28 +1,24 @@
-package sales.users.domain;
+package sales.category.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
-import java.util.List;
 
 /**
- * Created by taras on 04.08.15.
+ * Created by taras on 11.08.15.
  */
 @Entity
-@Table(name="countries")
-public class Country {
+@Table(name="categories")
+public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @JsonProperty
     private Long id;
 
-    @Column(name = "name", columnDefinition = "VARCHAR(50) UNIQUE")
+    @Column(name = "name", columnDefinition = "VARCHAR(50)")
     @JsonProperty
     private String name;
-
-    @OneToMany(mappedBy = "country")
-    private List<Region> regionList;
 
     public Long getId() {
         return id;
