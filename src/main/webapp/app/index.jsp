@@ -366,7 +366,7 @@
                             data-toggle="dropdown"
                             role="button"
                             aria-expanded="false">
-                        <i class="fa fa-cog"> user: ${firstName}</i>
+                        <i class="fa fa-cog"> ${sessionScope.userEmail}</i>
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">

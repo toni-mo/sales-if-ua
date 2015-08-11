@@ -1,8 +1,6 @@
 package sales.users.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextLoader;
@@ -13,7 +11,11 @@ import org.springframework.web.context.WebApplicationContext;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import sales.comments.domain.Comment;
+
+import static org.springframework.http.MediaType.APPLICATION_JSON;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
  * Created by taras on 05.08.15.
@@ -27,6 +29,8 @@ import sales.comments.domain.Comment;
 @WebAppConfiguration
 public class TestUserController {
 
+    private static final String MAIN_URL = "";
+
     @Autowired
     private WebApplicationContext wac;
 
@@ -38,7 +42,11 @@ public class TestUserController {
     }
 
     @Test
-    public void test() {
+    public void testGET() {
+        /*mockMvc.perform(get(MAIN_URL + "/" + GOOD_ID)
+                .accept(APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(APPLICATION_JSON));*/
         Assert.assertTrue(true);
     }
 
