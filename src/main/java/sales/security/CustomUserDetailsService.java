@@ -37,25 +37,32 @@ public class CustomUserDetailsService implements UserDetailsService {
      */
     public UserDetails loadUserByUsername(String userEmail) throws UsernameNotFoundException {
         logger.info("Process of authorization");
-        try {
-            sales.users.domain.User domainShop = userRepository.findByEmail(userEmail);
-            boolean enabled = true;
-            boolean accountNonExpired = true;
-            boolean credentialsNonExpired = true;
-            boolean accountNonLocked = true;
 
-            return new User(
-                    domainShop.getEmail(),
-                    domainShop.getPassword().toLowerCase(),
-                    enabled,
-                    accountNonExpired,
-                    credentialsNonExpired,
-                    accountNonLocked,
-                    getAuthorities(domainShop.getRole().getId()));
+        sales.users.domain.User user = userRepository.findByEmail(userEmail);
+        throwExceptionIfNotFound(user, userEmail);
 
-        } catch (Exception e) {
-            logger.error("Can`t authorize user " + e);
-            throw new RuntimeException(e);
+
+        sales.users.domain.User domainShop = userRepository.findByEmail(userEmail);
+        boolean enabled = true;
+        boolean accountNonExpired = true;
+        boolean credentialsNonExpired = true;
+        boolean accountNonLocked = true;
+
+        User authUser = new User(
+            domainShop.getEmail(),
+            domainShop.getPassword().toLowerCase(),
+            enabled,
+            accountNonExpired,
+            credentialsNonExpired,
+            accountNonLocked,
+            getAuthorities(domainShop.getRole().getId()));
+
+        return authUser;
+    }
+
+    private void throwExceptionIfNotFound(sales.users.domain.User user, String login) {
+        if (user == null) {
+            throw new UsernameNotFoundException("User with login " + login + "  has not been found.");
         }
     }
 
