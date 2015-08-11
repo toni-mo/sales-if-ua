@@ -2,9 +2,11 @@ admin.controller('RegistrateCtrl', ['$scope', '$http', function ($scope, $http) 
     $scope.first_name = '';
     $scope.last_name = '';
     $scope.country = '';
-    $scope.countryArray = [];
+    $scope.usersArray = '';
     $scope.region = '';
     $scope.city = '';
+    $scope.checkerE = '';
+    $scope.checkerP = '';
     $scope.email = '';
     $scope.address = '';
     $scope.selectedCountryID = 0;
@@ -19,6 +21,10 @@ admin.controller('RegistrateCtrl', ['$scope', '$http', function ($scope, $http) 
     $scope.secretKey = '';
     $scope.session = true;
     $scope.role = {"id": 2, "value": "client"}; //1 - adm, 2 - user, 3 - shop
+    $scope.logOut = function(){
+        $http.get('/Practice/logout');
+
+    };
     $scope.getCountry = function () {
         $http.get('/Practice/address/country').then(function (response) {
             $scope.countries = response.data;
@@ -45,21 +51,24 @@ admin.controller('RegistrateCtrl', ['$scope', '$http', function ($scope, $http) 
         }
     };
     $scope.regUser = function () {
-        for(var i=0;i<$scope.cities.length;i++){
-            if($scope.cities[i].id==$scope.selectedCityID){
-                $scope.selectedCityName=$scope.cities[i].name;
+        for (var i = 0; i < $scope.cities.length; i++) {
+            if ($scope.cities[i].id == $scope.selectedCityID) {
+                $scope.selectedCityName = $scope.cities[i].name;
             }
-        };
-        for(i=0;i<$scope.countries.length;i++){
-            if($scope.countries[i].id==$scope.selectedCountryID){
-                $scope.selectedCountryName=$scope.countries[i].name;
+        }
+        ;
+        for (i = 0; i < $scope.countries.length; i++) {
+            if ($scope.countries[i].id == $scope.selectedCountryID) {
+                $scope.selectedCountryName = $scope.countries[i].name;
             }
-        };
-        for(i=0;i<$scope.regions.length;i++){
-            if($scope.regions[i].id==$scope.selectedRegionID){
-                $scope.selectedRegionName=$scope.regions[i].name;
+        }
+        ;
+        for (i = 0; i < $scope.regions.length; i++) {
+            if ($scope.regions[i].id == $scope.selectedRegionID) {
+                $scope.selectedRegionName = $scope.regions[i].name;
             }
-        };
+        }
+        ;
         var user = {
             firstName: $scope.first_name,
             lastName: $scope.last_name,

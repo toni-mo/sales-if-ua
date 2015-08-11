@@ -19,9 +19,6 @@ admin.controller('UsersCtrl', ['$scope', '$http', function ($scope, $http) {
     $scope.changeStatusActive = function (index) {
         $scope.users[index].isBlocked = "active";
     };
-    $scope.deleteUser = function (index) {
-        $scope.users.splice(index, 1);
-    }
     $scope.btnBlockName = "block";
     $scope.showMessage = function (status) {
         if (status == false){return "block";}
