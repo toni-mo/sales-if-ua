@@ -303,7 +303,7 @@
 <!-- .navbar -->
 <nav class="navbar navbar-inverse navbar-fixed-top nav-back-img">
     <!-- .container -->
-    <div class="container">
+    <div class="container" ng-controller="RegistrateCtrl">
         <!-- .navbar-header -->
         <div class="navbar-header ">
             <button
@@ -322,7 +322,6 @@
             <ul class="nav navbar-nav adm-navStyle">
                 <li><a href="#/home/service">Services</a></li>
                 <li><a href="#/stuff">Products</a></li>
-                <li><a href="#/character">One Product</a></li>
                 <li><a href="#/admin/users">Admin</a></li>
             </ul>
 
@@ -372,7 +371,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="#user/profile/edit"><i class="fa fa-user"></i> Profile</a></li>
                         <li><a href="#user/backet"><i class="fa fa-shopping-cart"></i> Bucket</a></li>
-                        <li><a href=""><i class="fa fa-user-times"></i> Log Out</a></li>
+                        <li><a ng-click="logOut()"><i class="fa fa-user-times"></i> Log Out</a></li>
                     </ul>
                 </li>
             </ul>
