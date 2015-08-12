@@ -1,8 +1,13 @@
 package sales.category.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import sales.goods.domain.Good;
+import sales.storage.domain.Storage;
+import sales.users.domain.City;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by taras on 11.08.15.
@@ -23,6 +28,11 @@ public class SubCategory {
     @JoinColumn(name = "category", referencedColumnName = "id")
     @JsonProperty
     private Category category;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "goods", referencedColumnName = "id")
+    @JsonIgnore
+    private List<Good> goods;
 
     public Long getId() {
         return id;

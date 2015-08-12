@@ -34,7 +34,7 @@
 
     <listener>
         <listener-class>
-            sales.security.listener.CustomHttpServiceListener
+            sales.security.listener.CustomHttpSessionListener
         </listener-class>
     </listener>
 

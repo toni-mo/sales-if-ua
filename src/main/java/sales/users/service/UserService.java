@@ -15,6 +15,8 @@ public interface UserService {
 
     User getByEmail(String email);
 
+    User getByEncEmail(String encEmail);
+
     User getShop(Long id);
 
     User getClient(Long id);

@@ -4,15 +4,14 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import sales.category.domain.SubCategory;
 import sales.descriptions.domain.Description;
 import sales.storage.domain.Storage;
-import sales.users.domain.User;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 
 @Entity
@@ -60,6 +59,11 @@ public class Good implements Serializable {
         this.rating = 0;
         this.ratingCount = 0;
     }
+
+    @ManyToOne(targetEntity = SubCategory.class)
+    @JoinColumn(name = "subCategory", referencedColumnName = "id")
+    @JsonProperty
+    private SubCategory subCategory;
 
     @JsonCreator
     public Good() {
@@ -127,6 +131,14 @@ public class Good implements Serializable {
 
     public void setRatingCount(long ratingCount) {
         this.ratingCount = ratingCount;
+    }
+
+    public SubCategory getSubCategory() {
+        return subCategory;
+    }
+
+    public void setSubCategory(SubCategory subCategory) {
+        this.subCategory = subCategory;
     }
 
     @Override

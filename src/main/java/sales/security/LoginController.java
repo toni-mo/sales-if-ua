@@ -2,11 +2,15 @@ package sales.security;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import sales.users.controller.UserController;
+import sales.users.domain.User;
+import sales.users.service.UserService;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -21,9 +25,8 @@ import java.io.IOException;
 public class LoginController {
     final static Logger logger = LoggerFactory.getLogger(LoginController.class);
 
-
-    @Resource(name = "sessionRegistry")
-    private SessionRegistryImpl sessionRegistry;
+    @Autowired
+    UserService userService;
 
     @RequestMapping(
             value = "/login/success")
@@ -32,10 +35,10 @@ public class LoginController {
         HttpSession session = request.getSession(false);
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String name = auth.getName();
-        logger.info(name);
+        User user = userService.getByEmail(auth.getName());
 
-        session.setAttribute("userEmail", name);
+        session.setAttribute("userEmail", Encoding.getEncoded(user.getEmail()));
+        session.setAttribute("user", user.getFirstName() + " " + user.getLastName());
         session.setAttribute("check", "true");
 
         response.sendRedirect("/Practice/");
@@ -47,16 +50,8 @@ public class LoginController {
         logger.debug("Action after failed authorization");
         HttpSession session = request.getSession(false);
 
-        session.setAttribute("check", "error");
+        session.setAttribute("check", "false");
 
         response.sendRedirect("/Practice/");
-    }
-
-    @RequestMapping(
-            value = "/logout/success")
-    public String logout() {
-        logger.debug("Action after successful logout");
-        String message = "Logout Success!";
-        return "redirect:/login?message="+message;
     }
 }

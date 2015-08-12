@@ -42,26 +42,28 @@ public class CustomUserDetailsService implements UserDetailsService {
         throwExceptionIfNotFound(user, userEmail);
 
 
-        sales.users.domain.User domainShop = userRepository.findByEmail(userEmail);
+        sales.users.domain.User domainUser = userRepository.findByEmail(userEmail);
+        throwExceptionIfNotFound(domainUser, userEmail);
         boolean enabled = true;
         boolean accountNonExpired = true;
         boolean credentialsNonExpired = true;
         boolean accountNonLocked = true;
 
         User authUser = new User(
-            domainShop.getEmail(),
-            domainShop.getPassword().toLowerCase(),
+            domainUser.getEmail(),
+            domainUser.getPassword().toLowerCase(),
             enabled,
             accountNonExpired,
             credentialsNonExpired,
             accountNonLocked,
-            getAuthorities(domainShop.getRole().getId()));
+            getAuthorities(domainUser.getRole().getId()));
 
         return authUser;
     }
 
     private void throwExceptionIfNotFound(sales.users.domain.User user, String login) {
         if (user == null) {
+            logger.error("User with login " + login + "  has not been found.");
             throw new UsernameNotFoundException("User with login " + login + "  has not been found.");
         }
     }
