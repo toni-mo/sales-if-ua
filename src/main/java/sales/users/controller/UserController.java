@@ -119,11 +119,10 @@ public class UserController {
             method = RequestMethod.GET,
             value = "/delete/{id}",
             produces = "application/json")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public String deleteEmployee(@PathVariable("id") Long id) {
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteUser(@PathVariable("id") Long id) {
         logger.info("Delete user with id = " + id);
         userService.deleteUser(id);
-        return "done";
     }
 
     @RequestMapping(value = "/shop/filter",

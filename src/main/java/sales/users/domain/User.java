@@ -153,6 +153,14 @@ public class User implements Serializable{
         this.creationDate = creationDate;
     }
 
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
+
     public Role getRole() {
         return role;
     }
