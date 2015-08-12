@@ -8,7 +8,9 @@ import org.springframework.transaction.annotation.Transactional;
 import sales.orders.domain.Order;
 import sales.orders.repository.OrderRepository;
 import sales.storage.domain.Storage;
+import sales.users.domain.User;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -47,5 +49,10 @@ public class OrdersServiceImpl implements OrdersService {
     @Override
     public List<Order> getByStorages(List<Storage> storages) {
         return repository.StorageIn(storages);
+    }
+
+    @Override
+    public List<Order> getByUserAndDate(User user, Date date) {
+        return repository.findByUserAndDate(user, date);
     }
 }

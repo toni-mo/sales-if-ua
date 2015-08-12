@@ -3,7 +3,9 @@ package sales.orders.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import sales.orders.domain.Order;
 import sales.storage.domain.Storage;
+import sales.users.domain.User;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -17,4 +19,5 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
 
     public List<Order> StorageIn(List<Storage> storages);
 
+    public List<Order> findByUserAndDate(User user, Date date);
 }
