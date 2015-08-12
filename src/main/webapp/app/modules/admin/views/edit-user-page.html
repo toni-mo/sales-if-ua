@@ -1,12 +1,12 @@
-<div class="container-fluid ">
+<div class="container-fluid " ng-controller="UserEditCtrl">
     <div class="row">
         <div class="col-xs-5 col-sm-5 col-md-1 col-lg-1">
             <ul class="nav navbar-nav adm-side-nav ">
                 <li class="adm-ProfileUserImgMargin adm-page-size"><img src="app/modules/admin/img/1.jpg"
                                                                         class="img-responsive"/></li>
-                <li><a href="#/user/backet"></i><i class="fa fa-users"></i> Backet</a></li>
-                <li><a href="#/user/purchases"><i class="fa fa-shopping-cart"></i> My purchases</a></li>
-                <li><a href="#/user/profile/edit"><i class="fa fa-pencil-square-o"></i> Edit profile</a></li>
+                <li><a href="#/user/bucket/{{id}}/{{role}}"></i><i class="fa fa-users"></i> Bucket</a></li>
+                <li><a href="#/user/purchases/{{id}}/{{role}}"><i class="fa fa-shopping-cart"></i> My purchases</a></li>
+                <li><a href="#/user/profile/edit/{{id}}/{{role}}"><i class="fa fa-pencil-square-o"></i> Edit profile</a></li>
                 <!-- end sidebar -->
             </ul>
         </div>
@@ -19,7 +19,7 @@
                 <h6 align="center"><a href="">Click here to change your avatar</a></h6>
 
             </div>
-            <div class="col-md-6 MoveUserInformationRight" ng-controller="UserEditCtrl">
+            <div class="col-md-6 MoveUserInformationRight">
                 <h2 class="textColor">Edir Profile</h2>
 
                 <p class="textColor">Here You can change you information, wich will be avaleble on site:</p>
@@ -34,23 +34,23 @@
                     <tr>
                         <td>First name:</td>
                         <td><input type="text" class="form-control ButtonColor BtnTextColor textColor"
-                                   style="width :250px" placeholder={{user.name}}></td>
+                                   style="width :250px" placeholder={{user.firstName}}></td>
                     </tr>
                     <tr>
                         <td>Last name:</td>
                         <td><input type="text" class="form-control ButtonColor BtnTextColor textColor"
-                                   style="width :250px" placeholder={{user.surname}}></td>
+                                   style="width :250px" placeholder={{user.lastName}}></td>
                     </tr>
-                    <tr>
-                        <td>Sex:</td>
-                        <td><input type="text" class="form-control ButtonColor BtnTextColor textColor"
-                                   style="width :250px" placeholder={{user.sex}}></td>
-                    </tr>
-                    <tr>
-                        <td>Date of birth:</td>
-                        <td><input type="text" class="form-control ButtonColor BtnTextColor textColor"
-                                   style="width :250px" placeholder={{user.born}}></td>
-                    </tr>
+                    <!--<tr>-->
+                        <!--<td>Sex:</td>-->
+                        <!--<td><input type="text" class="form-control ButtonColor BtnTextColor textColor"-->
+                                   <!--style="width :250px" placeholder={{user.sex}}></td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>Date of birth:</td>-->
+                        <!--<td><input type="text" class="form-control ButtonColor BtnTextColor textColor"-->
+                                   <!--style="width :250px" placeholder={{user.born}}></td>-->
+                    <!--</tr>-->
                     <tr>
                         <td>E-mail:</td>
                         <td><input type="text" class="form-control ButtonColor BtnTextColor textColor"
@@ -59,7 +59,7 @@
                     <tr>
                         <td>Contact number:</td>
                         <td><input type="text" class="form-control ButtonColor BtnTextColor textColor"
-                                   style="width :250px" placeholder={{user.phone}}></td>
+                                   style="width :250px" placeholder={{user.phoneNumber}}></td>
                     </tr>
                     </tbody>
                 </table>
