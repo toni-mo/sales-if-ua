@@ -1,4 +1,6 @@
-admin.controller('HighchartsCtrl', ['$scope', '$http', function ($scope, $http) {
+admin.controller('HighchartsCtrl', ['$scope', '$http','$routeParams', function ($scope, $http, $routeParams) {
+    $scope.id = $routeParams.userId;
+    $scope.role = $routeParams.role;
     $scope.checkbox1 = '';
     $scope.checkbox2 = '';
     $scope.checkbox3 = '';
@@ -220,4 +222,4 @@ admin.controller('HighchartsCtrl', ['$scope', '$http', function ($scope, $http) 
         })
 
     };
-}])
+}]);

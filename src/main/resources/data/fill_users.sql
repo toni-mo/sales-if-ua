@@ -21,3 +21,4 @@ insert into users values(20, "2015-08-09 10:10:11", "personsalesifua+reginahands
 insert into users values(21, "2015-08-07 10:10:11", "personsalesifua+markfrasser@gmail.com", "mark",0, "frasser",  "62608e08adc29a8d6dbc9754e659f125", "87654321", 30, 2);
 insert into users values(22, "2015-08-07 10:10:11", "personsalesifua+tomcat@gmail.com", "tom",0, "cat",  "62608e08adc29a8d6dbc9754e659f125", "87654321", 30, 2);
 insert into users values(23, "2015-08-07 10:10:11", "personsalesifua+jerrymouse@gmail.com", "jerry",0, "mouse",  "62608e08adc29a8d6dbc9754e659f125", "87654321", 31, 2);
+

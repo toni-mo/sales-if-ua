@@ -1,12 +1,12 @@
-<div class="container-fluid ">
+<div class="container-fluid " ng-controller="ShopAdmCtrl">
     <div class="row">
         <div class="col-xs-5 col-sm-5 col-md-1 col-lg-1">
             <ul class="nav navbar-nav adm-side-nav ">
                 <li class="adm-ProfileUserImgMargin adm-page-size"><img
                         src="http://i.ytimg.com/vi/5l8dU40aRUs/maxresdefault.jpg" class="img-responsive"/></li>
-                <li><a href="#/shop/products"></i><i class="fa fa-home"></i> My products</a></li>
-                <li><a href="#/shop/orders"><i class="fa fa-envelope-o"></i> My orders </a></li>
-                <li><a href="#/shop/profile/edit"><i class="fa fa-pencil-square-o"></i> Edit profile</a></li>
+                <li><a href="#/shop/products/{{id}}/{{role}}"></i><i class="fa fa-home"></i> My products</a></li>
+                <li><a href="#/shop/orders/{{id}}/{{role}}"><i class="fa fa-envelope-o"></i> My orders </a></li>
+                <li><a href="#/shop/profile/edit/{{id}}/{{role}}"><i class="fa fa-pencil-square-o"></i> Edit profile</a></li>
                 <!-- end sidebar -->
             </ul>
         </div>

@@ -1,4 +1,9 @@
-admin.controller('UsersCtrl', ['$scope', '$http', function ($scope, $http) {
+admin.controller('UsersCtrl', ['$scope', '$http','$routeParams', function ($scope, $http, $routeParams) {
+    $scope.id = '';
+    $scope.role = '';
+    $scope.id = $routeParams.userId;
+    $scope.role = $routeParams.role;
+    $scope.users = '';
     $http.get('/Practice/user/client').then(function (response) {
         $scope.users = response.data;
         if($scope.users[index].isBlocked == false){
@@ -13,28 +18,28 @@ admin.controller('UsersCtrl', ['$scope', '$http', function ($scope, $http) {
         }
 
     };
-    $scope.changeStatusBlocked = function (index) {
-        $scope.users[index].isBlocked = "blocked";
-    };
-    $scope.changeStatusActive = function (index) {
-        $scope.users[index].isBlocked = "active";
-    };
     $scope.btnBlockName = "block";
     $scope.showMessage = function (status) {
         if (status == false){return "block";}
-        else
-            return "unblock";
-    }
+        if(status == true){return "unblock";}
+    };
     $scope.changeButtonName = function (index) {
-        if ($scope.users[index].status == 'blocked') {
+        if (true == $scope.users[index].isBlocked) {
             $scope.btnBlockName = 'unblock';
-            $scope.users[index].status = "active";
+            $http.put('/Practice/user/lock/' + $scope.users[index].id).then(function() {
+                $http.get('/Practice/user/client').then(function (response) {
+                    $scope.users = response.data;
+                });});
         }
         else {
             $scope.btnBlockName = 'block';
-            $scope.users[index].status = "blocked";
+            $http.put('/Practice/user/lock/' + $scope.users[index].id).then(function() {
+                $http.get('/Practice/user/client').then(function (response) {
+                    $scope.users = response.data;
+                });
+            });
         }
-    }
+    };
     $scope.getClass = function (status) {
         if (status == "blocked")
             return {
@@ -46,7 +51,7 @@ admin.controller('UsersCtrl', ['$scope', '$http', function ($scope, $http) {
             };
     }
     $scope.getRowStatus = function (status) {
-        if (status == "blocked")
+        if (status == true)
             return {
                 'adm-PR1': true
             }

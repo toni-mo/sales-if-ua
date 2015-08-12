@@ -4,9 +4,9 @@
             <ul class="nav navbar-nav adm-side-nav ">
                 <li class="adm-ProfileUserImgMargin adm-page-size"><img src="app/modules/admin/img/1.jpg"
                                                                         class="img-responsive"/></li>
-                <li><a href="#/user/backet"></i><i class="fa fa-users"></i> Backet</a></li>
-                <li><a href="#/user/purchases"><i class="fa fa-shopping-cart"></i> My purchases</a></li>
-                <li><a href="#/user/profile/edit"><i class="fa fa-pencil-square-o"></i> Edit profile</a></li>
+                <li><a href="#/user/bucket/{{id}}/{{role}}"></i><i class="fa fa-users"></i> Bucket</a></li>
+                <li><a href="#/user/purchases/{{id}}/{{role}}"><i class="fa fa-shopping-cart"></i> My purchases</a></li>
+                <li><a href="#/user/profile/edit/{{id}}/{{role}}"><i class="fa fa-pencil-square-o"></i> Edit profile</a></li>
                 <!-- end sidebar -->
             </ul>
         </div>
@@ -18,7 +18,7 @@
                 <thead>
                 <tr class="textColor">
                     <th>№</th>
-                    <th>Product</th>
+                    <th>Maker</th>
                     <th>Model</th>
                     <th>Amount</th>
                     <th>Price</th>
@@ -28,11 +28,11 @@
                 <tbody>
                 <tr class="textColor" ng-repeat="product in products">
                     <td>{{$index+1}}</td>
+                    <td>{{product.maker}}</td>
                     <td>{{product.name}}</td>
-                    <td>{{product.model}}</td>
-                    <td><input class="BtnTextColor ButtonColor" ng-model="product.amount" type="text"
-                               style="width :35px" placeholder={{product.amount}}></td>
-                    <td>{{product.price*product.amount}}</td>
+                    <!--<td><input class="BtnTextColor ButtonColor" ng-model="product.amount" type="text"-->
+                               <!--style="width :35px" placeholder={{product.amount}}></td>-->
+                    <!--<td>{{product.price*product.amount}}</td>-->
                     <td><a href="#/character">
                         <button class="btn BtnTextColor ButtonColor textColor fa fa-plus-square" type="button"
                                 style="width:80px"> More

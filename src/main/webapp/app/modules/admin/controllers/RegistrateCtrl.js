@@ -32,7 +32,7 @@ admin.controller('RegistrateCtrl', ['$scope', '$http', function ($scope, $http) 
         $http.get('/Practice/user/?email='+$scope.sessionValue).then(function(response){
           $scope.user = response.data;
           $scope.sessionRole = $scope.user.role.value;
-          console.log($scope.user+" "+$scope.sessionRole);
+          console.log($scope.user," ",$scope.sessionRole);
         });
     };
 

@@ -1,17 +1,16 @@
-<div class="container-fluid ">
+<div class="container-fluid " ng-controller="ShopsCtrl">
     <div class="row">
         <div class="col-xs-5 col-sm-5 col-md-1 col-lg-1">
             <ul class="nav navbar-nav adm-side-nav ">
                 <li class="adm-ProfileUserImgMargin adm-page-size"><img src="app/modules/admin/img/1.jpg"
                                                                         class="img-responsive"/></li>
-                <li><a href="#/admin/users"></i><i class="fa fa-users"></i> Users</a></li>
-                <li><a href="#/admin/shops"><i class="fa fa-shopping-cart"></i> Shops</a></li>
-                <li><a href="#/admin/statistics"><i class="fa fa-bar-chart"></i> Statistics</a></li>
+                <li><a href="#/admin/users/{{id}}/{{role}}"></i><i class="fa fa-users"></i> Users</a></li>
+                <li><a href="#/admin/shops/{{id}}/{{role}}"><i class="fa fa-shopping-cart"></i> Shops</a></li>
+                <li><a href="#/admin/statistics/{{id}}/{{role}}"><i class="fa fa-bar-chart"></i> Statistics</a></li>
                 <!-- end sidebar -->
             </ul>
         </div>
-        <div class="col-md-offset-2 col-sm-offset-3 col-xs-offset-3 col-lg-9 col-sm-8 col-xs-7 col-md-9 table-min"
-             ng-controller="ShopsCtrl">
+        <div class="col-md-offset-2 col-sm-offset-3 col-xs-offset-3 col-lg-9 col-sm-8 col-xs-7 col-md-9 table-min">
 
             <h2 class="textColor">Shops</h2>
 
@@ -24,7 +23,7 @@
                     <th>Location</th>
                     <th>E-mail</th>
                     <th>Phone number</th>
-                    <th>Status</th>
+                    <th>Blocked</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -38,12 +37,16 @@
                     <td>{{shop.isBlocked}}</td>
                     <td>
                         <button ng-click="changeButtonName($index)"
+                                ng-class="getClass(shop.isBlocked)"
                                 class="btn ButtonColor BtnTextColor fa adm-buttonSizeBlockUnblock"
-                                ng-class="getClass(shop.status)" type="button" style="width:90px">
-                            {{showMessage(shop.status)}}
+                                type="button"
+                                style="width:90px">
+                            {{showMessage(shop.isBlocked)}}
                         </button>
-                        <button ng-click="deleteAlert($index)" class="btn fa fa-trash ButtonColor BtnTextColor"
-                                type="button" style="width:90px">
+                        <button ng-click="deleteAlert($index)"
+                                class="btn fa fa-trash ButtonColor BtnTextColor"
+                                type="button"
+                                style="width:90px">
                             Delete
                         </button>
                     </td>

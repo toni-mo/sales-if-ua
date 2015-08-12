@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Sales IF</title>
     <!-- Bower components-->
+    <link rel="shortcut icon" href="app/modules/admin/img/2.jpg">
     <link rel="stylesheet" href="app/bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="app/bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="app/bower_components/font-awesome/css/font-awesome.min.css">
@@ -72,6 +73,7 @@
     <script type="text/javascript" src="app/modules/goods/index.js"></script>
     <script type="text/javascript" src="app/modules/goods/controllers/orderCtrl.js"></script>
     <script type="text/javascript" src="app/modules/goods/controllers/OverviewCtrl.js"></script>
+    <script type="text/javascript" src="app/modules/goods/controllers/ProductCtrl.js"></script>
 
 
     <!-- Home module -->
@@ -358,12 +360,15 @@
                             role="button"
                             aria-expanded="false">
                             <!--NOTICE IMPORTANT THING ABOUT PASSING JSP VARIABLE TO JAVASCRIPT -->
-                        <i class="fa fa-cog"  ng-init="grabSessionValue('${sessionScope.userEmail}')"> ${sessionScope.userEmail}</i>
+
+                        <i class="fa fa-cog" ng-init="grabSessionValue('${sessionScope.userEmail}')"> {{sessionValue}} </i>
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#user/profile/edit"><i class="fa fa-user"></i> Profile</a></li>
-                        <li><a href="#user/backet"><i class="fa fa-shopping-cart"></i> Bucket</a></li>
+                        <li ng-show="sessionRole=='client'"><a href="#/user/profile/edit/{{user.id}}/{{sessionRole}}"><i class="fa fa-user"></i> Profile</a></li>
+                        <li ng-show="sessionRole=='shop'"><a href="#/shop/profile/edit/{{user.id}}/{{sessionRole}}"><i class="fa fa-user"></i> Profile</a></li>
+                        <li ng-show="sessionRole=='client'"><a href="#/user/bucket/{{user.id}}/{{sessionRole}}"><i class="fa fa-shopping-cart"></i> Bucket</a></li>
+                        <li ng-show="sessionRole=='admin'"><a href="#/admin/users/{{user.id}}/{{sessionRole}}"><i class="fa fa-shopping-cart"></i> Admin</a></li>
                         <li><a ng-click="logOut()"><i class="fa fa-user-times"></i> Log Out</a></li>
                     </ul>
                 </li>

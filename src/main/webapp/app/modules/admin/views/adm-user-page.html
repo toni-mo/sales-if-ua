@@ -1,17 +1,16 @@
-<div class="container-fluid ">
+<div class="container-fluid " ng-controller="UsersCtrl">
     <div class="row">
         <div class="col-xs-5 col-sm-5 col-md-1 col-lg-1">
             <ul class="nav navbar-nav adm-side-nav ">
                 <li class="adm-ProfileUserImgMargin adm-page-size"><img src="app/modules/admin/img/1.jpg"
                                                                         class="img-responsive"/></li>
-                <li><a href="#/admin/users"></i><i class="fa fa-users"></i> Users</a></li>
-                <li><a href="#/admin/shops"><i class="fa fa-shopping-cart"></i> Shops</a></li>
-                <li><a href="#/admin/statistics"><i class="fa fa-bar-chart"></i> Statistics</a></li>
+                <li><a href="#/admin/users/{{id}}/{{role}}"></i><i class="fa fa-users"></i> Users</a></li>
+                <li><a href="#/admin/shops/{{id}}/{{role}}"><i class="fa fa-shopping-cart"></i> Shops</a></li>
+                <li><a href="#/admin/statistics/{{id}}/{{role}}"><i class="fa fa-bar-chart"></i> Statistics</a></li>
                 <!-- end sidebar -->
             </ul>
         </div>
-        <div class="col-md-offset-2 col-sm-offset-3 col-xs-offset-3 col-lg-9 col-sm-8 col-xs-7 col-md-9 table-min"
-             ng-controller="UsersCtrl">
+        <div class="col-md-offset-2 col-sm-offset-3 col-xs-offset-3 col-lg-9 col-sm-8 col-xs-7 col-md-9 table-min">
 
             <h2 class="textColor">Users</h2>
 
