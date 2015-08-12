@@ -1,5 +1,6 @@
 package sales.storage.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import sales.goods.domain.Good;
 import sales.users.domain.User;
@@ -29,7 +30,7 @@ public class Storage implements Serializable{
 
     @ManyToOne(targetEntity = Good.class)
     @JoinColumn(name = "good", referencedColumnName = "id")
-    @JsonProperty
+    @JsonIgnore
     private Good good;
 
     @ManyToOne(targetEntity = User.class)
