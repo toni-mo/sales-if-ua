@@ -11,7 +11,8 @@
                       data/fill_categories.sql,
                       data/fill_paypal.sql,
                       data/fill_goods.sql,
-                      data/fill_descriptions.sql"/>
+                      data/fill_descriptions.sql,
+                      data/fill_storages.sql"/>
         </properties>
     </persistence-unit>
 
