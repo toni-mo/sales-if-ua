@@ -28,9 +28,18 @@ public class UserController {
             method = RequestMethod.GET,
             value = "",
             produces = "application/json")
-    public User getUserByEmail(@RequestParam(required = true, value ="email") String email) {
+    public User getUserByEncEmail(@RequestParam(required = true, value ="email") String email) {
         logger.info("Get user by email");
-        return userService.getByEmail(email);
+        return userService.getByEncEmail(email);
+    }
+
+    @RequestMapping(
+            method = RequestMethod.GET,
+            value = "/{id}",
+            produces = "application/json")
+    public User getUser(@PathVariable("id") Long id) {
+        logger.info("Get client by id");
+        return userService.getById(id);
     }
 
     @RequestMapping(

@@ -8,7 +8,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import sales.roles.domain.Role;
 import sales.roles.service.RoleServiceImpl;
-import sales.security.StringToMd5;
+import sales.security.Encoding;
 import sales.users.domain.User;
 import sales.users.repository.UserRepository;
 
@@ -32,12 +32,17 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getById(Long id) {
         logger.debug("Get User by id");
-        return userRepository.getOne(id);
+        return userRepository.findOne(id);
     }
 
     @Override
     public User getByEmail(String email) {
         return userRepository.findByEmail(email);
+    }
+
+    @Override
+    public User getByEncEmail(String encEmail) {
+        return userRepository.findByEmail(Encoding.getDecoded(encEmail));
     }
 
     @Override
@@ -56,7 +61,7 @@ public class UserServiceImpl implements UserService {
     public User addUser(User user) {
         //hashing password
         try {
-            user.setPassword(StringToMd5.getMd5(user.getPassword()));
+            user.setPassword(Encoding.getMd5(user.getPassword()));
         } catch(Exception e) {
             logger.error("Can`t convert String to MD5 hash");
         }

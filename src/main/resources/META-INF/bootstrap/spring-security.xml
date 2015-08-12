@@ -58,7 +58,7 @@
 
     <bean id="concurrencyFilter" class="org.springframework.security.web.session.ConcurrentSessionFilter"
           p:sessionRegistry-ref="sessionRegistry"
-          p:expiredUrl="/#home/session-expired" />
+          p:expiredUrl="/#/stuff" />
 
     <bean id="sas" class="org.springframework.security.web.authentication.session.ConcurrentSessionControlStrategy"
           p:maximumSessions="1" >
