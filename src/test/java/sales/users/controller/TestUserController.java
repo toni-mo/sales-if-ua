@@ -46,8 +46,8 @@ public class TestUserController extends AbstractTestNGSpringContextTests {
     private static final String MAIN_URL = "/user";
     private static final String CLIENT_URL = "/client";
     private static final String SHOP_URL = "/shop";
-
     private static final Long USER_ID = 1L;
+
     private static Long userId;
 
     private MvcResult result;
@@ -70,24 +70,27 @@ public class TestUserController extends AbstractTestNGSpringContextTests {
     public void initMockMvc() throws JsonProcessingException {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
 
-        this.user = new User("1a1dc91c907325c69271ddf0c944bc72",
-                "taras",
-                "client",
-                cityService.getOneByName("смт Зуя"),
-                "tarik.danylyuk@gmail.com",
-                "12342535",
-                new Date(),
-                roleService.getRoleByValue(Constants.CLIENT));
+        this.user = new User();
+        this.user.setPassword("1a1dc91c907325c69271ddf0c944bc72");
+        this.user.setFirstName("dsfadsf");
+        this.user.setLastName("adfadsf");
+        this.user.setIsBlocked(false);
+        this.user.setCity(cityService.getOneByName("смт Зуя"));
+        this.user.setEmail("feafsfdasfa");
+        this.user.setRole(roleService.getRoleByValue(Constants.CLIENT));
+        this.user.setDate(new Date());
+        this.user.setPhoneNumber("1243316436");
 
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         this.userJson = ow.writeValueAsString(this.user);
     }
 
+    @Test
     public void testAddUserInUserController() throws Exception {
         result = mockMvc.perform(post(MAIN_URL)
                 .content(userJson)
                 .contentType(MediaType.APPLICATION_JSON)
-                .sessionAttr("comment", this.user))
+                .sessionAttr("user", this.user))
                 .andExpect(status().isCreated())
                 .andReturn();
 
@@ -95,6 +98,7 @@ public class TestUserController extends AbstractTestNGSpringContextTests {
         userId = new ObjectMapper().readValue(response, User.class).getId();
     }
 
+    @Test
     public void testGetUserInUserController() throws Exception{
         mockMvc.perform(get(MAIN_URL + "/" + USER_ID)
                 .accept(APPLICATION_JSON))
@@ -102,8 +106,9 @@ public class TestUserController extends AbstractTestNGSpringContextTests {
                 .andExpect(content().contentType(APPLICATION_JSON));
     }
 
+    @Test
     public void testDeleteUserInUserController() throws Exception{
-        mockMvc.perform(delete(MAIN_URL + "/delete" + userId))
+        mockMvc.perform(get(MAIN_URL + "/delete/" + userId))
                 .andExpect(status().isOk());
     }
 }
