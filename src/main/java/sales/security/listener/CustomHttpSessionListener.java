@@ -26,7 +26,7 @@ public class CustomHttpSessionListener implements HttpSessionListener {
     @Override
     public void sessionCreated(HttpSessionEvent httpSessionEvent) {
         logger.info("Session created");
-        httpSessionEvent.getSession().setMaxInactiveInterval(2 * 60);
+        httpSessionEvent.getSession().setMaxInactiveInterval(30 * 60);
         totalActiveSessions++;
         logger.info("Amount of active session = " + totalActiveSessions);
     }
