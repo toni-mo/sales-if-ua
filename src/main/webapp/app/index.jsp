@@ -320,15 +320,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="#/home" class="navbar-brand">Sales-IF</a>
+
+            <a href="#/home" class="navbar-brand">Home</a>
         </div>
         <!-- /.navbar-header -->
         <!-- #collapsed-group -->
         <div class="collapse navbar-collapse" id="collapsed-group">
             <ul class="nav navbar-nav adm-navStyle">
-                <li><a href="#/home/service">Services</a></li>
-                <li><a href="#/stuff">Products</a></li>
-                <li><a href="#/admin/users" ng-show="sessionRole == 'admin' ">Admin</a></li>
             </ul>
 
             <!-- User's profile button -->
@@ -362,7 +360,7 @@
                             aria-expanded="false">
                             <!--NOTICE IMPORTANT THING ABOUT PASSING JSP VARIABLE TO JAVASCRIPT -->
 
-                        <i class="fa fa-cog" ng-init="grabSessionValue('${sessionScope.userEmail}')"> {{sessionValue}} </i>
+                        <i class="fa fa-cog" ng-init="grabSessionValue('${sessionScope.userEmail}')"> {{getUsername}} </i>
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
