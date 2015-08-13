@@ -2,43 +2,35 @@ package sales.analytics.domain;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.wordnik.swagger.annotations.ApiModel;
 
 import javax.persistence.*;
 import java.util.Date;
 
 /**
- * Created by Myroslav on 29.07.2015.
+ * Created by Myroslav on 13.08.2015.
  */
-
 @Entity
-@Table(name = "shopAnalytics")
-@ApiModel(value = "ShopAnalyticsDomain", description = "Simple ShopsAnalytic domain")
+@Table(name = "ourProfit")
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.NONE)
-
-public class ShopsAnalytic {
-
+public class OurShopProfit {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @JsonProperty("id")
     private int id;
 
-    /**
-     * Amount of users who have registered for a day
-     */
-    @Column(name = "shopsAmount")
-    @JsonProperty("shopsAmount")
-    private int shopsAmount;
+    @Column(name = "profit")
+    @JsonProperty("profit")
+    private int profit;
 
     @Column(name = "date")
     @JsonProperty("date")
     private Date date;
 
-    public ShopsAnalytic() {
+    public OurShopProfit() {
     }
 
-    public ShopsAnalytic(int shopsAmount, Date date) {
-        this.shopsAmount = shopsAmount;
+    public OurShopProfit(int profit, Date date) {
+        this.profit = profit;
         this.date = date;
     }
 
@@ -50,12 +42,12 @@ public class ShopsAnalytic {
         this.id = id;
     }
 
-    public int getShopsAmount() {
-        return shopsAmount;
+    public int getProfit() {
+        return profit;
     }
 
-    public void setShopsAmount(int shopsAmount) {
-        this.shopsAmount = shopsAmount;
+    public void setProfit(int profit) {
+        this.profit = profit;
     }
 
     public Date getDate() {

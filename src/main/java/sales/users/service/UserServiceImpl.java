@@ -113,18 +113,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> findByCreationDateAfter(String creationDate) {
-        return userRepository.findByCreationDateAfter(creationDate);
-    }
-
-    @Override
     public List<User> findByCreationDateAfterAndRole(Date creationDate, Role role) {
         return userRepository.findByCreationDateAfterAndRole(creationDate, role);
-    }
-
-    @Override
-    public List<User> findByCreationDateAfter(Date creationDate) {
-        return  userRepository.findByCreationDateAfter(creationDate);
     }
 
     @Override
