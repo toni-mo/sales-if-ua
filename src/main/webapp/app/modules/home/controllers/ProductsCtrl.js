@@ -1,5 +1,6 @@
-home.controller('ProductsCtrl', ['$scope', '$http', '$location', function($scope, $http, $location){
+home.controller('ProductsCtrl', ['$scope', '$http', '$location', 'CategoryService', function($scope, $http, $location, CategoryService){
 	$scope.goods=[];
+	console.log(CategoryService.categories);
 	// Fetching data from server
 	// $http.get('http://localhost:8080/Practice/goods/search?name=Sony').then(function(response){
 	// 	$scope.goods = response.data;

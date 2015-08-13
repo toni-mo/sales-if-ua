@@ -1,4 +1,4 @@
-admin.controller('RegistrateCtrl', ['$scope', '$http', function ($scope, $http) {
+admin.controller('RegistrateCtrl', ['$scope', '$http', '$location', '$window', 'LoginService', function ($scope, $http, $location, $window, LoginService) {
     $scope.first_name = '';
     $scope.last_name = '';
     $scope.country = '';
@@ -33,6 +33,11 @@ admin.controller('RegistrateCtrl', ['$scope', '$http', function ($scope, $http) 
           $scope.user = response.data;
           $scope.sessionRole = $scope.user.role.value;
           console.log($scope.user," ",$scope.sessionRole);
+          
+          LoginService.loggedUser.id = $scope.user.id;
+          LoginService.loggedUser.role = $scope.user.role.sessionValue;
+          console.log(LoginService.loggedUser);
+
         });
     };
 
@@ -42,6 +47,9 @@ admin.controller('RegistrateCtrl', ['$scope', '$http', function ($scope, $http) 
 
     $scope.logOut = function(){
         $http.get('/Practice/logout');
+        $window.location.reload();
+        $location.path('/home');
+        
 
     };
     $scope.getCountry = function () {

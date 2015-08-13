@@ -1,13 +1,36 @@
 <div ng-controller="MainCtrl">
-<hr>
 <!-- Page Content -->
 <!-- .container -->
 <div class="container">
+	<!-- Categories -->
+	<!-- .row -->
+	<div class="row">
+		<!-- .col-md-12 -->
+		<div class="col-md-offset-1 col-md-10">
+			<!-- Category list -->
+			<div class="list-container">
+				<ul class="list-inline list-unstyled category-list" ng-mouseover="showSubcategoryList()" ng-mouseout="hideSubcategoryList()">
+					<li ng-repeat="category in categories">{{category.name}}</li>
+				</ul>
+			</div>
+		</div><!-- /.col-md-12 -->
+		<!-- .col-md-12 -->
+		<div class="col-md-offset-1 col-md-10 subcategory-container" ng-show="subcategoryListVisibility">
+			<div class="row">
+				<div class="col-md-1" ng-repeat="category in categories">
+					<ul class="list-unstyled">
+						<li ng-repeat="subcategory in category.subcategories">{{subcategory.name}}</li>
+					</ul>
+				</div>
+			</div>
+		</div><!-- /.col-md-12 -->
+	</div><!-- /.row -->
+	<!-- .row -->
 	<!-- .row -->
 	<div class="row">
 		<!-- Sidebar -->
 		<!-- .col-md-3 -->
-		<div class="col-md-3 ">
+		<!-- <div class="col-md-3 ">
 			<div class="panel panel-inverse">
 				<div class="panel-heading panel-heading-inverse">Categories</div>
 				<div class="panel-body">
@@ -27,9 +50,10 @@
 					</ul>
 				</div>
 			</div>
-		</div><!-- /.col-md-3 -->
+		</div> --><!-- /.col-md-3 -->
 		<!-- .col-md-6 -->
-		<div class="col-md-6 ">
+		<!-- Carousel with Offset -->
+		<div class="col-md-offset-1 col-md-10">
 			<!-- .carousel -->
 			<div class="carousel slide" id="myCarousel" data-ride="carousel">
 				<ol class="carousel-indicators">
@@ -40,19 +64,19 @@
 
 				<div class="carousel-inner">
 					<div class="item active">
-						<img src="http://placehold.it/700x420" alt="...">
+						<img src="http://placehold.it/950x320" alt="...">
 						<div class="carousel-caption">
 							Some caption
 						</div>
 					</div>	
 					<div class="item">
-						<img src="http://placehold.it/700x420" alt="...">
+						<img src="http://placehold.it/850x320" alt="...">
 						<div class="carousel-caption">
 							Second Caption
 						</div>
 					</div>
 					<div class="item">
-						<img src="http://placehold.it/700x420" alt="...">
+						<img src="http://placehold.it/850x320" alt="...">
 						<div class="carousel-caption">
 							Third Caption
 						</div>
@@ -67,17 +91,6 @@
 				</a>
 			</div><!-- /.carousel -->
 		</div><!-- /.col-md-6 -->
-		<!-- .col-md-3 -->
-		<div class="col-md-3 ">
-			<!-- .col-md-12 -->
-			<div class="col-md-12 ">
-				<img src="http://placehold.it/230x164">
-			</div><!-- /.col-md-12 -->
-			<!-- .col-md-12 -->
-			<div class="col-md-12 ">
-				<img src="http://placehold.it/230x164">
-			</div><!-- /.col-md-12 -->
-		</div><!-- /.col-md-3 -->
 	</div><!-- /.row -->
 	<!-- Pictured Categories -->
 	<!-- .row -->
