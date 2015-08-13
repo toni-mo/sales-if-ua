@@ -10,10 +10,9 @@ import java.util.List;
 /**
  * Created by Myroslav on 29.07.2015.
  */
-public interface SalesAnalyticsRepository extends JpaRepository<SalesAnalytic, Long>{
-    List<SalesAnalytic> findByShop(User shop);
-    SalesAnalytic findByDate(Date date);
-    List<SalesAnalytic> findByDateBetween(Date from, Date to);
-    List<SalesAnalytic> findByDateAfter(Date date);
-    List<SalesAnalytic> findByDateBefore(Date date);
+public interface SalesAnalyticsRepository extends JpaRepository<SalesAnalytic, Long> {
+
+    List<SalesAnalytic> findByShopAndDateBetween(User shop, Date from, Date to);
+
+    List<SalesAnalytic> findByShopAndDateAfter(User shop, Date date);
 }

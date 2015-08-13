@@ -29,11 +29,7 @@ public interface UserService {
 
     List<User> findByRole(String roleValue, int page, int amount, String sortField);
 
-    List<User> findByCreationDateAfter(String creationDate);
-
     List<User> findByCreationDateAfterAndRole(Date creationDate, Role role);
-
-    List<User> findByCreationDateAfter(Date creationDate);
 
     List<User> findByRole(Role role);
 

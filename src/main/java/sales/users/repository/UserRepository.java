@@ -34,6 +34,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     List<User> findByRole(Role role);
 
+    List<User> findByRoleAndCreationDateBetween(Role role,Date from, Date to);
+
     List<User> findByCreationDateAfterAndRole(Date creationDate, Role role);
 
     List<User> findByCreationDateAfter(Date creationDate);
