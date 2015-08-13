@@ -28,7 +28,7 @@
     <link rel="stylesheet" type="text/css" href="app/modules/admin/css/adm-page-style.css">
     <link rel="stylesheet" type="text/css" href="app/modules/admin/css/shop-admin-page-style.css">
     <link rel="stylesheet" type="text/css" href="app/modules/admin/css/user-profile-style.css">
-    <link rel="stylesheet" type="text/css" href="app/modules/home/css/anton-main-page-styles.css">
+    <link rel="stylesheet" type="text/css" href="app/modules/home/css/main-page-styles.css">
     <link rel="stylesheet" type="text/css" href="app/modules/goods/css/ordering-page-style.css">
 
 
@@ -83,6 +83,8 @@
     <script type="text/javascript" src="app/modules/home/controllers/categoriesService.js"></script>
     <script type="text/javascript" src="app/modules/home/controllers/ProductsCtrl.js"></script>
     <script type="text/javascript" src="app/modules/home/controllers/SearchCtrl.js"></script>
+    <script type="text/javascript" src="app/modules/home/controllers/CategoryService.js"></script>
+    <script type="text/javascript" src="app/modules/home/controllers/LoginService.js"></script>
 
 </head>
 <body class="backgroundIMG">
@@ -318,7 +320,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="#/home" class="navbar-brand">Sales-IF H</a>
+            <a href="#/home" class="navbar-brand">Sales-IF</a>
         </div>
         <!-- /.navbar-header -->
         <!-- #collapsed-group -->
@@ -340,7 +342,6 @@
                             <div class="input-group-btn">   
                                 <button type="button" class="btn btn-default" ng-click="searchProduct()">
                                     <i class="fa fa-search"></i>
-                                    {{searchData}}
                                 </button>
                             </div>
                         </div>

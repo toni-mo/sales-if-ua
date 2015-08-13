@@ -169,3 +169,14 @@ ul>li:hover>.sub-menu{
 	.mystyle{
 		background-image: url('../images/clothing.jpg');
 	}
+	/*Category list*/
+	.category-list{
+		color: #fff;
+	}
+	.category-list>li{
+		padding-right: 30px;
+	}
+	.subcategory-container{
+		height: 300px;
+		background: #eee;
+	}
