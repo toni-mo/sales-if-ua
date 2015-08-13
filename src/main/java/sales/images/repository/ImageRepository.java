@@ -12,4 +12,6 @@ public interface ImageRepository extends JpaRepository <Image, Long> {
         public List<Image> findByGoodIdOrderByChainDesc(int goodId);
 
         public Image findByGoodIdAndChain(int goodId, int chain);
+
+        public Image findByUserId(Long userId);
 }

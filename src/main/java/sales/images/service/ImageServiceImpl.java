@@ -27,13 +27,17 @@ public class ImageServiceImpl implements ImageService {
     }
 
     @Override
-    public Image loadImage(Image image) {
+    public Image loadImage(Image image, String key) {
         Image img = imageRepository.save(image);
-        List<Image> images = imageRepository.findByGoodIdOrderByChainDesc(img.getGoodId());
-        if (images.size() == 0) {
-            img.setChain(1);
+        if (key == "good") {
+            List<Image> images = imageRepository.findByGoodIdOrderByChainDesc(img.getGoodId());
+            if (images.size() == 0) {
+                img.setChain(1);
+            } else {
+                img.setChain(images.get(0).getChain() + 1);
+            }
         } else {
-            img.setChain(images.get(0).getChain() + 1);
+            img.setChain(1);
         }
         return imageRepository.save(img);
     }
@@ -68,5 +72,15 @@ public class ImageServiceImpl implements ImageService {
             e.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    public Image getImageByUserId(Long userId) {
+        return imageRepository.findByUserId(userId);
+    }
+
+    @Override
+    public Image updateUserImage(Image image) {
+        return imageRepository.save(image);
     }
 }
