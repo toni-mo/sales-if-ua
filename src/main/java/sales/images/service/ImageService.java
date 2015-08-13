@@ -9,8 +9,12 @@ public interface ImageService {
 
     public List<Image> getImagesByGoodId(int goodId);
 
-    public Image loadImage(Image image);
+    public Image loadImage(Image image, String key);
 
     public Image getImageByGoodId(int goodId);
+
+    public Image getImageByUserId(Long userId);
+
+    public Image updateUserImage(Image image);
 
 }

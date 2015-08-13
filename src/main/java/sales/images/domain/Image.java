@@ -26,6 +26,9 @@ public class Image implements Serializable {
     @Column(name = "goodId")
     private int goodId;
 
+    @Column(name = "userId")
+    private Long userId;
+
     @Lob
     @Column(name = "image", nullable = false, columnDefinition = "mediumblob")
     private byte[] image;
@@ -34,12 +37,6 @@ public class Image implements Serializable {
     private int chain;
 
     public Image() {}
-
-    public Image(int goodId, byte[] image, int chain) {
-        this.goodId = goodId;
-        this.image = image;
-        this.chain = chain;
-    }
 
     public long getId() {
         return id;
@@ -55,6 +52,15 @@ public class Image implements Serializable {
 
     public void setGoodId(int goodId) {
         this.goodId = goodId;
+    }
+
+    public Long getUserId() {
+
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public byte[] getImage() {

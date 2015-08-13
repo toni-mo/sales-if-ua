@@ -33,5 +33,5 @@ public interface UserService {
 
     List<User> findByRole(Role role);
 
-    void changeUserLock(Long id);
+    boolean changeUserLock(Long id);
 }

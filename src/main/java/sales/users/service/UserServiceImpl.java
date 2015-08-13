@@ -123,9 +123,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void changeUserLock(Long id) {
-        User user = userRepository.findOne(id);
-        user.setIsBlocked(!user.isBlocked());
-        userRepository.save(user);
+    public boolean changeUserLock(Long id) {
+        User user;// = userRepository.findOne(id);
+        if ((user = userRepository.findOne(id)) != null) {
+            user.setIsBlocked(!user.isBlocked());
+            userRepository.save(user);
+            return true;
+        } else {
+            logger.warn("User with userId=" + id + " does not exist!");
+            return false;
+        }
     }
 }

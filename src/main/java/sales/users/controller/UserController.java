@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import sales.users.domain.User;
 import sales.users.service.UserService;
@@ -154,8 +155,14 @@ public class UserController {
             notes = "New user status: isBlockedNew = !isBlockedOld")
     @RequestMapping(value = "/lock/{userId}",
                     method = RequestMethod.PUT)
-    public void changeUserLock(@ApiParam(value = "Id of user, which lockStatus have to be changed", required = true)
-                               @PathVariable(value = "userId") Long userId) {
-        userService.changeUserLock(userId);
+    public ResponseEntity<String> changeUserLock(@ApiParam(value = "Id of user, which lockStatus have to be changed", required = true)
+                                                 @PathVariable(value = "userId") Long userId)
+    {
+        if (userService.changeUserLock(userId)) {
+            return new ResponseEntity<String>("User !locked", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<String>("User does not exist", HttpStatus.BAD_REQUEST);
+        }
+
     }
 }
