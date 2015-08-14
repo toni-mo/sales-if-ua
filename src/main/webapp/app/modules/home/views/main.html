@@ -8,51 +8,24 @@
 		<!-- .col-md-12 -->
 		<div class="col-md-offset-1 col-md-10">
 			<!-- Category list -->
-			<div class="list-container">
-				<ul class="list-inline list-unstyled category-list" ng-mouseover="showSubcategoryList()" ng-mouseout="hideSubcategoryList()">
-					<li ng-repeat="category in categories">{{category.name}}</li>
+			<div class="list-container text-center">
+				<ul class="list-inline list-unstyled category-list">
+					<li ng-repeat="category in categories">
+						{{category.name}}
+						<ul class="list-unstyled subcategory-list center-block" >
+							<li ng-repeat="subcategory in category.subcategories" class="text-center">
+								{{subcategory.name}}
+							</li>
+							<li class="divider"></li>
+						</ul>
+					</li>
 				</ul>
-			</div>
-		</div><!-- /.col-md-12 -->
-		<!-- .col-md-12 -->
-		<div class="col-md-offset-1 col-md-10 subcategory-container" ng-show="subcategoryListVisibility">
-			<div class="row">
-				<div class="col-md-1" ng-repeat="category in categories">
-					<ul class="list-unstyled">
-						<li ng-repeat="subcategory in category.subcategories">{{subcategory.name}}</li>
-					</ul>
-				</div>
 			</div>
 		</div><!-- /.col-md-12 -->
 	</div><!-- /.row -->
 	<!-- .row -->
 	<!-- .row -->
 	<div class="row">
-		<!-- Sidebar -->
-		<!-- .col-md-3 -->
-		<!-- <div class="col-md-3 ">
-			<div class="panel panel-inverse">
-				<div class="panel-heading panel-heading-inverse">Categories</div>
-				<div class="panel-body">
-					<ul class="list-unstyled my-sidebar">
-						<li ng-repeat="category in categories">
-							<a href="#/admin">{{category.name}}</a>
-							<span class="glyphicon glyphicon-menu-right text-primary"></span>
-							<ul class="sub-menu panel panel-inverse list-unstyled ">
-								<div class="panel-heading panel-heading-inverse">{{category.name}}</div>
-								<div class="panel-body">
-									<li ng-repeat="subcategory in category.subcategories">
-										<a href="#/stuff" ng-click="MainCtrl.categoryAlert(subcategory.name)">{{subcategory.name}}</a>
-									</li>
-								</div>
-							</ul>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div> --><!-- /.col-md-3 -->
-		<!-- .col-md-6 -->
-		<!-- Carousel with Offset -->
 		<div class="col-md-offset-1 col-md-10">
 			<!-- .carousel -->
 			<div class="carousel slide" id="myCarousel" data-ride="carousel">
@@ -64,49 +37,34 @@
 
 				<div class="carousel-inner">
 					<div class="item active">
-						<img src="http://placehold.it/950x320" alt="...">
+						<img src="app/modules/home/img/people.png" alt="..." height="100">
 						<div class="carousel-caption">
 							Some caption
 						</div>
 					</div>	
 					<div class="item">
-						<img src="http://placehold.it/850x320" alt="...">
+						<img src="app/modules/home/img/sales.jpg" alt="...">
 						<div class="carousel-caption">
 							Second Caption
 						</div>
 					</div>
 					<div class="item">
-						<img src="http://placehold.it/850x320" alt="...">
+						<img src="app/modules/home/img/friday.png" alt="...">
 						<div class="carousel-caption">
 							Third Caption
 						</div>
 					</div>
 				</div>
 
-				<a href="#myCarousel" class="left carousel-control" data-slide="prev">
+				<a href="/home/#myCarousel" class="left carousel-control" data-slide="prev">
 					<span class="glyphicon glyphicon-chevron-left"></span>
 				</a>
-				<a href="#myCarousel" class="right carousel-control" data-slide="next">
+				<a href="/home/#myCarousel" class="right carousel-control" data-slide="next">
 					<span class="glyphicon glyphicon-chevron-right"></span>
 				</a>
 			</div><!-- /.carousel -->
 		</div><!-- /.col-md-6 -->
 	</div><!-- /.row -->
-	<!-- Pictured Categories -->
-	<!-- .row -->
-	<div class="row">
-		<!-- .col-md-12 -->
-		<div class="col-md-12 ">
-			<!-- .col-md-3 -->
-			<div class="col-md-3 " ng-repeat="category in categories">
-				<div class="category-image"  ng-style="setImage(category.image)">
-					<h3 class="pull-right bg-info" style="margin:0">{{category.name}}</h3>
-				</div>
-			</div><!-- /.col-md-3 -->
-
-		</div><!-- /.col-md-12 -->
-	</div><!-- /.row -->
-
 </div><!-- /.container -->
 
 </div>

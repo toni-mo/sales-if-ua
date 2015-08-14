@@ -10,6 +10,12 @@ home.controller('MainCtrl', ['$scope', '$http', function($scope, $http){
 			$scope.subcategoryListVisibility = false;
 		};
 
+		$scope.chosenCategory="";
+		$scope.choseCategory = function(index){
+			console.log(index);
+			$scope.chosenCategory=index;
+		};
+
 		// $scope.categories
 		// categories list manipulation
 
