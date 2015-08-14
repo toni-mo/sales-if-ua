@@ -1,9 +1,16 @@
 <html>
 <body>
-<h3>Hi ${user.firstName}, welcome to the Sales-If-Ua!</h3>
+<h3>Hi ${user.firstName}, welcome to the Sales If Ua!</h3>
 
 <div>
+    Thanks for your registration. <br>
     Your email address is <a href="mailto:${user.email}">${user.email}</a>.
+</div>
+
+<br>
+<div>
+    To confirm your account click here <a href="url">${confirmURL}</a>
+    .
 </div>
 </body>
 </html>

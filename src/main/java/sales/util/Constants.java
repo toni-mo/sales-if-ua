@@ -20,4 +20,6 @@ public final class Constants {
     public static final String SHOP = "shop";
 
     public static final String OUR_EMAIL = "salesifua@gmail.com";
+
+    public static final String CONFIRM_URL = "http://localhost:8080/Practice/confirm";
 }
