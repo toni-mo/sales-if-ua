@@ -20,6 +20,7 @@ import org.slf4j.LoggerFactory;
 import sales.analytics.repository.OurShopProfitRepository;
 import sales.analytics.repository.SalesAnalyticsRepository;
 import sales.analytics.repository.ShopsAnalyticsRepository;
+import sales.orders.domain.Order;
 import sales.orders.services.OrdersService;
 import sales.users.domain.User;
 
@@ -59,7 +60,13 @@ public class AnalyticsAutoUpdate {
         shopsAnalyticsRepository.save(new ShopsAnalytic(rand.nextInt(20) + analyticsService.getClientsAmountForLastTime(24 * 60), new Date()));
         ourShopProfitRepository.save(new OurShopProfit(admissionService.getAdmissionForLastTime(calendar.getTime())+rand.nextInt(10000), new Date()));
         for (User shop : analyticsService.getAllShops()) {
-           salesAnalyticsRepository.save(new SalesAnalytic(shop, 5+rand.nextInt(15), 3000+rand.nextInt(3000), new Date()));
+            List<Order> shopOrders = ordersService.getByUserAndDateAfter(shop, calendar.getTime());
+            double profit = 0;
+            for(Order order: shopOrders)
+            {
+                profit+=order.getStorage().getPrice();
+            }
+            salesAnalyticsRepository.save(new SalesAnalytic(shop, shopOrders.size()+rand.nextInt(15), profit+rand.nextInt(3000), new Date()));
         }
     }
 

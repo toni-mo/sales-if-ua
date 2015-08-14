@@ -55,4 +55,9 @@ public class OrdersServiceImpl implements OrdersService {
     public List<Order> getByUserAndDate(User user, Date date) {
         return repository.findByUserAndDate(user, date);
     }
+
+    @Override
+    public List<Order> getByUserAndDateAfter(User user, Date date) {
+        return repository.findByUserAndDateAfter(user, date);
+    }
 }
