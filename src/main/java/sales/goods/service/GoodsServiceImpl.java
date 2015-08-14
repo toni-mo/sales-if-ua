@@ -6,6 +6,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import sales.category.domain.SubCategory;
+import sales.category.service.SubCategoryService;
 import sales.comments.domain.Comment;
 import sales.comments.repository.ICommentRepository;
 import sales.goods.domain.Good;
@@ -25,6 +27,9 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Autowired
     private ICommentRepository commentRepository;
+
+    @Autowired
+    private SubCategoryService subCategoryService;
 
     public Good get(long id) {
         return repository.findById(id);
@@ -97,4 +102,8 @@ public class GoodsServiceImpl implements GoodsService {
         return good;
     }
 
+    @Override
+    public List<Good> findBySubCategory(Long subCategoryId) {
+        return repository.findBySubCategory(subCategoryService.findOne(subCategoryId));
+    }
 }
