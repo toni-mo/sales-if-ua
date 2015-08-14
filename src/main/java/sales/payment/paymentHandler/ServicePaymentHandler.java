@@ -8,22 +8,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import sales.admission.domain.Admission;
 import sales.admission.service.AdmissionService;
-import sales.orders.domain.Order;
 import sales.orders.services.OrdersService;
 import sales.payment.creaditCard.service.CreaditCardService;
-import sales.payment.dto.data.AnonymMultyPaymentDTO;
 import sales.payment.dto.data.ServicePaymentDTO;
 import sales.payment.paypal.service.Authentication;
 import sales.payment.paypal.service.PayPalPayment;
 import sales.payment.paypal.service.PaypalService;
 import sales.roles.service.RoleService;
-import sales.storage.domain.Storage;
-import sales.storage.service.StorageService;
 import sales.users.domain.User;
 import sales.users.service.UserService;
 import sales.util.Constants;
-
-import java.util.*;
 
 /**
  * Created by taras on 14.08.15.

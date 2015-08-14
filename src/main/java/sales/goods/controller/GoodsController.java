@@ -42,6 +42,15 @@ public class GoodsController {
         return service.getAll();
     }
 
+    @RequestMapping(value = "/{subId}",
+            method = RequestMethod.GET,
+            produces = "application/json; charset=UTF-8")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Good> getAllGoods(@RequestParam(value = "subId") long subId) {
+        logger.info("Good: get goods by subCategory");
+        return service.findBySubCategory(subId);
+    }
+
     @RequestMapping(value = "/",
             method = RequestMethod.POST,
             produces = "application/json; charset=UTF-8",

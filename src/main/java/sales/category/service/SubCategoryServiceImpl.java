@@ -21,6 +21,11 @@ public class SubCategoryServiceImpl implements SubCategoryService {
     CategoryRepository categoryRepository;
 
     @Override
+    public SubCategory findOne(Long id) {
+        return subCategoryRepository.findOne(id);
+    }
+
+    @Override
     public List<SubCategory> findAll(Long id) {
         return subCategoryRepository.findByCategory(categoryRepository.findOne(id));
     }

@@ -1,5 +1,6 @@
 package sales.goods.service;
 
+import sales.category.domain.SubCategory;
 import sales.goods.domain.Good;
 
 import java.util.List;
@@ -25,4 +26,5 @@ public interface GoodsService {
 
     public Good rateGoodUpdateRemove(Long commentId);
 
+    public List<Good> findBySubCategory(Long subCategoryId);
 }
