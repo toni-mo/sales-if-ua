@@ -20,7 +20,7 @@ public class OurShopProfit {
 
     @Column(name = "profit")
     @JsonProperty("profit")
-    private int profit;
+    private double profit;
 
     @Column(name = "date")
     @JsonProperty("date")
@@ -29,7 +29,7 @@ public class OurShopProfit {
     public OurShopProfit() {
     }
 
-    public OurShopProfit(int profit, Date date) {
+    public OurShopProfit(double profit, Date date) {
         this.profit = profit;
         this.date = date;
     }
@@ -42,7 +42,7 @@ public class OurShopProfit {
         this.id = id;
     }
 
-    public int getProfit() {
+    public double getProfit() {
         return profit;
     }
 
