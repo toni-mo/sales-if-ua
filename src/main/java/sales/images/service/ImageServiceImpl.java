@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import sales.images.domain.Image;
 import sales.images.repository.ImageRepository;
+import sales.users.service.UserService;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -21,9 +22,19 @@ public class ImageServiceImpl implements ImageService {
     @Autowired
     private ImageRepository imageRepository;
 
+    @Autowired
+    private UserService userService;
+
     @Override
     public List<Image> getImagesByGoodId(int goodId) {
-        return imageRepository.findByGoodId(goodId);
+        int DEFAULT_GOOD_ID = -1;
+
+        List<Image> goodImages = imageRepository.findByGoodId(goodId);
+        if (goodImages.size() != 0) {
+            return goodImages;
+        } else {
+            return imageRepository.findByGoodId(DEFAULT_GOOD_ID);
+        }
     }
 
     @Override
@@ -76,7 +87,20 @@ public class ImageServiceImpl implements ImageService {
 
     @Override
     public Image getImageByUserId(Long userId) {
-        return imageRepository.findByUserId(userId);
+        Long DEFAULT_USER_ID = -1L;
+        Long DEFAULT_SHOP_ID = -2L;
+        Image img = imageRepository.findByUserId(userId);
+        if (img != null) {
+            return img;
+        } else  {
+            if (userService.getById(userId).getRole().getId() == 3) {
+                System.out.println("\n\n\n" + userService.getById(userId).getRole() + "\n\n\n");
+                return imageRepository.findByUserId(DEFAULT_SHOP_ID);
+            } else {
+                System.out.println("\n\n\n" + userService.getById(userId).getRole() + "\n\n\n");
+                return imageRepository.findByUserId(DEFAULT_USER_ID);
+            }
+        }
     }
 
     @Override
