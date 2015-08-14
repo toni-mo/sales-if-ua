@@ -18,4 +18,6 @@ public final class Constants {
     public static final String CLIENT = "client";
 
     public static final String SHOP = "shop";
+
+    public static final String OUR_EMAIL = "salesifua@gmail.com";
 }

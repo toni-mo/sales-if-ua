@@ -26,7 +26,7 @@ public class GoodInBucket {
     private Bucket bucket;
 
     @ManyToOne(targetEntity = Good.class)
-    @JoinColumn(name = "good", referencedColumnName = "id")
+    @JoinColumn(name = "realGood", referencedColumnName = "id")
     @JsonProperty
     private Good good;
 

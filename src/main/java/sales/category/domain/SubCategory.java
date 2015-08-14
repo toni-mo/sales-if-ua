@@ -26,12 +26,11 @@ public class SubCategory {
 
     @ManyToOne(targetEntity = Category.class)
     @JoinColumn(name = "category", referencedColumnName = "id")
-    @JsonProperty
+    @JsonIgnore
     private Category category;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "goods", referencedColumnName = "id")
-    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="subCategory", fetch = FetchType.EAGER)
+    @JsonProperty
     private List<Good> goods;
 
     public Long getId() {

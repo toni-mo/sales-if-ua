@@ -26,7 +26,6 @@ public class Bucket {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy="bucket", fetch = FetchType.EAGER)
     @JsonProperty
-    //@JsonIgnore
     private List<GoodInBucket> goodsInBucket;
 
     public Long getId() {

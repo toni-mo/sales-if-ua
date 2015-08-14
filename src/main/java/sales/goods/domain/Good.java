@@ -62,7 +62,7 @@ public class Good implements Serializable {
 
     @ManyToOne(targetEntity = SubCategory.class)
     @JoinColumn(name = "subCategory", referencedColumnName = "id")
-    @JsonProperty
+    @JsonIgnore
     private SubCategory subCategory;
 
     @JsonCreator

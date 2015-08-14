@@ -38,14 +38,18 @@ public class Admission {
     @JsonProperty("date")
     private Date date;
 
+    @PrePersist
+    private void onCreateAdmissionInstance() {
+        date = new Date();
+    }
+
     public Admission() {
     }
 
-    public Admission(User shop, double sum, String paymentId, Date date) {
+    public Admission(User shop, double sum, String paymentId) {
         this.shop = shop;
         this.sum = sum;
         this.paymentId = paymentId;
-        this.date = date;
     }
 
     public int getId() {

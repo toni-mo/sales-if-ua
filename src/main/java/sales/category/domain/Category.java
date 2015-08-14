@@ -3,6 +3,7 @@ package sales.category.domain;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by taras on 11.08.15.
@@ -19,6 +20,10 @@ public class Category {
     @Column(name = "name", columnDefinition = "VARCHAR(50)")
     @JsonProperty
     private String name;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="category", fetch = FetchType.EAGER)
+    @JsonProperty
+    private List<SubCategory> subCategories;
 
     public Long getId() {
         return id;

@@ -105,7 +105,7 @@ public class RegistretedPaymentHandler {
                     transaction.getStorages().add(storage);
                 }
             }
-            transaction.setPaypal(paypalService.get(user.getId()));
+            transaction.setPaypal(paypalService.getByUserId(user.getId()));
             transaction.setCard(card);
             transactions.add(transaction);
         }
