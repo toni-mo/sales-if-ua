@@ -79,19 +79,6 @@
 			class="textColor">Comments </h3>
 		<div class="col-md-offset-2 col-md-8">
 			<div class="panel panel-primary textColor"
-				 align="center" ng-repeat="comment in comments"
-				 style="background-color: rgba(169, 169, 169, 0.26); border: rgba(169, 169, 169, 0.12)">
-				<div class="panel-body"
-					 align="center">
-					created: {{getDate(comment.creationDate)}}
-					buy {{comment.user.firstName}} {{comment.user.lastName}}
-					<!--{{comment.userId}}-->
-				</div>
-				<div class="panel-footer textColor" style="background-color: rgba(169, 169, 169, 0.12)">{{comment.commentText}}</div>
-			</div>
-		</div>
-		<div class="col-md-offset-2 col-md-8">
-			<div class="panel panel-primary textColor"
 				 align="center"
 				 style="background-color: rgba(169, 169, 169, 0.26); border: rgba(169, 169, 169, 0.12)">
 				<div class="panel-body"
@@ -100,7 +87,7 @@
 				</div>
 				<div class="panel-footer textColor"
 					 style="background-color: rgba(169, 169, 169, 0.12)"
-						ng-show="role='admin' || role='client' || role='shop'">
+					 ng-show="role='admin' || role='client' || role='shop'">
 					<textarea name="text"
 							  id=""
 							  cols="30"
@@ -115,6 +102,18 @@
 							class="btn form-control BtnTextColor"
 							style="width: 10%; background-color: rgba(255, 255, 255, 0.44)" > Sent</button>
 				</div>
+			</div>
+		</div>
+		<div class="col-md-offset-2 col-md-8">
+			<div class="panel panel-primary textColor"
+				 align="center" ng-repeat="comment in comments"
+				 style="background-color: rgba(169, 169, 169, 0.26); border: rgba(169, 169, 169, 0.12)">
+				<div class="panel-body"
+					 align="center">
+					<div class="pull-left">  {{comment.user.firstName}} {{comment.user.lastName}}  </div>
+					<div class="pull-right">  {{getDate(comment.creationDate)}}  </div>
+				</div>
+				<div class="panel-footer textColor" style="background-color: rgba(169, 169, 169, 0.12)">{{comment.commentText}}</div>
 			</div>
 		</div>
 	</div>
