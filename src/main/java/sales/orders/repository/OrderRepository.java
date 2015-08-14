@@ -20,4 +20,6 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
     public List<Order> StorageIn(List<Storage> storages);
 
     public List<Order> findByUserAndDate(User user, Date date);
+
+    public List<Order> findByUserAndDateAfter(User user, Date date);
 }

@@ -22,4 +22,6 @@ public interface OrdersService {
     public List<Order> getByStorages(List<Storage> storages);
 
     public List<Order> getByUserAndDate(User user, Date date);
+
+    public List<Order> getByUserAndDateAfter(User user, Date date);
 }
