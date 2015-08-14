@@ -1,0 +1,55 @@
+<div class="container-fluid " ng-controller="ShopAdmCtrl">
+    <div class="row">
+        <div class="col-xs-5 col-sm-5 col-md-1 col-lg-1">
+            <ul class="nav navbar-nav adm-side-nav ">
+                <li class="adm-ProfileUserImgMargin adm-page-size"><img src="http://i.ytimg.com/vi/5l8dU40aRUs/maxresdefault.jpg"
+                                                                        class="img-responsive"/></li>
+                <li><a href="#/shop/products/{{id}}/{{role}}"></i><i class="fa fa-home"></i> My products</a></li>
+                <li><a href="#/shop/orders/{{id}}/{{role}}"><i class="fa fa-envelope-o"></i> My orders </a></li>
+                <li><a href="#/shop/profile/edit/{{id}}/{{role}}"><i class="fa fa-pencil-square-o"></i> Edit profile</a></li>
+                <li><a href="#/shop/payment/{{id}}/{{role}}"><i class="fa fa-money"></i> Payment</a></li>
+                <li><a href="#/shop/statistics/{{id}}/{{role}}"><i class="fa fa-bar-chart"></i> Statistics</a></li>
+
+            </ul>
+        </div>
+        <div class="col-md-offset-2 col-md-8 col-sm-offset-3 col-sm-8 col-xs-offset-3 col-xs-8" style="margin-top: 3%">
+            <div class="progress" style="height: 30px">
+                <div class="progress-bar progress-bar-striped active"
+                     role="progressbar"
+                     aria-valuenow="10"
+                     aria-valuemin="0"
+                     aria-valuemax="100"
+                     style="width: 10%; background-color: rgba(255, 18, 1, 0.69);">
+                    <span class="sr-only">10% Complete</span>
+                </div>
+            </div>
+            <h3 align="center" class="textColor">Days remained to next payment: 3 days</h3>
+            <div class="col-md-offset-2 col-md-8" align="center" style="margin-top: 3%; font-size: 18px">
+                <table class="table table-condensed textColor">
+                    <thead>
+                    <tr>
+                        <th>One month</th>
+                        <th>Three months</th>
+                        <th>Six months</th>
+                        <th>One year</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="textColor">
+                        <td>100 $</td>
+                        <td>280 $</td>
+                        <td>500 $</td>
+                        <td>950 $</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-offset-2 col-md-9 btn-group row" align="center" style="margin-top: 3%; font-size: 18px">
+                <button class="btn ButtonColor BtnTextColor textColor" style="height: 44px">Order for 1 month</button>
+                <button class="btn ButtonColor BtnTextColor textColor" style="height: 44px">Order for 3 months</button>
+                <button class="btn ButtonColor BtnTextColor textColor" style="height: 44px">Order for 6 months</button>
+                <button class="btn ButtonColor BtnTextColor textColor" style="height: 44px">Order for 1 year</button>
+            </div>
+        </div>
+    </div>
+</div>
