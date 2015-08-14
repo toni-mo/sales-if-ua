@@ -1,12 +1,13 @@
-<div class="container-fluid " ng-controller="HighchartsCtrl">
+<div class="container-fluid " ng-controller="ShopAdmCtrl">
     <div class="row">
         <div class="col-xs-5 col-sm-5 col-md-1 col-lg-1">
             <ul class="nav navbar-nav adm-side-nav ">
                 <li class="adm-ProfileUserImgMargin adm-page-size"><img src="app/modules/admin/img/1.jpg"
                                                                         class="img-responsive"/></li>
-                <li><a href="#/admin/users/{{id}}/{{role}}"></i><i class="fa fa-users"></i> Users</a></li>
-                <li><a href="#/admin/shops/{{id}}/{{role}}"><i class="fa fa-shopping-cart"></i> Shops</a></li>
-                <li><a href="#/admin/statistics/{{id}}/{{role}}"><i class="fa fa-bar-chart"></i> Statistics</a></li>
+                <li><a href="#/shop/products/{{id}}/{{role}}"></i><i class="fa fa-home"></i> My products</a></li>
+                <li><a href="#/shop/orders/{{id}}/{{role}}"><i class="fa fa-envelope-o"></i> My orders </a></li>
+                <li><a href="#/shop/profile/edit/{{id}}/{{role}}"><i class="fa fa-pencil-square-o"></i> Edit profile</a></li>
+                <li><a href="#/shop/statistics/{{id}}/{{role}}"><i class="fa fa-bar-chart"></i> Statistics</a></li>
                 <li>
                     <div>
                         <div
@@ -17,22 +18,7 @@
                                         type="checkbox"
                                         id="checkbox1"
                                         ng-model="checkbox1">
-                                New users chart
-                            </label>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div>
-                        <div
-                                class="checkbox textColor"
-                                style="margin-left: 10px; width: 100% ">
-                            <label>
-                                <input
-                                        type="checkbox"
-                                        id="checkbox123"
-                                        ng-model="checkbox123">
-                                New shops chart
+                                Products sold
                             </label>
                         </div>
                     </div>
@@ -47,7 +33,7 @@
                                         type="checkbox"
                                         id="checkbox2"
                                         ng-model="checkbox2">
-                                Money transactions
+                                Money received
                             </label>
                         </div>
                     </div>
@@ -102,7 +88,7 @@
                 <li class="center-block" style="margin-left: 10%">
                     <div>
                         <button
-                                ng-click="buildClientsChart(getClients());buildShopsChart(getShops())"
+                                ng-click="buildProductsChart(getShopD())"
                                 ng-show="checkbox4 == true"
                                 type="submit"
                                 class="btn ButtonColor BtnTextColor textColor"
@@ -110,7 +96,7 @@
                             Search
                         </button>
                         <button
-                                ng-click="buildClientsChart(getClientsDefault()); buildShopsChart(getShopsDefault())"
+                                ng-click="buildProductsChart(getShopDefault())"
                                 ng-show="checkbox4 == true"
                                 type="submit"
                                 class="btn ButtonColor BtnTextColor textColor"
@@ -126,17 +112,13 @@
             <!-- end sidebar -->
         </div>
         <div
-                ng-init="buildClientsChart(getClientsDefault());buildShopsChart(getShopsDefault());buildProfitChart(getProfitDefault())"
+                ng-init="buildProductsChart(getShopDefault())"
                 class="col-md-offset-2 col-sm-offset-3 col-xs-offset-3 col-lg-9 col-sm-8 col-xs-7 col-md-9 table-min"
                 style="margin-top: 1%"
                 id="chart1">
             <div
                     ng-show="checkbox1"
-                    id="Clients"
-            ></div>
-            <div
-                    ng-show="checkbox123"
-                    id="Shops"
+                    id="Products"
                     ></div>
             <div
                     ng-show="checkbox2"

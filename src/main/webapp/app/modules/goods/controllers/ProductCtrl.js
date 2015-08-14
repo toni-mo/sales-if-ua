@@ -29,7 +29,10 @@ goods.controller('ProductCtrl', ['$scope', '$http','$routeParams','LoginService'
         console.log($scope.comments);
     });
     $scope.getDate = function(date){
-        return new Date(date);
+        var ComDate = new Date(date);
+        var month = ComDate.getMonth() + 1;
+        $scope.date = ComDate.getDate() + "/" + month + "/" + ComDate.getFullYear();
+        return $scope.date;
     };
     $scope.productAvailability = function(index){
         if($scope.shops[index].quantity != 0){
