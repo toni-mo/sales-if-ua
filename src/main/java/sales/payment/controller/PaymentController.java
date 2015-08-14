@@ -8,8 +8,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import sales.payment.dto.data.AnonymMultyPaymentDTO;
 import sales.payment.dto.data.RegisteredMultiPaymentDTO;
+import sales.payment.dto.data.ServicePaymentDTO;
 import sales.payment.paymentHandler.AnonymPaymentHandler;
 import sales.payment.paymentHandler.RegistretedPaymentHandler;
+import sales.payment.paymentHandler.ServicePaymentHandler;
 
 /**
  * Created by volodya on 29.07.15.
@@ -23,6 +25,9 @@ public class PaymentController  {
 
     @Autowired
     RegistretedPaymentHandler registretedPaymentHandler;
+
+    @Autowired
+    ServicePaymentHandler servicePaymentHandler;
 
     protected static Logger logger = LoggerFactory.getLogger(PaymentController.class.getName());
 
@@ -46,5 +51,16 @@ public class PaymentController  {
     public void registeredSinglePayment(@RequestBody RegisteredMultiPaymentDTO registered) throws PayPalRESTException {
         logger.info("Payment: registered single payment");
         registretedPaymentHandler.anonymPayment(registered);
+    }
+
+    @RequestMapping(
+            value = "/pay",
+            method = RequestMethod.POST,
+            produces = "application/json; charset=UTF-8",
+            consumes = "application/json")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void servicePayment(@RequestBody ServicePaymentDTO servicePaymentDTO) throws PayPalRESTException {
+        logger.info("Payment: registered single payment");
+        servicePaymentHandler.servicePayment(servicePaymentDTO);
     }
 }

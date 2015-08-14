@@ -13,7 +13,8 @@
                       data/fill_goods.sql,
                       data/fill_descriptions.sql,
                       data/fill_storages.sql,
-                      data/fill_orders.sql"/>
+                      data/fill_orders.sql,
+                      data/fill_bucket.sql"/>
         </properties>
     </persistence-unit>
 

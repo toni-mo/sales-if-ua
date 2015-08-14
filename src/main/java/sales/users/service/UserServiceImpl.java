@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import sales.notification.service.NotificationService;
 import sales.roles.domain.Role;
 import sales.roles.service.RoleServiceImpl;
 import sales.security.Encoding;
@@ -28,6 +29,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private RoleServiceImpl roleService;
+
+    @Autowired
+    private NotificationService notificationService;
 
     @Override
     public User getById(Long id) {
@@ -66,7 +70,11 @@ public class UserServiceImpl implements UserService {
             logger.error("Can`t convert String to MD5 hash");
         }
         logger.debug("Added User to database");
-        return userRepository.save(user);
+        User dbUser = userRepository.save(user);
+        if(dbUser != null) {
+            notificationService.register(dbUser);
+        }
+        return dbUser;
     }
 
     @Override

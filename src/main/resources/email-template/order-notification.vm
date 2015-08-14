@@ -1,0 +1,9 @@
+<html>
+<body>
+<h3>Hi ${firstName}!</h3>
+
+<div>
+    You bougth <br> ${goods}</a>.
+</div>
+</body>
+</html>
