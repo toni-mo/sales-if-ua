@@ -46,7 +46,7 @@ public class TestNotificationService extends AbstractTestNGSpringContextTests {
                 "taras",
                 "client",
                 cityService.getOneByName("смт Зуя"),
-                "muroclav94@ukr.net",
+                "tarik.danylyuk@gmail.com",
                 "12342535",
                 new Date(),
                 roleService.getRoleByValue(Constants.CLIENT));
@@ -64,7 +64,7 @@ public class TestNotificationService extends AbstractTestNGSpringContextTests {
         goods.add(3L);
 
         AnonymMultyPaymentDTO anonymMultyPaymentDTO = new AnonymMultyPaymentDTO();
-        anonymMultyPaymentDTO.setEmail("muroclav94@ukr.net");
+        anonymMultyPaymentDTO.setEmail("tarik.danylyuk@gmai.com");
         anonymMultyPaymentDTO.setFirstName("Anonym");
         anonymMultyPaymentDTO.setLastName("Surname");
         anonymMultyPaymentDTO.setGoodsId(goods);
@@ -82,7 +82,7 @@ public class TestNotificationService extends AbstractTestNGSpringContextTests {
         RegisteredMultiPaymentDTO registeredMultiPaymentDTO = new RegisteredMultiPaymentDTO();
         registeredMultiPaymentDTO.setCard(new CreditCard());
         registeredMultiPaymentDTO.setGoodsId(goods);
-        registeredMultiPaymentDTO.setUserId(25L);
+        registeredMultiPaymentDTO.setUserId(4L);
 
         notificationService.notificateOrderRegist(registeredMultiPaymentDTO);
     }

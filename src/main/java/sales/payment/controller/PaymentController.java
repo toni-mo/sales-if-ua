@@ -24,10 +24,10 @@ public class PaymentController  {
     private AnonymPaymentHandler anonymPaymentHandler;
 
     @Autowired
-    RegistretedPaymentHandler registretedPaymentHandler;
+    private RegistretedPaymentHandler registretedPaymentHandler;
 
     @Autowired
-    ServicePaymentHandler servicePaymentHandler;
+    private ServicePaymentHandler servicePaymentHandler;
 
     protected static Logger logger = LoggerFactory.getLogger(PaymentController.class.getName());
 

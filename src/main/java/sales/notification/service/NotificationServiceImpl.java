@@ -15,6 +15,7 @@ import sales.storage.domain.Storage;
 import sales.storage.service.StorageService;
 import sales.users.domain.User;
 import sales.users.service.UserService;
+import sales.util.Constants;
 
 import javax.mail.internet.MimeMessage;
 import java.util.ArrayList;
@@ -30,10 +31,10 @@ public class NotificationServiceImpl implements NotificationService {
     final static Logger logger = LoggerFactory.getLogger(NotificationServiceImpl.class);
 
     @Autowired
-    StorageService storageService;
+    private StorageService storageService;
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     private JavaMailSender mailSender;
     private VelocityEngine velocityEngine;
@@ -76,8 +77,10 @@ public class NotificationServiceImpl implements NotificationService {
                 MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
                 message.setTo(user.getEmail());
                 message.setFrom("salesifua@gmail.com");
+                message.setSubject("Confirm your registration");
                 Map model = new HashMap();
                 model.put("user", user);
+                model.put("confirmURL", Constants.CONFIRM_URL);
                 String text = VelocityEngineUtils.mergeTemplateIntoString(
                         velocityEngine, "email-template/registration-confirmation.vm", model);
                 message.setText(text, true);
@@ -94,9 +97,10 @@ public class NotificationServiceImpl implements NotificationService {
                 MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
                 message.setTo(email);
                 message.setFrom("salesifua@gmail.com");
+                message.setSubject("Order details");
                 Map model = new HashMap();
                 model.put("firstName", firstName);
-                String goods = "";
+                String goods = new String("");
                 for(int i = 0; i < storages.size(); i++) {
                     goods += storages.get(i).getGood().getName() + "<br>";
                 }

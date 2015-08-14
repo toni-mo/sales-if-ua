@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import sales.users.controller.UserController;
 import sales.users.domain.User;
 import sales.users.service.UserService;
+import sales.util.Constants;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -38,7 +39,8 @@ public class LoginController {
         User user = userService.getByEmail(auth.getName());
 
         session.setAttribute("userEmail", Encoding.getEncoded(user.getEmail()));
-        session.setAttribute("user", user.getFirstName() + " " + user.getLastName());
+        if(user.getRole().getValue().equals(Constants.SHOP)) session.setAttribute("user", user.getFirstName());
+        else session.setAttribute("user", user.getFirstName() + " " + user.getLastName());
         session.setAttribute("check", "true");
 
         response.sendRedirect("/Practice/");
