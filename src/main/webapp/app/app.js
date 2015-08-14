@@ -46,6 +46,9 @@ phonecatApp.config(['$routeProvider',
         when('/shop/statistics/:userId/:role',{
             templateUrl: 'app/modules/admin/views/shop-stat-page.html'
         }).
+        when('/shop/payment/:userId/:role',{
+            templateUrl: 'app/modules/admin/views/shop-payment-page.html'
+        }).
         when('/home/service',{
             templateUrl: 'app/modules/admin/views/services-page.html'
         }).
